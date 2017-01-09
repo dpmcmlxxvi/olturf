@@ -267,6 +267,7 @@ module.exports = function (grunt) {
                 afterBump: ["default", "dist"],
                 github: {
                     repo: "dpmcmlxxvi/ol3-turf",
+                    accessTokenVar: "GITHUB_ACCESS_TOKEN"
                 },
             }
         },
