@@ -1,0 +1,11 @@
+/* Hide toolbar and form for testing */
+
+.ol3-turf-toolbar
+{
+    visibility: hidden !important;
+}
+
+.ol3-turf-form
+{
+    visibility: hidden !important;
+}

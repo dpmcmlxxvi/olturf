@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>ol3-turf test</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="../node_modules/mocha/mocha.css">
+    <link rel="stylesheet" type="text/css" href="../bower_components/openlayers/ol.css" />
+    <link rel="stylesheet" type="text/css" href="../dist/ol3-turf.css" />
+    <link rel="stylesheet" type="text/css" href="test.css" />
+</head>
+<body>
+<div id="mocha"></div>
+<script type="text/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
+<script type="text/javascript" src="../node_modules/expect.js/index.js"></script>
+<script type="text/javascript" src="../node_modules/mocha/mocha.js"></script>
+<script type="text/javascript" src="../bower_components/openlayers/ol.js"></script>
+<script type="text/javascript" src="../bower_components/turf/turf.min.js"></script>
+<script type="text/javascript" src="../src/js/main.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/utils.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/control.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/form.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/handler.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/popup.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/along.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/area.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/bearing.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/bezier.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/buffer.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/center.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/center-of-mass.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/centroid.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/circle.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/collect.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/combine.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/concave.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/convex.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/destination.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/difference.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/distance.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/envelope.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/explode.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/flip.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/hex-grid.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/inside.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/intersect.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/isolines.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/kinks.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/line-distance.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/line-slice-along.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/midpoint.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/nearest.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/planepoint.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/point-grid.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/point-on-line.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/point-on-surface.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/random.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/sample.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/simplify.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/square.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/square-grid.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/tag.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/tesselate.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/tin.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/toolbars.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/triangle-grid.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/union.js" data-cover=""></script>
+<script type="text/javascript" src="../src/js/within.js" data-cover=""></script>
+<script>
+    mocha.setup({
+        ui   : 'bdd',
+        bail : false
+    });
+</script>
+<script src="../node_modules/blanket/dist/mocha/blanket_mocha.js" data-cover-adapter="../node_modules/blanket/src/adapters/mocha-blanket.js" type="text/javascript"></script>
+<script type="text/javascript" src="test.js"></script>
+<script>
+    mocha.globals(['jQuery', '$', 'ol3turf', 'ol', 'turf']);
+    mocha.run();
+</script>
+</body>
+</html>
+

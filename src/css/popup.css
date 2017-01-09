@@ -1,0 +1,27 @@
+.ol3-turf-popup
+{
+    background-color: #ffffff;
+    background-color: rgba(255, 255, 255, 1.0);
+    border-radius: 4px;
+    display: inline-block;
+    left: 2.5em;
+    padding: 2px;
+    position: absolute;
+    text-align: center;
+    top: 2.5em;
+    z-index: 9999;
+}
+
+.ol3-turf-popup-message
+{
+    background-color: #00a088;
+    background-color: rgba(0, 60, 136, 0.5);
+    border-radius: 2px;
+    padding: 10px;
+}
+
+.ol3-turf-popup-button-container
+{
+    display: inline-block;
+    padding: 10px;
+}

@@ -1,0 +1,39 @@
+{
+    "opts": 
+    {
+        "destination": "docs/api",
+        "readme": "readme.md",
+        "recurse": true
+    },
+
+    "plugins": 
+    [
+        "plugins/markdown"
+    ],
+
+    "source": 
+    {
+        "include": 
+        [
+            "src"
+        ],
+
+        "includePattern": ".+\\.js(doc)?$",
+        "excludePattern": "(^|\\/|\\\\)_"
+    },
+
+    "tags": 
+    {
+        "allowUnknownTags": true,
+        "dictionaries": 
+        [
+            "jsdoc"
+        ]
+    },
+
+    "templates": 
+    {
+        "includeDate": false,
+        "systemName": "ol3-turf"
+    }
+}
