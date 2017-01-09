@@ -24,21 +24,21 @@ window.ol3turf.PROJECTION_OL3 = "EPSG:3857";
 /**
  * ol3 main namespace
  * @external ol
- * @see {@link http://openlayers.org/en/v3.17.1/apidoc/ol.html}
+ * @see {@link http://openlayers.org/en/latest/apidoc/ol.html}
  */
 
 /**
  * ol3 control namespace
  * @memberof external:ol
  * @namespace control
- * @see {@link http://openlayers.org/en/v3.17.1/apidoc/ol.control.html}
+ * @see {@link http://openlayers.org/en/latest/apidoc/ol.control.html}
  */
 
 /**
  * ol3 control base class
  * @class Control
  * @memberof external:ol.control
- * @see {@link http://openlayers.org/en/v3.17.1/apidoc/ol.control.Control.html}
+ * @see {@link http://openlayers.org/en/latest/apidoc/ol.control.Control.html}
  */
 
 /**

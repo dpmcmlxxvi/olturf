@@ -41,7 +41,7 @@ function createMap(id) {
     var polygons = new ol.layer.Vector({
         source: new ol.source.Vector({
             format: new ol.format.GeoJSON(),
-            url: 'http://openlayers.org/en/v3.17.1/examples/data/geojson/polygon-samples.geojson'
+            url: 'https://openlayers.org/en/latest/examples/data/geojson/polygon-samples.geojson'
         })
     });
     map.addLayer(polygons);
@@ -50,7 +50,7 @@ function createMap(id) {
     var lines = new ol.layer.Vector({
         source: new ol.source.Vector({
             format: new ol.format.GeoJSON(),
-            url: 'http://openlayers.org/en/v3.17.1/examples/data/geojson/line-samples.geojson'
+            url: 'https://openlayers.org/en/latest/examples/data/geojson/line-samples.geojson'
         })
     });
     map.addLayer(lines);
@@ -59,7 +59,7 @@ function createMap(id) {
     var points = new ol.layer.Vector({
         source: new ol.source.Vector({
             format: new ol.format.GeoJSON(),
-            url: 'http://openlayers.org/en/v3.17.1/examples/data/geojson/point-samples.geojson'
+            url: 'https://openlayers.org/en/latest/examples/data/geojson/point-samples.geojson'
         })
     });
     map.addLayer(points);

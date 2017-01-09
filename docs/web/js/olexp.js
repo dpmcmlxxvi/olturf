@@ -51,9 +51,9 @@ function createExplorer(id) {
     }
 
     // Create data
-    var polygons = create('Polygons', 'http://openlayers.org/en/v3.17.1/examples/data/geojson/polygon-samples.geojson');
-    var lines = create('Lines', 'http://openlayers.org/en/v3.17.1/examples/data/geojson/line-samples.geojson');
-    var points = create('Points', 'http://openlayers.org/en/v3.17.1/examples/data/geojson/point-samples.geojson');
+    var polygons = create('Polygons', 'https://openlayers.org/en/latest/examples/data/geojson/polygon-samples.geojson');
+    var lines = create('Lines', 'https://openlayers.org/en/latest/examples/data/geojson/line-samples.geojson');
+    var points = create('Points', 'https://openlayers.org/en/latest/examples/data/geojson/point-samples.geojson');
 
     // Add data group
     var layers = new ol.layer.Group({
