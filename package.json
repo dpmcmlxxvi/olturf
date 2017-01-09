@@ -1,6 +1,6 @@
 {
   "name": "ol3-turf",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "description": "A Turf toolbar for OpenLayers 3.",
   "author": {
     "name": "Daniel Pulido",
