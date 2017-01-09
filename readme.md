@@ -80,7 +80,7 @@ overridden to suit an application's look and feel.
 LICENSE
 ------------------------------------------------------------
 
-Copyright (c) 2015 Daniel Pulido <dpmcmlxxvi@gmail.com>
+Copyright (c) 2016 Daniel Pulido <dpmcmlxxvi@gmail.com>
 
 Source code is released under the [MIT License](http://opensource.org/licenses/MIT).
 Documentation is released under the [CC BY 4.0](http://creativecommons.org/licenses/by-sa/4.0/).
