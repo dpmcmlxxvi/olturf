@@ -924,7 +924,7 @@ describe("ol.control.Turf", function () {
             var control = new ol3turf.Control();
             expect(control.getMap()).to.be(null);
         });
-        it("Control with toolbar not added to map does not have a valid map associated", function () {
+        it("Control with toolbar not added to map does not have a valid map", function () {
             var control = new ol3turf.Control();
             control.toolbar = new ol.control.Turf();
             expect(control.getMap()).to.be(null);
@@ -984,7 +984,7 @@ describe("ol.control.Turf", function () {
             jQuery(ol3turf.utils.getClass(["toolbar"])).css("top", bottom.toString() + "px");
             testForm(name, features, attributes, 2, false);
         });
-        it("Sets a form position based on toolbar being near bottom of map out of viewport", function () {
+        it("Sets a form position of a bottom toolbar and map out of viewport", function () {
             var height = jQuery(ol3turf.utils.getClass(["toolbar"])).css("height");
             jQuery(map.getTargetElement()).css("height", (10 * parseInt(height, 10)).toString() + "px");
             var bottom = 10 * map.getTargetElement().getBoundingClientRect().bottom;
@@ -1790,7 +1790,7 @@ describe("ol.control.Turf", function () {
             ol3turf.utils.extend(undefined, tgt);
             expect(tgt).to.eql(tgt);
         });
-        it("Target undefined property is initialized before extending object source", function () {
+        it("Target undefined property is initialized before extending source", function () {
             var src = {a : {foo: "bar"}};
             var tgt = {};
             ol3turf.utils.extend(src, tgt);

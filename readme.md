@@ -40,11 +40,9 @@ TEST
 
 To run the unit tests
 
- 1. Start a web server. For example,
+    grunt test
 
-        python -m http.server
-
- 2. Open `test/index.html` in a browser.
+Then open the coverage report in the `coverage` directory in a browser.
 
 USAGE
 ------------------------------------------------------------

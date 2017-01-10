@@ -1,5 +1,110 @@
 /*global module */
 
+var istanbul = require("browserify-istanbul");
+
+var ol3turfcss = [
+    "src/css/main.css",
+    "src/css/control.css",
+    "src/css/form.css",
+    "src/css/popup.css",
+    "src/css/along.css",
+    "src/css/area.css",
+    "src/css/bearing.css",
+    "src/css/bezier.css",
+    "src/css/buffer.css",
+    "src/css/center.css",
+    "src/css/center-of-mass.css",
+    "src/css/centroid.css",
+    "src/css/circle.css",
+    "src/css/collect.css",
+    "src/css/combine.css",
+    "src/css/concave.css",
+    "src/css/convex.css",
+    "src/css/destination.css",
+    "src/css/difference.css",
+    "src/css/distance.css",
+    "src/css/envelope.css",
+    "src/css/explode.css",
+    "src/css/flip.css",
+    "src/css/hex-grid.css",
+    "src/css/inside.css",
+    "src/css/intersect.css",
+    "src/css/isolines.css",
+    "src/css/kinks.css",
+    "src/css/line-distance.css",
+    "src/css/line-slice-along.css",
+    "src/css/midpoint.css",
+    "src/css/nearest.css",
+    "src/css/planepoint.css",
+    "src/css/point-grid.css",
+    "src/css/point-on-line.css",
+    "src/css/point-on-surface.css",
+    "src/css/random.css",
+    "src/css/sample.css",
+    "src/css/simplify.css",
+    "src/css/square.css",
+    "src/css/square-grid.css",
+    "src/css/tag.css",
+    "src/css/tin.css",
+    "src/css/tesselate.css",
+    "src/css/triangle-grid.css",
+    "src/css/union.css",
+    "src/css/within.css"
+];
+
+var ol3turfjs = [
+    "src/js/main.js",
+    "src/js/utils.js",
+    "src/js/control.js",
+    "src/js/form.js",
+    "src/js/handler.js",
+    "src/js/popup.js",
+    "src/js/along.js",
+    "src/js/area.js",
+    "src/js/bearing.js",
+    "src/js/bezier.js",
+    "src/js/buffer.js",
+    "src/js/center.js",
+    "src/js/center-of-mass.js",
+    "src/js/centroid.js",
+    "src/js/circle.js",
+    "src/js/collect.js",
+    "src/js/combine.js",
+    "src/js/concave.js",
+    "src/js/convex.js",
+    "src/js/destination.js",
+    "src/js/difference.js",
+    "src/js/distance.js",
+    "src/js/envelope.js",
+    "src/js/explode.js",
+    "src/js/flip.js",
+    "src/js/hex-grid.js",
+    "src/js/inside.js",
+    "src/js/intersect.js",
+    "src/js/isolines.js",
+    "src/js/kinks.js",
+    "src/js/line-distance.js",
+    "src/js/line-slice-along.js",
+    "src/js/midpoint.js",
+    "src/js/nearest.js",
+    "src/js/planepoint.js",
+    "src/js/point-grid.js",
+    "src/js/point-on-line.js",
+    "src/js/point-on-surface.js",
+    "src/js/random.js",
+    "src/js/sample.js",
+    "src/js/simplify.js",
+    "src/js/square.js",
+    "src/js/square-grid.js",
+    "src/js/tag.js",
+    "src/js/tin.js",
+    "src/js/tesselate.js",
+    "src/js/toolbars.js",
+    "src/js/triangle-grid.js",
+    "src/js/union.js",
+    "src/js/within.js"
+];
+
 module.exports = function (grunt) {
 
     "use strict";
@@ -11,6 +116,26 @@ module.exports = function (grunt) {
 
         pkg: pkg,
 
+        browserify: {
+            options: {
+                browserifyOptions: {
+                    debug: true
+                },
+                postBundleCB: function (err, buffer, next) {
+                    var code = grunt.template.process(buffer.toString(), { data: grunt.file.readJSON("package.json") });
+                    next(err, code);
+                }
+            },
+            coverage: {
+                files: {
+                    "instrumented-code/ol3-turf.js": ol3turfjs
+                },
+                options: {
+                    transform: [istanbul]
+                }
+            }
+        },
+
         clean: {
             api: [
                 "docs/api/*"
@@ -18,6 +143,10 @@ module.exports = function (grunt) {
             ol3turf: [
                 "dist/*.js",
                 "dist/*.css"
+            ],
+            test: [
+                "coverage",
+                "instrumented-code"
             ]
         },
 
@@ -27,113 +156,14 @@ module.exports = function (grunt) {
                 options: {
                     banner: banner
                 },
-                src: [
-                    "src/css/main.css",
-                    "src/css/control.css",
-                    "src/css/form.css",
-                    "src/css/popup.css",
-                    "src/css/along.css",
-                    "src/css/area.css",
-                    "src/css/bearing.css",
-                    "src/css/bezier.css",
-                    "src/css/buffer.css",
-                    "src/css/center.css",
-                    "src/css/center-of-mass.css",
-                    "src/css/centroid.css",
-                    "src/css/circle.css",
-                    "src/css/collect.css",
-                    "src/css/combine.css",
-                    "src/css/concave.css",
-                    "src/css/convex.css",
-                    "src/css/destination.css",
-                    "src/css/difference.css",
-                    "src/css/distance.css",
-                    "src/css/envelope.css",
-                    "src/css/explode.css",
-                    "src/css/flip.css",
-                    "src/css/hex-grid.css",
-                    "src/css/inside.css",
-                    "src/css/intersect.css",
-                    "src/css/isolines.css",
-                    "src/css/kinks.css",
-                    "src/css/line-distance.css",
-                    "src/css/line-slice-along.css",
-                    "src/css/midpoint.css",
-                    "src/css/nearest.css",
-                    "src/css/planepoint.css",
-                    "src/css/point-grid.css",
-                    "src/css/point-on-line.css",
-                    "src/css/point-on-surface.css",
-                    "src/css/random.css",
-                    "src/css/sample.css",
-                    "src/css/simplify.css",
-                    "src/css/square.css",
-                    "src/css/square-grid.css",
-                    "src/css/tag.css",
-                    "src/css/tin.css",
-                    "src/css/tesselate.css",
-                    "src/css/triangle-grid.css",
-                    "src/css/union.css",
-                    "src/css/within.css"
-                ]
+                src: ol3turfcss
             },
             js: {
                 dest: "dist/ol3-turf.js",
                 options: {
                     banner: banner
                 },
-                src: [
-                    "src/js/main.js",
-                    "src/js/utils.js",
-                    "src/js/control.js",
-                    "src/js/form.js",
-                    "src/js/handler.js",
-                    "src/js/popup.js",
-                    "src/js/along.js",
-                    "src/js/area.js",
-                    "src/js/bearing.js",
-                    "src/js/bezier.js",
-                    "src/js/buffer.js",
-                    "src/js/center.js",
-                    "src/js/center-of-mass.js",
-                    "src/js/centroid.js",
-                    "src/js/circle.js",
-                    "src/js/collect.js",
-                    "src/js/combine.js",
-                    "src/js/concave.js",
-                    "src/js/convex.js",
-                    "src/js/destination.js",
-                    "src/js/difference.js",
-                    "src/js/distance.js",
-                    "src/js/envelope.js",
-                    "src/js/explode.js",
-                    "src/js/flip.js",
-                    "src/js/hex-grid.js",
-                    "src/js/inside.js",
-                    "src/js/intersect.js",
-                    "src/js/isolines.js",
-                    "src/js/kinks.js",
-                    "src/js/line-distance.js",
-                    "src/js/line-slice-along.js",
-                    "src/js/midpoint.js",
-                    "src/js/nearest.js",
-                    "src/js/planepoint.js",
-                    "src/js/point-grid.js",
-                    "src/js/point-on-line.js",
-                    "src/js/point-on-surface.js",
-                    "src/js/random.js",
-                    "src/js/sample.js",
-                    "src/js/simplify.js",
-                    "src/js/square.js",
-                    "src/js/square-grid.js",
-                    "src/js/tag.js",
-                    "src/js/tin.js",
-                    "src/js/tesselate.js",
-                    "src/js/toolbars.js",
-                    "src/js/triangle-grid.js",
-                    "src/js/union.js",
-                    "src/js/within.js"
-                ]
+                src: ol3turfjs
             }
         },
 
@@ -262,6 +292,22 @@ module.exports = function (grunt) {
             }
         },
 
+        mocha: {
+            options: {
+                run: true,
+                reporter: "Spec",
+                coverage: {
+                    jsonReport: "coverage",
+                    coberturaReport: "coverage",
+                    lcovReport: "coverage",
+                    cloverReport: "coverage"
+                }
+            },
+            test: {
+                src: ["test/index.html"]
+            }
+        },
+
         release: {
             options: {
                 afterBump: ["default", "dist"],
@@ -285,6 +331,7 @@ module.exports = function (grunt) {
 
     });
 
+    grunt.loadNpmTasks("grunt-browserify");
     grunt.loadNpmTasks("grunt-contrib-clean");
     grunt.loadNpmTasks("grunt-contrib-concat");
     grunt.loadNpmTasks("grunt-contrib-copy");
@@ -296,11 +343,13 @@ module.exports = function (grunt) {
     grunt.loadNpmTasks("grunt-git");
     grunt.loadNpmTasks("grunt-htmlhint");
     grunt.loadNpmTasks("grunt-jsdoc");
+    grunt.loadNpmTasks("grunt-mocha-phantom-istanbul");
     grunt.loadNpmTasks("grunt-release");
 
     grunt.registerTask("dist", ["gitadd:dist", "gitcommit:dist"]);
     grunt.registerTask("lint", ["csslint", "jshint", "htmlhint"]);
     grunt.registerTask("minify", ["cssmin", "uglify"]);
+    grunt.registerTask("test", ["clean:test", "browserify:coverage", "mocha"]);
     grunt.registerTask("web", ["gh-pages"]);
     grunt.registerTask("default", ["clean", "lint", "concat", "minify", "jsdoc", "copy"]);
 

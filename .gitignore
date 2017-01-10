@@ -1,5 +1,7 @@
 
-bower_components
-docs/api
 .grunt
+bower_components
+coverage
+docs/api
+instrumented-code
 node_modules
