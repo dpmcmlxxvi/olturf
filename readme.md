@@ -1,6 +1,13 @@
 ol3-turf
 ============================================================
 
+[![build status](https://travis-ci.org/dpmcmlxxvi/ol3-turf.svg?branch=master)](https://travis-ci.org/dpmcmlxxvi/ol3-turf)
+[![coverage status](https://img.shields.io/coveralls/dpmcmlxxvi/ol3-turf.svg)](https://coveralls.io/r/dpmcmlxxvi/ol3-turf?branch=master)
+[![npm version](https://badge.fury.io/js/ol3-turf.svg)](https://badge.fury.io/js/ol3-turf)
+[![dependencies Status](https://david-dm.org/dpmcmlxxvi/ol3-turf/status.svg)](https://david-dm.org/dpmcmlxxvi/ol3-turf)
+[![devdependencies Status](https://david-dm.org/dpmcmlxxvi/ol3-turf/dev-status.svg)](https://david-dm.org/dpmcmlxxvi/ol3-turf/#info=devDependencies)
+[![built with grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+
 The ol3-turf library is a [Turf](http://turfjs.org/) toolbar for
 [OpenLayers 3](http://openlayers.org/). The toolbar is a OpenLayers 3 custom
 control that provides access to Turf commands. For commands that require user
