@@ -1,13 +1,13 @@
 ol3-turf
 ============================================================
 
-[![Codacy Badge](https://api.codacy.com/project/badge/Grade/44810a70e6a34122818dfa31e4304c50)](https://www.codacy.com/app/dpmcmlxxvi/ol3-turf?utm_source=github.com&utm_medium=referral&utm_content=dpmcmlxxvi/ol3-turf&utm_campaign=badger)
-[![build status](https://travis-ci.org/dpmcmlxxvi/ol3-turf.svg?branch=master)](https://travis-ci.org/dpmcmlxxvi/ol3-turf)
-[![coverage status](https://img.shields.io/coveralls/dpmcmlxxvi/ol3-turf.svg)](https://coveralls.io/r/dpmcmlxxvi/ol3-turf?branch=master)
-[![npm version](https://badge.fury.io/js/ol3-turf.svg)](https://badge.fury.io/js/ol3-turf)
-[![dependencies status](https://img.shields.io/david/dpmcmlxxvi/ol3-turf.svg)](https://david-dm.org/dpmcmlxxvi/ol3-turf)
-[![devdependencies status](https://img.shields.io/david/dev/dpmcmlxxvi/ol3-turf.svg)](https://david-dm.org/dpmcmlxxvi/ol3-turf/#info=devDependencies)
-[![built with grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
+[![build](https://travis-ci.org/dpmcmlxxvi/ol3-turf.svg?branch=master)](https://travis-ci.org/dpmcmlxxvi/ol3-turf)
+[![coverage](https://img.shields.io/coveralls/dpmcmlxxvi/ol3-turf.svg)](https://coveralls.io/r/dpmcmlxxvi/ol3-turf?branch=master)
+[![codacy](https://img.shields.io/codacy/grade/44810a70e6a34122818dfa31e4304c50.svg)](https://www.codacy.com/app/dpmcmlxxvi/ol3-turf?utm_source=github.com&utm_medium=referral&utm_content=dpmcmlxxvi/ol3-turf&utm_campaign=badger)
+[![npm](https://badge.fury.io/js/ol3-turf.svg)](https://badge.fury.io/js/ol3-turf)
+[![dependencies](https://img.shields.io/david/dpmcmlxxvi/ol3-turf.svg)](https://david-dm.org/dpmcmlxxvi/ol3-turf)
+[![devdependencies](https://img.shields.io/david/dev/dpmcmlxxvi/ol3-turf.svg)](https://david-dm.org/dpmcmlxxvi/ol3-turf/#info=devDependencies)
+[![grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 The ol3-turf library is a [Turf](http://turfjs.org/) toolbar for
 [OpenLayers 3](http://openlayers.org/). The toolbar is a OpenLayers 3 custom
