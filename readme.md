@@ -1,6 +1,7 @@
 ol3-turf
 ============================================================
 
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/44810a70e6a34122818dfa31e4304c50)](https://www.codacy.com/app/dpmcmlxxvi/ol3-turf?utm_source=github.com&utm_medium=referral&utm_content=dpmcmlxxvi/ol3-turf&utm_campaign=badger)
 [![build status](https://travis-ci.org/dpmcmlxxvi/ol3-turf.svg?branch=master)](https://travis-ci.org/dpmcmlxxvi/ol3-turf)
 [![coverage status](https://img.shields.io/coveralls/dpmcmlxxvi/ol3-turf.svg)](https://coveralls.io/r/dpmcmlxxvi/ol3-turf?branch=master)
 [![npm version](https://badge.fury.io/js/ol3-turf.svg)](https://badge.fury.io/js/ol3-turf)
