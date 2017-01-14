@@ -557,8 +557,21 @@ describe("ol.control.Turf", function () {
         }
     }
 
+    before(function () {
+        // Make ol3 toolbar, popup, and form invisible
+        var style = $("<style>");
+        var classForm = ol3turf.utils.getClass(["form"]);
+        var classPopup = ol3turf.utils.getClass(["popup"]);
+        var classToolbar = ol3turf.utils.getClass(["toolbar"]);
+        style.text(classForm + " { visibility: hidden !important }");
+        style.append(classPopup + " { visibility: hidden !important }");
+        style.append(classToolbar + " { visibility: hidden !important }");
+        style.appendTo("head");
+    });
+
     beforeEach(function () {
         target = document.createElement("div");
+        target.setAttribute("style", "visibility: hidden !important;");
         document.body.appendChild(target);
         toolbar = new ol.control.Turf({ol3turf: {prefix: selector}});
         selection = new ol.interaction.Select();
