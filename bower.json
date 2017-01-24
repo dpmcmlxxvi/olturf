@@ -22,6 +22,6 @@
   ],
   "dependencies": {
     "openlayers": "https://github.com/openlayers/openlayers/releases/download/v3.20.1/v3.20.1-dist.zip",
-    "turf": "https://npmcdn.com/@turf/turf@3.7.1/bower.zip"
+    "turf": "https://npmcdn.com/@turf/turf@3.7.5/bower.zip"
   }
 }
