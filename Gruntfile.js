@@ -245,7 +245,12 @@ module.exports = function (grunt) {
         gitadd: {
             dist: {
                 files: {
-                    src: ["dist/*"]
+                    src: [
+                        "docs/web/js/*.js",
+                        "docs/web/css/*.css",
+                        "dist/*.css",
+                        "dist/*.js"
+                    ]
                 }
             }
         },
@@ -256,7 +261,10 @@ module.exports = function (grunt) {
                     message: "Add new dist files for release " + pkg.version
                 },
                 files: {
-                    src: ["dist/*"]
+                    src: [
+                        "docs/**",
+                        "dist/*"
+                    ]
                 }
             }
         },
