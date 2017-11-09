@@ -24,7 +24,7 @@
     "toolbar"
   ],
   "devDependencies": {
-    "@turf/turf": "^4.3.1",
+    "@turf/turf": "^5.0.4",
     "browserify-istanbul": "^2.0.0",
     "coveralls": "^2.13.1",
     "expect.js": "~0.3.1",
