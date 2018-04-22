@@ -7,6 +7,7 @@ describe("ol.control.Turf", function () {
     "use strict";
 
     var map, selection, target, toolbar;
+    var target = document.getElementById("ol3-turf-test-div");
     var selector = "ol3-turf-test";
 
     /* Add test data */
@@ -557,22 +558,9 @@ describe("ol.control.Turf", function () {
         }
     }
 
-    before(function () {
-        // Make ol3 toolbar, popup, and form invisible
-        var style = $("<style>");
-        var classForm = ol3turf.utils.getClass(["form"]);
-        var classPopup = ol3turf.utils.getClass(["popup"]);
-        var classToolbar = ol3turf.utils.getClass(["toolbar"]);
-        style.text(classForm + " { visibility: hidden !important }");
-        style.append(classPopup + " { visibility: hidden !important }");
-        style.append(classToolbar + " { visibility: hidden !important }");
-        style.appendTo("head");
-    });
-
     beforeEach(function () {
-        target = document.createElement("div");
-        target.setAttribute("style", "visibility: hidden !important;");
-        document.body.appendChild(target);
+        // Empty target div for each test
+        target.innerHTML = "";
         toolbar = new ol.control.Turf({ol3turf: {prefix: selector}});
         selection = new ol.interaction.Select();
         map = new ol.Map({
@@ -584,10 +572,8 @@ describe("ol.control.Turf", function () {
     });
 
     afterEach(function () {
-        document.body.removeChild(target);
         map = null;
         selection = null;
-        target = null;
         toolbar = null;
     });
 
