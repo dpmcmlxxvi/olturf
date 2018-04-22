@@ -9,8 +9,10 @@ install:
   - npm install
 
 # Run Grunt
-build:
+before_build:
   - grunt
+
+build: off
 
 # Post-install test scripts.
 test_script:
