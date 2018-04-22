@@ -25,7 +25,7 @@
   ],
   "devDependencies": {
     "@turf/turf": "^4.3.1",
-    "browserify-istanbul": "^2.0.0",
+    "browserify-istanbul": "^3.0.0",
     "coveralls": "^2.13.1",
     "expect.js": "~0.3.1",
     "grunt": "^1.0.1",
