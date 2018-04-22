@@ -7,9 +7,6 @@ install:
   # Get the latest stable version of Node.js or io.js
   - ps: Install-Product node $env:nodejs_version
   - npm install
-
-# Run Grunt
-before_build:
   - grunt
 
 build: off
