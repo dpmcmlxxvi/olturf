@@ -182,6 +182,21 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
+                        src: ["node_modules/@turf/turf/turf.min.js",
+                            "node_modules/openlayers/dist/ol.js"]
+                    },
+                    {
+                        dest: "docs/web/css/",
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
+                        src: ["node_modules/openlayers/dist/ol.css"]
+                    },
+                    {
+                        dest: "docs/web/js/",
+                        expand: true,
+                        filter: "isFile",
+                        flatten: true,
                         src: ["dist/*.js"]
                     },
                     {
