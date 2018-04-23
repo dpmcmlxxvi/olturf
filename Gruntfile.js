@@ -182,20 +182,6 @@ module.exports = function (grunt) {
                         expand: true,
                         filter: "isFile",
                         flatten: true,
-                        src: ["bower_components/**/*.js"]
-                    },
-                    {
-                        dest: "docs/web/css/",
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
-                        src: ["bower_components/**/*.css"]
-                    },
-                    {
-                        dest: "docs/web/js/",
-                        expand: true,
-                        filter: "isFile",
-                        flatten: true,
                         src: ["dist/*.js"]
                     },
                     {
