@@ -1,4 +1,4 @@
-/* ol3-turf 0.5.1 (c) Daniel Pulido <dpmcmlxxvi@gmail.com> */
+/* ol3-turf 0.6.0 (c) Daniel Pulido <dpmcmlxxvi@gmail.com> */
 
 /*globals document, ol, ol3turf, window */
 
