@@ -1,15 +1,4 @@
-.ol3-turf-form {
-    visibility: hidden!important
-}
-
-.ol3-turf-popup {
-    visibility: hidden!important
-}
-
-.ol3-turf-test-div {
-    visibility: hidden!important
-}
-
-.ol3-turf-toolbar {
-    visibility: hidden!important
+#map {
+  height: 750px;
+  width: 100%;
 }

@@ -1,5 +1,5 @@
-
 .grunt
+.nyc_output/
 bower_components
 coverage
 docs/api
