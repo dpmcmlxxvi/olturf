@@ -79,67 +79,65 @@ const ol3turf = {
  * @param {object} [options] Control options extends ol.control.Control options
  * @param {ol3turf.ToolbarOptions} [options.ol3turf] ol3-turf specific options
  */
-const Toolbar = function (opt_options) {
+const Toolbar = function(opt_options) {
+  'use strict';
 
-    "use strict";
+  const self = this;
 
-    var self = this;
+  // Process options
+  const options = opt_options || {};
+  options.ol3turf = options.ol3turf || {};
+  if (options.ol3turf.controls === undefined) {
+    // Default is to enable all controls and display them in this order.
+    options.ol3turf.controls = ol3turf.toolbars.all();
+  }
 
-    // Process options
-    var options = opt_options || {};
-    options.ol3turf = options.ol3turf || {};
-    if (options.ol3turf.controls === undefined) {
-        // Default is to enable all controls and display them in this order.
-        options.ol3turf.controls = ol3turf.toolbars.all();
+  // Set control handler
+  if (options.ol3turf.handler === undefined) {
+    options.ol3turf.handler = new ol3turf.Handler(self);
+  }
+
+  // Define default style
+  if (options.ol3turf.style === undefined) {
+    options.ol3turf.style = 'ol3-turf-toolbar';
+  }
+
+  // Define default prefix
+  if (options.ol3turf.prefix === undefined) {
+    options.ol3turf.prefix = 'ol3-turf';
+  }
+
+  // Create turf toolbar DOM if not provided by user
+  if (options.element === undefined) {
+    options.element = document.createElement('div');
+  }
+  if (options.element.className === '') {
+    options.element.className = options.ol3turf.style + ' ol-unselectable ol-control';
+  }
+
+  // Add controls to toolbar
+  const ol3turfcontrols = {};
+  options.ol3turf.controls.forEach(function(name) {
+    if (ol3turf.controls[name] !== undefined) {
+      // Store control in ol3turf member and add button to div
+      const control = ol3turf.controls[name].create(self, options.ol3turf.prefix);
+      ol3turfcontrols[name] = control;
+      options.element.appendChild(control.element);
     }
+  });
 
-    // Set control handler
-    if (options.ol3turf.handler === undefined) {
-        options.ol3turf.handler = new ol3turf.Handler(self);
-    }
+  // Object to internally store ol3-turf specific attributes
+  this.ol3turf = {
+    controls: ol3turfcontrols,
+    element: options.element,
+    handler: options.ol3turf.handler,
+  };
 
-    // Define default style
-    if (options.ol3turf.style === undefined) {
-        options.ol3turf.style = "ol3-turf-toolbar";
-    }
-
-    // Define default prefix
-    if (options.ol3turf.prefix === undefined) {
-        options.ol3turf.prefix = 'ol3-turf';
-    }
-
-    // Create turf toolbar DOM if not provided by user
-    if (options.element === undefined) {
-        options.element = document.createElement("div");
-    }
-    if (options.element.className === "") {
-        options.element.className = options.ol3turf.style + " ol-unselectable ol-control";
-    }
-
-    // Add controls to toolbar
-    var ol3turfcontrols = {};
-    options.ol3turf.controls.forEach(function (name) {
-        if (ol3turf.controls[name] !== undefined) {
-            // Store control in ol3turf member and add button to div
-            var control = ol3turf.controls[name].create(self, options.ol3turf.prefix);
-            ol3turfcontrols[name] = control;
-            options.element.appendChild(control.element);
-        }
-    });
-
-    // Object to internally store ol3-turf specific attributes
-    this.ol3turf = {
-        controls: ol3turfcontrols,
-        element: options.element,
-        handler: options.ol3turf.handler
-    };
-
-    ol.control.Control.call(this, options);
-
+  ol.control.Control.call(this, options);
 };
 ol.inherits(Toolbar, ol.control.Control);
 
 export default {
   toolbars,
-  Toolbar
+  Toolbar,
 };

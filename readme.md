@@ -1,14 +1,10 @@
-ol3-turf
-============================================================
+# ol3-turf
 
 [![build](https://travis-ci.org/dpmcmlxxvi/ol3-turf.svg?branch=master)](https://travis-ci.org/dpmcmlxxvi/ol3-turf)
 [![coverage](https://img.shields.io/coveralls/dpmcmlxxvi/ol3-turf.svg)](https://coveralls.io/r/dpmcmlxxvi/ol3-turf?branch=master)
 [![codacy](https://img.shields.io/codacy/grade/44810a70e6a34122818dfa31e4304c50.svg)](https://www.codacy.com/app/dpmcmlxxvi/ol3-turf?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dpmcmlxxvi/ol3-turf&amp;utm_campaign=Badge_Grade)
 [![npm](https://badge.fury.io/js/ol3-turf.svg)](https://badge.fury.io/js/ol3-turf)
-[![dependencies](https://img.shields.io/david/dpmcmlxxvi/ol3-turf.svg)](https://david-dm.org/dpmcmlxxvi/ol3-turf)
-[![devdependencies](https://img.shields.io/david/dev/dpmcmlxxvi/ol3-turf.svg)](https://david-dm.org/dpmcmlxxvi/ol3-turf/#info=devDependencies)
 [![Greenkeeper](https://badges.greenkeeper.io/dpmcmlxxvi/ol3-turf.svg)](https://greenkeeper.io/)
-[![grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/)
 
 The ol3-turf library is a [Turf](http://turfjs.org/) toolbar for
 [OpenLayers 3](http://openlayers.org/). The toolbar is a OpenLayers 3 custom
@@ -20,8 +16,7 @@ and its styling.
 
   ![](docs/web/img/ol3turf-example-screenshot.png)
 
-  DOCUMENTATION
-------------------------------------------------------------
+## DOCUMENTATION
 
 The following help is available at the ol3-turf
 [website](http://dpmcmlxxvi.github.io/ol3-turf):
@@ -30,31 +25,34 @@ The following help is available at the ol3-turf
 - [Examples](http://dpmcmlxxvi.github.io/ol3-turf/web/demos.html)
 - [API](http://dpmcmlxxvi.github.io/ol3-turf/api/)
 
-BUILD
-------------------------------------------------------------
+## BUILD
 
 The only requirement for building ol3-turf is [node.js](https://nodejs.org).
 The following instructions assume that `grunt-cli` has been installed globally:
 
-    npm install -g grunt-cli
+```shell
+npm install -g grunt-cli
+```
 
 To build the library clone it, install it, then grunt it
 
-    git clone https://github.com/dpmcmlxxvi/ol3-turf.git
-    npm install
-    grunt
+```shell
+git clone https://github.com/dpmcmlxxvi/ol3-turf.git
+npm install
+grunt
+```
 
-TEST
-------------------------------------------------------------
+## TEST
 
 To run the unit tests
 
-    grunt test
+```shell
+grunt test
+```
 
 Then open the coverage report in the `coverage` directory in a browser.
 
-USAGE
-------------------------------------------------------------
+## USAGE
 
 The ol3-turf library consists of two files
 
@@ -69,9 +67,11 @@ class. The simplest use case is to create the control and add it to an existing
 [ol.Map](http://openlayers.org/en/latest/apidoc/ol.Map.html). This will add all
 available Turf commands to the toolbar and use the default styling.
 
-    var toolbar = new ol.control.Turf();
-    var map = new ol.Map({...});
-    map.addControl(toolbar);
+```javascript
+const toolbar = new ol.control.Turf();
+const map = new ol.Map({...});
+map.addControl(toolbar);
+```
 
 The toolbar constructor takes an optional `options` argument which extends the
 [ol.control.Control](http://openlayers.org/en/latest/apidoc/ol.control.Control.html)
@@ -84,10 +84,9 @@ custom style sheet class for the toolbar. In addition, the various `ol3-turf-*`
 style sheet classes for the toolbar, controls, forms, and popups can be
 overridden to suit an application's look and feel.
 
-LICENSE
-------------------------------------------------------------
+## LICENSE
 
-Copyright (c) 2016 Daniel Pulido <dpmcmlxxvi@gmail.com>
+Copyright (c) 2016 Daniel Pulido <mailto:dpmcmlxxvi@gmail.com>
 
 Source code is released under the [MIT License](http://opensource.org/licenses/MIT).
 Documentation is released under the [CC BY 4.0](http://creativecommons.org/licenses/by-sa/4.0/).

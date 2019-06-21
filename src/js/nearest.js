@@ -3,54 +3,49 @@ import utils from './utils';
 
 const ol3turf = {
   Control,
-  utils
+  utils,
 };
 
 /* globals ol3turf, turf */
 
-//==================================================
+// ==================================================
 // nearest control
-//--------------------------------------------------
-export default (function (ol3turf) {
+// --------------------------------------------------
+export default (function(ol3turf) {
+  'use strict';
 
-    "use strict";
+  // Control name
+  const name = 'nearest';
 
-    // Control name
-    var name = "nearest";
-
-    /**
+  /**
      * Compute nearest point
      * @private
      */
-    var action = function (control) {
+  const action = function(control) {
+    const collection = ol3turf.utils.getCollection(control, 2, Infinity);
+    const numPoints = collection.features.length;
+    const pts = ol3turf.utils.getPoints(collection, numPoints, numPoints);
+    const targetPoint = pts[0];
+    const points = turf.featureCollection(pts.slice(1));
 
-        var collection = ol3turf.utils.getCollection(control, 2, Infinity);
-        var numPoints = collection.features.length;
-        var pts = ol3turf.utils.getPoints(collection, numPoints, numPoints);
-        var targetPoint = pts[0];
-        var points = turf.featureCollection(pts.slice(1));
-
-        var output = turf.nearest(targetPoint, points);
-        var inputs = {
-            targetPoint: targetPoint,
-            points: points
-        };
-        control.toolbar.ol3turf.handler.callback(name, output, inputs);
-
+    const output = turf.nearest(targetPoint, points);
+    const inputs = {
+      targetPoint: targetPoint,
+      points: points,
     };
+    control.toolbar.ol3turf.handler.callback(name, output, inputs);
+  };
 
-    return {
-        /*
+  return {
+    /*
          * Create control then attach custom action and it's parent toolbar
          * @param toolbar Parent toolbar
          * @param prefix Selector prefix.
          */
-        create: function (toolbar, prefix) {
-            var title = "Find set point nearest to first point";
-            var control = ol3turf.Control.create(toolbar, prefix, name, title, action);
-            return control;
-        }
-    };
-
-
+    create: function(toolbar, prefix) {
+      const title = 'Find set point nearest to first point';
+      const control = ol3turf.Control.create(toolbar, prefix, name, title, action);
+      return control;
+    },
+  };
 }(ol3turf || {}));

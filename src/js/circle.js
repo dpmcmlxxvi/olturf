@@ -3,94 +3,87 @@ import utils from './utils';
 
 const ol3turf = {
   Control,
-  utils
+  utils,
 };
 
 /* globals document, ol3turf, turf */
 
-//==================================================
+// ==================================================
 // circle control
-//--------------------------------------------------
-export default (function (ol3turf) {
+// --------------------------------------------------
+export default (function(ol3turf) {
+  'use strict';
 
-    "use strict";
+  // Control name
+  const name = 'circle';
 
-    // Control name
-    var name = "circle";
-
-    /**
+  /**
      * Create circle
      * @private
      */
-    var action = function (control) {
+  const action = function(control) {
+    // Define control ids
+    const idCancel = ol3turf.utils.getName([name, 'cancel'], control.prefix);
+    const idForm = ol3turf.utils.getName([name, 'form'], control.prefix);
+    const idOk = ol3turf.utils.getName([name, 'ok'], control.prefix);
+    const idRadius = ol3turf.utils.getName([name, 'radius'], control.prefix);
+    const idSteps = ol3turf.utils.getName([name, 'steps'], control.prefix);
+    const idUnits = ol3turf.utils.getName([name, 'units'], control.prefix);
 
-        // Define control ids
-        var idCancel = ol3turf.utils.getName([name, "cancel"], control.prefix);
-        var idForm = ol3turf.utils.getName([name, "form"], control.prefix);
-        var idOk = ol3turf.utils.getName([name, "ok"], control.prefix);
-        var idRadius = ol3turf.utils.getName([name, "radius"], control.prefix);
-        var idSteps = ol3turf.utils.getName([name, "steps"], control.prefix);
-        var idUnits = ol3turf.utils.getName([name, "units"], control.prefix);
+    function onOK() {
+      try {
+        // Gather center point
+        const collection = ol3turf.utils.getCollection(control, 1, 1);
+        const points = ol3turf.utils.getPoints(collection, 1, 1);
+        const center = points[0];
 
-        function onOK() {
-            try {
+        // Gather form inputs
+        const radius = ol3turf.utils.getFormNumber(idRadius, 'radius');
+        const steps = ol3turf.utils.getFormNumber(idSteps, 'steps');
+        const units = ol3turf.utils.getFormString(idUnits, 'units');
 
-                // Gather center point
-                var collection = ol3turf.utils.getCollection(control, 1, 1);
-                var points = ol3turf.utils.getPoints(collection, 1, 1);
-                var center = points[0];
+        // Collect polygons
+        const output = turf.circle(center, radius, steps, units);
 
-                // Gather form inputs
-                var radius = ol3turf.utils.getFormNumber(idRadius, "radius");
-                var steps = ol3turf.utils.getFormNumber(idSteps, "steps");
-                var units = ol3turf.utils.getFormString(idUnits, "units");
+        // Remove form and display results
+        control.showForm();
+        const inputs = {
+          center: center,
+          radius: radius,
+          steps: steps,
+          units: units,
+        };
+        control.toolbar.ol3turf.handler.callback(name, output, inputs);
+      } catch (e) {
+        control.showMessage(e);
+      }
+    }
 
-                // Collect polygons
-                var output = turf.circle(center, radius, steps, units);
+    function onCancel() {
+      control.showForm();
+    }
 
-                // Remove form and display results
-                control.showForm();
-                var inputs = {
-                    center: center,
-                    radius: radius,
-                    steps: steps,
-                    units: units
-                };
-                control.toolbar.ol3turf.handler.callback(name, output, inputs);
+    const controls = [
+      ol3turf.utils.getControlNumber(idRadius, 'Radius', 'Radius of the circle', '0', 'any', '0'),
+      ol3turf.utils.getControlNumber(idSteps, 'Steps', 'Number of steps around circle', '3', '1', '3'),
+      ol3turf.utils.getControlSelect(idUnits, 'Units', ol3turf.utils.getOptionsUnits()),
+      ol3turf.utils.getControlInput(idOk, onOK, '', 'OK'),
+      ol3turf.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+    ];
 
-            } catch (e) {
-                control.showMessage(e);
-            }
-        }
+    control.showForm(controls, idForm);
+  };
 
-        function onCancel() {
-            control.showForm();
-        }
-
-        var controls = [
-            ol3turf.utils.getControlNumber(idRadius, "Radius", "Radius of the circle", "0", "any", "0"),
-            ol3turf.utils.getControlNumber(idSteps, "Steps", "Number of steps around circle", "3", "1", "3"),
-            ol3turf.utils.getControlSelect(idUnits, "Units", ol3turf.utils.getOptionsUnits()),
-            ol3turf.utils.getControlInput(idOk, onOK, "", "OK"),
-            ol3turf.utils.getControlInput(idCancel, onCancel, "", "Cancel")
-        ];
-
-        control.showForm(controls, idForm);
-
-    };
-
-    return {
-        /*
+  return {
+    /*
          * Create control then attach custom action and it's parent toolbar
          * @param toolbar Parent toolbar
          * @param prefix Selector prefix.
          */
-        create: function (toolbar, prefix) {
-            var title = "Create circle";
-            var control = ol3turf.Control.create(toolbar, prefix, name, title, action);
-            return control;
-        }
-    };
-
-
+    create: function(toolbar, prefix) {
+      const title = 'Create circle';
+      const control = ol3turf.Control.create(toolbar, prefix, name, title, action);
+      return control;
+    },
+  };
 }(ol3turf || {}));

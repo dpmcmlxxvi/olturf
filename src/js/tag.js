@@ -3,94 +3,87 @@ import utils from './utils';
 
 const ol3turf = {
   Control,
-  utils
+  utils,
 };
 
 /* globals document, ol3turf, turf */
 
-//==================================================
+// ==================================================
 // tag control
-//--------------------------------------------------
-export default (function (ol3turf) {
+// --------------------------------------------------
+export default (function(ol3turf) {
+  'use strict';
 
-    "use strict";
+  // Control name
+  const name = 'tag';
 
-    // Control name
-    var name = "tag";
-
-    /**
+  /**
      * Collect point attributes within polygon
      * @private
      */
-    var action = function (control) {
+  const action = function(control) {
+    // Define control ids
+    const idCancel = ol3turf.utils.getName([name, 'cancel'], control.prefix);
+    const idField = ol3turf.utils.getName([name, 'field-property'], control.prefix);
+    const idForm = ol3turf.utils.getName([name, 'form'], control.prefix);
+    const idOk = ol3turf.utils.getName([name, 'ok'], control.prefix);
+    const idOutField = ol3turf.utils.getName([name, 'out-field-property'], control.prefix);
 
-        // Define control ids
-        var idCancel = ol3turf.utils.getName([name, "cancel"], control.prefix);
-        var idField = ol3turf.utils.getName([name, "field-property"], control.prefix);
-        var idForm = ol3turf.utils.getName([name, "form"], control.prefix);
-        var idOk = ol3turf.utils.getName([name, "ok"], control.prefix);
-        var idOutField = ol3turf.utils.getName([name, "out-field-property"], control.prefix);
+    function onOK() {
+      try {
+        // Gather selected features
+        const collection = ol3turf.utils.getCollection(control, 2, Infinity);
+        const points = ol3turf.utils.getPoints(collection, 1, collection.features.length - 1);
+        const numPolygons = collection.features.length - points.length;
+        const polygons = ol3turf.utils.getPolygons(collection, numPolygons, numPolygons);
 
-        function onOK() {
-            try {
+        // Get form inputs
+        const field = ol3turf.utils.getFormString(idField, 'field');
+        const outField = ol3turf.utils.getFormString(idOutField, 'out field');
 
-                // Gather selected features
-                var collection = ol3turf.utils.getCollection(control, 2, Infinity);
-                var points = ol3turf.utils.getPoints(collection, 1, collection.features.length - 1);
-                var numPolygons = collection.features.length - points.length;
-                var polygons = ol3turf.utils.getPolygons(collection, numPolygons, numPolygons);
+        // Collect polygons
+        const inPolygons = turf.featureCollection(polygons);
+        const inPoints = turf.featureCollection(points);
+        const output = turf.tag(inPoints, inPolygons, field, outField);
 
-                // Get form inputs
-                var field = ol3turf.utils.getFormString(idField, "field");
-                var outField = ol3turf.utils.getFormString(idOutField, "out field");
+        // Remove form and display results
+        control.showForm();
+        const inputs = {
+          points: inPoints,
+          polygons: inPolygons,
+          field: field,
+          outField: outField,
+        };
+        control.toolbar.ol3turf.handler.callback(name, output, inputs);
+      } catch (e) {
+        control.showMessage(e);
+      }
+    }
 
-                // Collect polygons
-                var inPolygons = turf.featureCollection(polygons);
-                var inPoints = turf.featureCollection(points);
-                var output = turf.tag(inPoints, inPolygons, field, outField);
+    function onCancel() {
+      control.showForm();
+    }
 
-                // Remove form and display results
-                control.showForm();
-                var inputs = {
-                    points: inPoints,
-                    polygons: inPolygons,
-                    field: field,
-                    outField: outField
-                };
-                control.toolbar.ol3turf.handler.callback(name, output, inputs);
+    const controls = [
+      ol3turf.utils.getControlText(idField, 'Field', 'Property in polygons to add to joined point features'),
+      ol3turf.utils.getControlText(idOutField, 'Out Field', 'Property in points in which to store joined property from polygons'),
+      ol3turf.utils.getControlInput(idOk, onOK, '', 'OK'),
+      ol3turf.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+    ];
 
-            } catch (e) {
-                control.showMessage(e);
-            }
-        }
+    control.showForm(controls, idForm);
+  };
 
-        function onCancel() {
-            control.showForm();
-        }
-
-        var controls = [
-            ol3turf.utils.getControlText(idField, "Field", "Property in polygons to add to joined point features"),
-            ol3turf.utils.getControlText(idOutField, "Out Field", "Property in points in which to store joined property from polygons"),
-            ol3turf.utils.getControlInput(idOk, onOK, "", "OK"),
-            ol3turf.utils.getControlInput(idCancel, onCancel, "", "Cancel")
-        ];
-
-        control.showForm(controls, idForm);
-
-    };
-
-    return {
-        /*
+  return {
+    /*
          * Create control then attach custom action and it's parent toolbar
          * @param toolbar Parent toolbar
          * @param prefix Selector prefix.
          */
-        create: function (toolbar, prefix) {
-            var title = "Perform spatial join of points and polygons";
-            var control = ol3turf.Control.create(toolbar, prefix, name, title, action);
-            return control;
-        }
-    };
-
-
+    create: function(toolbar, prefix) {
+      const title = 'Perform spatial join of points and polygons';
+      const control = ol3turf.Control.create(toolbar, prefix, name, title, action);
+      return control;
+    },
+  };
 }(ol3turf || {}));

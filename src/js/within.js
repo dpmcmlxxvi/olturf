@@ -3,59 +3,54 @@ import utils from './utils';
 
 const ol3turf = {
   Control,
-  utils
+  utils,
 };
 
 /* globals ol3turf, turf */
 
-//==================================================
+// ==================================================
 // within control
-//--------------------------------------------------
-export default (function (ol3turf) {
+// --------------------------------------------------
+export default (function(ol3turf) {
+  'use strict';
 
-    "use strict";
+  // Control name
+  const name = 'within';
 
-    // Control name
-    var name = "within";
-
-    /**
+  /**
      * Compute points within polygons
      * @private
      */
-    var action = function (control) {
+  const action = function(control) {
+    const collection = ol3turf.utils.getCollection(control, 2, Infinity);
+    const pts = ol3turf.utils.getPoints(collection, 1, collection.features.length - 1);
+    const numPolygons = collection.features.length - pts.length;
+    const polys = ol3turf.utils.getPolygons(collection, numPolygons, numPolygons);
 
-        var collection = ol3turf.utils.getCollection(control, 2, Infinity);
-        var pts = ol3turf.utils.getPoints(collection, 1, collection.features.length - 1);
-        var numPolygons = collection.features.length - pts.length;
-        var polys = ol3turf.utils.getPolygons(collection, numPolygons, numPolygons);
+    const points = turf.featureCollection(pts);
+    const polygons = turf.featureCollection(polys);
 
-        var points = turf.featureCollection(pts);
-        var polygons = turf.featureCollection(polys);
-
-        var output = turf.within(points, polygons);
-        if (output.features.length === 0) {
-            throw new Error("No points found within.");
-        }
-        var inputs = {
-            points: points,
-            polygons: polygons
-        };
-        control.toolbar.ol3turf.handler.callback(name, output, inputs);
-
+    const output = turf.within(points, polygons);
+    if (output.features.length === 0) {
+      throw new Error('No points found within.');
+    }
+    const inputs = {
+      points: points,
+      polygons: polygons,
     };
+    control.toolbar.ol3turf.handler.callback(name, output, inputs);
+  };
 
-    return {
-        /*
+  return {
+    /*
          * Create control then attach custom action and it's parent toolbar
          * @param toolbar Parent toolbar
          * @param prefix Selector prefix.
          */
-        create: function (toolbar, prefix) {
-            var title = "Find points within polygons";
-            var control = ol3turf.Control.create(toolbar, prefix, name, title, action);
-            return control;
-        }
-    };
-
-
+    create: function(toolbar, prefix) {
+      const title = 'Find points within polygons';
+      const control = ol3turf.Control.create(toolbar, prefix, name, title, action);
+      return control;
+    },
+  };
 }(ol3turf || {}));

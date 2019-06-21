@@ -1,46 +1,45 @@
 
 /* globals ol3turf */
 
-//==================================================
+// ==================================================
 // standard toolbars
-//--------------------------------------------------
-export default (function (ol3turf) {
+// --------------------------------------------------
+export default (function(ol3turf) {
+  'use strict';
 
-    "use strict";
-
-    /**
+  /**
      * @description Aggregation toolbar controls
      * @typedef {string[]} ToolbarAggregation
      * @memberOf ol3turf.toolbars
      * @property {string} collect collect control
      */
 
-    /**
+  /**
      * Aggregation toolbar
      * @memberof ol3turf.toolbars
-     * @returns {ol3turf.toolbars.ToolbarAggregation} Control names for the aggregation toolbar
+     * @return {ol3turf.toolbars.ToolbarAggregation} Control names for the aggregation toolbar
      */
-    function aggregation() {
-        return ["collect"];
-    };
+  function aggregation() {
+    return ['collect'];
+  };
 
-    /**
+  /**
      * @description Classification toolbar controls
      * @typedef {string[]} ToolbarClassification
      * @memberOf ol3turf.toolbars
      * @property {string} nearest nearest control
      */
 
-    /**
+  /**
      * Classification toolbar
      * @memberof ol3turf.toolbars
-     * @returns {ol3turf.toolbars.ToolbarClassification} Control names for the classification toolbar
+     * @return {ol3turf.toolbars.ToolbarClassification} Control names for the classification toolbar
      */
-    function classification() {
-        return ["nearest"];
-    };
+  function classification() {
+    return ['nearest'];
+  };
 
-    /**
+  /**
      * @description Data toolbar controls
      * @typedef {string[]} ToolbarData
      * @memberOf ol3turf.toolbars
@@ -48,19 +47,19 @@ export default (function (ol3turf) {
      * @property {string} sample sample control
      */
 
-    /**
+  /**
      * Data toolbar
      * @memberof ol3turf.toolbars
-     * @returns {ol3turf.toolbars.ToolbarData} Control names for the data toolbar
+     * @return {ol3turf.toolbars.ToolbarData} Control names for the data toolbar
      */
-    function data() {
-        return [
-            "random",
-            "sample"
-        ];
-    };
+  function data() {
+    return [
+      'random',
+      'sample',
+    ];
+  };
 
-    /**
+  /**
      * @description Grids toolbar controls
      * @typedef {string[]} ToolbarGrids
      * @memberOf ol3turf.toolbars
@@ -71,22 +70,22 @@ export default (function (ol3turf) {
      * @property {string} triangle-grid triangle-grid control
      */
 
-    /**
+  /**
      * Grids toolbar
      * @memberof ol3turf.toolbars
-     * @returns {ol3turf.toolbars.ToolbarGrids} Control names for the grids toolbar
+     * @return {ol3turf.toolbars.ToolbarGrids} Control names for the grids toolbar
      */
-    function grids() {
-        return [
-            "hex-grid",
-            "point-grid",
-            "square-grid",
-            "triangle-grid",
-            "tesselate"
-        ];
-    };
+  function grids() {
+    return [
+      'hex-grid',
+      'point-grid',
+      'square-grid',
+      'triangle-grid',
+      'tesselate',
+    ];
+  };
 
-    /**
+  /**
      * @description Interpolation toolbar controls
      * @typedef {string[]} ToolbarInterpolation
      * @memberOf ol3turf.toolbars
@@ -95,20 +94,20 @@ export default (function (ol3turf) {
      * @property {string} tin tin control
      */
 
-    /**
+  /**
      * Interpolation toolbar
      * @memberof ol3turf.toolbars
-     * @returns {ol3turf.toolbars.ToolbarInterpolation} Control names for the interpolation toolbar
+     * @return {ol3turf.toolbars.ToolbarInterpolation} Control names for the interpolation toolbar
      */
-    function interpolation() {
-        return [
-            "isolines",
-            "planepoint",
-            "tin"
-        ];
-    };
+  function interpolation() {
+    return [
+      'isolines',
+      'planepoint',
+      'tin',
+    ];
+  };
 
-    /**
+  /**
      * @description Joins toolbar controls
      * @typedef {string[]} ToolbarJoins
      * @memberOf ol3turf.toolbars
@@ -117,20 +116,20 @@ export default (function (ol3turf) {
      * @property {string} within within control
      */
 
-    /**
+  /**
      * Joins toolbar
      * @memberof ol3turf.toolbars
-     * @returns {ol3turf.toolbars.ToolbarJoins} Control names for the joins toolbar
+     * @return {ol3turf.toolbars.ToolbarJoins} Control names for the joins toolbar
      */
-    function joins() {
-        return [
-            "inside",
-            "tag",
-            "within"
-        ];
-    };
+  function joins() {
+    return [
+      'inside',
+      'tag',
+      'within',
+    ];
+  };
 
-    /**
+  /**
      * @description Measurement toolbar controls
      * @typedef {string[]} ToolbarMeasurement
      * @memberOf ol3turf.toolbars
@@ -150,31 +149,31 @@ export default (function (ol3turf) {
      * @property {string} square square control
      */
 
-    /**
+  /**
      * Measurement toolbar
      * @memberof ol3turf.toolbars
-     * @returns {ol3turf.toolbars.ToolbarMeasurement} Control names for the measurement toolbar
+     * @return {ol3turf.toolbars.ToolbarMeasurement} Control names for the measurement toolbar
      */
-    function measurement() {
-        return [
-            "distance",
-            "line-distance",
-            "area",
-            "bearing",
-            "center-of-mass",
-            "center",
-            "centroid",
-            "midpoint",
-            "point-on-surface",
-            "envelope",
-            "square",
-            "circle",
-            "along",
-            "destination"
-        ];
-    };
+  function measurement() {
+    return [
+      'distance',
+      'line-distance',
+      'area',
+      'bearing',
+      'center-of-mass',
+      'center',
+      'centroid',
+      'midpoint',
+      'point-on-surface',
+      'envelope',
+      'square',
+      'circle',
+      'along',
+      'destination',
+    ];
+  };
 
-    /**
+  /**
      * @description Miscellaneous toolbar controls
      * @typedef {string[]} ToolbarMisc
      * @memberOf ol3turf.toolbars
@@ -186,23 +185,23 @@ export default (function (ol3turf) {
      * @property {string} point-on-line point-on-line control
      */
 
-    /**
+  /**
      * Miscellaneous toolbar
      * @memberof ol3turf.toolbars
-     * @returns {ol3turf.toolbars.ToolbarMisc} Control names for the miscellaneous toolbar
+     * @return {ol3turf.toolbars.ToolbarMisc} Control names for the miscellaneous toolbar
      */
-    function misc() {
-        return [
-            "combine",
-            "explode",
-            "flip",
-            "kinks",
-            "line-slice-along",
-            "point-on-line"
-        ];
-    };
+  function misc() {
+    return [
+      'combine',
+      'explode',
+      'flip',
+      'kinks',
+      'line-slice-along',
+      'point-on-line',
+    ];
+  };
 
-    /**
+  /**
      * @description Transformation toolbar controls
      * @typedef {string[]} ToolbarTransformation
      * @memberOf ol3turf.toolbars
@@ -216,25 +215,25 @@ export default (function (ol3turf) {
      * @property {string} union union control
      */
 
-    /**
+  /**
      * Transformation toolbar
      * @memberof ol3turf.toolbars
-     * @returns {ol3turf.toolbars.ToolbarTransformation} Control names for the transformation toolbar
+     * @return {ol3turf.toolbars.ToolbarTransformation} Control names for the transformation toolbar
      */
-    function transformation() {
-        return [
-            "bezier",
-            "buffer",
-            "concave",
-            "convex",
-            "difference",
-            "intersect",
-            "simplify",
-            "union"
-        ];
-    };
+  function transformation() {
+    return [
+      'bezier',
+      'buffer',
+      'concave',
+      'convex',
+      'difference',
+      'intersect',
+      'simplify',
+      'union',
+    ];
+  };
 
-    /**
+  /**
      * @description Concatenation of all the toolbars
      * @typedef {string[]} ToolbarAll
      * @memberOf ol3turf.toolbars
@@ -249,36 +248,35 @@ export default (function (ol3turf) {
      * @property {ol3turf.toolbars.ToolbarTransformation} transformation Transformation toolbar
      */
 
-    /**
+  /**
      * Toolbar with all controls
      * @memberof ol3turf.toolbars
-     * @returns {ol3turf.toolbars.ToolbarAll} Control names for all the controls
+     * @return {ol3turf.toolbars.ToolbarAll} Control names for all the controls
      */
-    function all() {
-        var all = [];
-        all.push.apply(all, measurement());
-        all.push.apply(all, transformation());
-        all.push.apply(all, misc());
-        all.push.apply(all, joins());
-        all.push.apply(all, classification());
-        all.push.apply(all, aggregation());
-        all.push.apply(all, data());
-        all.push.apply(all, interpolation());
-        all.push.apply(all, grids());
-        return all;
-    };
+  function all() {
+    const all = [];
+    all.push.apply(all, measurement());
+    all.push.apply(all, transformation());
+    all.push.apply(all, misc());
+    all.push.apply(all, joins());
+    all.push.apply(all, classification());
+    all.push.apply(all, aggregation());
+    all.push.apply(all, data());
+    all.push.apply(all, interpolation());
+    all.push.apply(all, grids());
+    return all;
+  };
 
-    return {
-      aggregation,
-      all,
-      classification,
-      data,
-      grids,
-      interpolation,
-      joins,
-      measurement,
-      misc,
-      transformation,
-    };
-
+  return {
+    aggregation,
+    all,
+    classification,
+    data,
+    grids,
+    interpolation,
+    joins,
+    measurement,
+    misc,
+    transformation,
+  };
 }(ol3turf || {}));

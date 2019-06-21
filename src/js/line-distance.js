@@ -3,84 +3,77 @@ import utils from './utils';
 
 const ol3turf = {
   Control,
-  utils
+  utils,
 };
 
 /* globals document, ol3turf, turf */
 
-//==================================================
+// ==================================================
 // lineDistance control
-//--------------------------------------------------
-export default (function (ol3turf) {
+// --------------------------------------------------
+export default (function(ol3turf) {
+  'use strict';
 
-    "use strict";
+  // Control name
+  const name = 'line-distance';
 
-    // Control name
-    var name = "line-distance";
-
-    /**
+  /**
      * Compute length of feature
      * @private
      */
-    var action = function (control) {
+  const action = function(control) {
+    // Define control ids
+    const idCancel = ol3turf.utils.getName([name, 'cancel'], control.prefix);
+    const idForm = ol3turf.utils.getName([name, 'form'], control.prefix);
+    const idOk = ol3turf.utils.getName([name, 'ok'], control.prefix);
+    const idUnits = ol3turf.utils.getName([name, 'units'], control.prefix);
 
-        // Define control ids
-        var idCancel = ol3turf.utils.getName([name, "cancel"], control.prefix);
-        var idForm = ol3turf.utils.getName([name, "form"], control.prefix);
-        var idOk = ol3turf.utils.getName([name, "ok"], control.prefix);
-        var idUnits = ol3turf.utils.getName([name, "units"], control.prefix);
+    function onOK() {
+      try {
+        // Gather selected features
+        const collection = ol3turf.utils.getCollection(control, 1, Infinity);
 
-        function onOK() {
-            try {
+        // Gather form inputs
+        const units = ol3turf.utils.getFormString(idUnits, 'units');
 
-                // Gather selected features
-                var collection = ol3turf.utils.getCollection(control, 1, Infinity);
+        // Compute length
+        const output = turf.lineDistance(collection, units);
 
-                // Gather form inputs
-                var units = ol3turf.utils.getFormString(idUnits, "units");
+        // Remove form and display results
+        control.showForm();
+        const inputs = {
+          line: collection,
+          units: units,
+        };
+        control.toolbar.ol3turf.handler.callback(name, output, inputs);
+      } catch (e) {
+        control.showMessage(e);
+      }
+    }
 
-                // Compute length
-                var output = turf.lineDistance(collection, units);
+    function onCancel() {
+      control.showForm();
+    }
 
-                // Remove form and display results
-                control.showForm();
-                var inputs = {
-                    line: collection,
-                    units: units
-                };
-                control.toolbar.ol3turf.handler.callback(name, output, inputs);
+    const controls = [
+      ol3turf.utils.getControlSelect(idUnits, 'Units', ol3turf.utils.getOptionsUnits()),
+      ol3turf.utils.getControlInput(idOk, onOK, '', 'OK'),
+      ol3turf.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+    ];
 
-            } catch (e) {
-                control.showMessage(e);
-            }
-        }
+    control.showForm(controls, idForm);
+  };
 
-        function onCancel() {
-            control.showForm();
-        }
-
-        var controls = [
-            ol3turf.utils.getControlSelect(idUnits, "Units", ol3turf.utils.getOptionsUnits()),
-            ol3turf.utils.getControlInput(idOk, onOK, "", "OK"),
-            ol3turf.utils.getControlInput(idCancel, onCancel, "", "Cancel")
-        ];
-
-        control.showForm(controls, idForm);
-
-    };
-
-    return {
-        /*
+  return {
+    /*
          * Create control then attach custom action and it's parent toolbar
          * @param toolbar Parent toolbar
          * @param prefix Selector prefix.
          */
-        create: function (toolbar, prefix) {
-            var title = "Measure Length";
-            var control = ol3turf.Control.create(toolbar, prefix, name, title, action);
-            return control;
-        }
-    };
-
-
+    create: function(toolbar, prefix) {
+      const title = 'Measure Length';
+      const control = ol3turf.Control.create(toolbar, prefix, name, title, action);
+      return control;
+    },
+  };
 }(ol3turf || {}));

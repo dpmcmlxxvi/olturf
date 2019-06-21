@@ -12,15 +12,29 @@
   "unpkg": "dist/ol3-turf.min.js",
   "jsdelivr": "dist/ol3-turf.min.js",
   "scripts": {
-    "build": "run-s bundle",
+    "build": "run-s lint bundle",
     "bundle": "run-s bundle:js bundle:css",
     "bundle:css": "run-s bundle:css:*",
     "bundle:css:cat": "shx cat src/css/*.css > dist/ol3-turf.css",
     "bundle:css:min": "cleancss -o dist/ol3-turf.min.css -O2 src/css/*.css",
     "bundle:js": "rollup --silent -c",
-    "test": "run-s test:clean test:run test:coverage",
+    "lint": "run-s lint:md lint:css lint:html lint:js",
+    "lint:css": "stylelint 'src/css/*.css' 'docs/*.css' 'docs/web/css/*.css'",
+    "lint:html": "run-s lint:html:pretty lint:html:hint",
+    "lint:html:hint": "htmlhint 'docs/*.html' 'docs/web/*.html'",
+    "lint:html:pretty": "prettier --check 'docs/*.html' 'docs/web/*.html'",
+    "lint:js": "eslint '*.js' 'docs/web/js/example.js' 'src/js/*.js'",
+    "lint:md": "remark -q .",
+    "prepare": "npm run build",
+    "test": "run-s test:clean test:lint test:run test:coverage",
     "test:clean": "shx rm -rf coverage .nyc_output",
     "test:coverage": "nyc report --reporter=lcov",
+    "test:lint": "run-s test:lint:*",
+    "test:lint:css": "stylelint 'test/*.css'",
+    "test:lint:html": "run-s test:lint:html:*",
+    "test:lint:html:hint": "htmlhint 'test/*.html'",
+    "test:lint:html:pretty": "prettier --check 'test/*.html'",
+    "test:lint:js": "eslint 'test/*.js'",
     "test:run": "jest"
   },
   "homepage": "https://github.com/dpmcmlxxvi/ol3-turf",
@@ -40,6 +54,8 @@
     "@turf/turf": "^4.3.1",
     "clean-css-cli": "^4.3.0",
     "coveralls": "^3.0.0",
+    "eslint": "^5.16.0",
+    "eslint-config-google": "^0.13.0",
     "grunt": "^1.0.1",
     "grunt-browserify": "^5.3.0",
     "grunt-contrib-clean": "^1.0.0",
@@ -54,6 +70,7 @@
     "grunt-htmlhint": "^0.9.13",
     "grunt-jsdoc": "^2.2.1",
     "grunt-release": "^0.13.1",
+    "htmlhint": "^0.11.0",
     "ink-docstrap": "^1.3.0",
     "jest": "^24.8.0",
     "jest-puppeteer": "^4.2.0",
@@ -62,13 +79,23 @@
     "npm-run-all": "^4.1.5",
     "nyc": "^14.1.1",
     "openlayers": "^4.6.5",
+    "prettier": "^1.18.2",
     "puppeteer": "^1.17.0",
     "puppeteer-to-istanbul": "^1.2.2",
+    "remark-cli": "^6.0.1",
+    "remark-preset-lint-markdown-style-guide": "^2.1.3",
     "rollup": "^1.15.6",
     "rollup-plugin-commonjs": "^10.0.0",
     "rollup-plugin-node-resolve": "^5.0.3",
     "rollup-plugin-terser": "^5.0.0",
-    "shx": "^0.3.2"
+    "shx": "^0.3.2",
+    "stylelint": "^10.1.0",
+    "stylelint-config-standard": "^18.3.0"
+  },
+  "remarkConfig": {
+    "plugins": [
+      "remark-preset-lint-markdown-style-guide"
+    ]
   },
   "nyc": {
     "include": [

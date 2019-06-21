@@ -3,52 +3,47 @@ import utils from './utils';
 
 const ol3turf = {
   Control,
-  utils
+  utils,
 };
 
 /* globals ol3turf, turf */
 
-//==================================================
+// ==================================================
 // square control
-//--------------------------------------------------
-export default (function (ol3turf) {
+// --------------------------------------------------
+export default (function(ol3turf) {
+  'use strict';
 
-    "use strict";
+  // Control name
+  const name = 'square';
 
-    // Control name
-    var name = "square";
-
-    /**
+  /**
      * Compute square
      * @private
      */
-    var action = function (control) {
+  const action = function(control) {
+    // Gather selected features
+    const collection = ol3turf.utils.getCollection(control, 1, Infinity);
+    const bbox = turf.bbox(collection);
+    const square = turf.square(bbox);
 
-        // Gather selected features
-        var collection = ol3turf.utils.getCollection(control, 1, Infinity);
-        var bbox = turf.bbox(collection);
-        var square = turf.square(bbox);
-
-        var output = turf.bboxPolygon(square);
-        var inputs = {
-            bbox: bbox
-        };
-        control.toolbar.ol3turf.handler.callback(name, output, inputs);
-
+    const output = turf.bboxPolygon(square);
+    const inputs = {
+      bbox: bbox,
     };
+    control.toolbar.ol3turf.handler.callback(name, output, inputs);
+  };
 
-    return {
-        /*
+  return {
+    /*
          * Create control then attach custom action and it's parent toolbar
          * @param toolbar Parent toolbar
          * @param prefix Selector prefix.
          */
-        create: function (toolbar, prefix) {
-            var title = "Create Square";
-            var control = ol3turf.Control.create(toolbar, prefix, name, title, action);
-            return control;
-        }
-    };
-
-
+    create: function(toolbar, prefix) {
+      const title = 'Create Square';
+      const control = ol3turf.Control.create(toolbar, prefix, name, title, action);
+      return control;
+    },
+  };
 }(ol3turf || {}));

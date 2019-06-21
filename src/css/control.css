@@ -1,8 +1,7 @@
 
-.ol3-turf-control
-{
-    background-color: #ffffff;
-    background-color: rgba(255, 255, 255, 0.4);
-    float: left;
-    padding: 1px;
+.ol3-turf-control {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.4);
+  float: left;
+  padding: 1px;
 }
