@@ -1,17 +1,18 @@
+/*  globals document, ol3turf */
 
-/*globals document, ol3turf */
+/*
+ * Object to encapsulate all available utility methods
+ */
+const ol3turf = {
+  utils: {}
+};
 
 //==================================================
 // utility methods
 //--------------------------------------------------
-(function (ol3turf) {
+export default (function (ol3turf) {
 
     "use strict";
-
-    /*
-     * Object to encapsulate all available utility methods
-     */
-    ol3turf.utils = ol3turf.utils || {};
 
     /**
      * Extend properties from source to target objects recursively.
@@ -326,7 +327,7 @@
     ol3turf.utils.getName = function (suffices, prefix) {
 
         if (prefix === undefined) {
-            prefix = ol3turf.PREFIX;
+            prefix = 'ol3-turf';
         }
         var name = prefix;
         suffices.forEach(function (suffix) {
@@ -492,5 +493,7 @@
         return ol3turf.utils.getFeatures(["Polygon", "MultiPolygon"], collection, min, max);
 
     };
+
+  return ol3turf.utils;
 
 }(ol3turf || {}));

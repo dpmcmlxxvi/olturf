@@ -1,10 +1,10 @@
 
-/*globals document, ol, ol3turf, turf */
+/* globals document, ol, ol3turf, turf */
 
 //==================================================
 // default callback handler
 //--------------------------------------------------
-(function (ol3turf) {
+export default (function (ol3turf) {
 
     "use strict";
 
@@ -56,8 +56,6 @@
 
     };
 
-    ol3turf.Handler = Handler;
-
-    return ol3turf;
+    return Handler;
 
 }(ol3turf || {}));

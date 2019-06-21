@@ -1,19 +1,12 @@
 
-/*globals ol3turf */
+/* globals ol3turf */
 
 //==================================================
 // standard toolbars
 //--------------------------------------------------
-(function (ol3turf) {
+export default (function (ol3turf) {
 
     "use strict";
-
-    /**
-     * @namespace toolbars
-     * @brief Standard toolbars
-     * @memberof ol3turf
-     */
-    ol3turf.toolbars = ol3turf.toolbars || {};
 
     /**
      * @description Aggregation toolbar controls
@@ -27,7 +20,7 @@
      * @memberof ol3turf.toolbars
      * @returns {ol3turf.toolbars.ToolbarAggregation} Control names for the aggregation toolbar
      */
-    ol3turf.toolbars.aggregation = function () {
+    function aggregation() {
         return ["collect"];
     };
 
@@ -43,7 +36,7 @@
      * @memberof ol3turf.toolbars
      * @returns {ol3turf.toolbars.ToolbarClassification} Control names for the classification toolbar
      */
-    ol3turf.toolbars.classification = function () {
+    function classification() {
         return ["nearest"];
     };
 
@@ -60,7 +53,7 @@
      * @memberof ol3turf.toolbars
      * @returns {ol3turf.toolbars.ToolbarData} Control names for the data toolbar
      */
-    ol3turf.toolbars.data = function () {
+    function data() {
         return [
             "random",
             "sample"
@@ -83,7 +76,7 @@
      * @memberof ol3turf.toolbars
      * @returns {ol3turf.toolbars.ToolbarGrids} Control names for the grids toolbar
      */
-    ol3turf.toolbars.grids = function () {
+    function grids() {
         return [
             "hex-grid",
             "point-grid",
@@ -107,7 +100,7 @@
      * @memberof ol3turf.toolbars
      * @returns {ol3turf.toolbars.ToolbarInterpolation} Control names for the interpolation toolbar
      */
-    ol3turf.toolbars.interpolation = function () {
+    function interpolation() {
         return [
             "isolines",
             "planepoint",
@@ -129,7 +122,7 @@
      * @memberof ol3turf.toolbars
      * @returns {ol3turf.toolbars.ToolbarJoins} Control names for the joins toolbar
      */
-    ol3turf.toolbars.joins = function () {
+    function joins() {
         return [
             "inside",
             "tag",
@@ -162,7 +155,7 @@
      * @memberof ol3turf.toolbars
      * @returns {ol3turf.toolbars.ToolbarMeasurement} Control names for the measurement toolbar
      */
-    ol3turf.toolbars.measurement = function () {
+    function measurement() {
         return [
             "distance",
             "line-distance",
@@ -198,7 +191,7 @@
      * @memberof ol3turf.toolbars
      * @returns {ol3turf.toolbars.ToolbarMisc} Control names for the miscellaneous toolbar
      */
-    ol3turf.toolbars.misc = function () {
+    function misc() {
         return [
             "combine",
             "explode",
@@ -228,7 +221,7 @@
      * @memberof ol3turf.toolbars
      * @returns {ol3turf.toolbars.ToolbarTransformation} Control names for the transformation toolbar
      */
-    ol3turf.toolbars.transformation = function () {
+    function transformation() {
         return [
             "bezier",
             "buffer",
@@ -261,18 +254,31 @@
      * @memberof ol3turf.toolbars
      * @returns {ol3turf.toolbars.ToolbarAll} Control names for all the controls
      */
-    ol3turf.toolbars.all = function () {
+    function all() {
         var all = [];
-        all.push.apply(all, ol3turf.toolbars.measurement());
-        all.push.apply(all, ol3turf.toolbars.transformation());
-        all.push.apply(all, ol3turf.toolbars.misc());
-        all.push.apply(all, ol3turf.toolbars.joins());
-        all.push.apply(all, ol3turf.toolbars.classification());
-        all.push.apply(all, ol3turf.toolbars.aggregation());
-        all.push.apply(all, ol3turf.toolbars.data());
-        all.push.apply(all, ol3turf.toolbars.interpolation());
-        all.push.apply(all, ol3turf.toolbars.grids());
+        all.push.apply(all, measurement());
+        all.push.apply(all, transformation());
+        all.push.apply(all, misc());
+        all.push.apply(all, joins());
+        all.push.apply(all, classification());
+        all.push.apply(all, aggregation());
+        all.push.apply(all, data());
+        all.push.apply(all, interpolation());
+        all.push.apply(all, grids());
         return all;
+    };
+
+    return {
+      aggregation,
+      all,
+      classification,
+      data,
+      grids,
+      interpolation,
+      joins,
+      measurement,
+      misc,
+      transformation,
     };
 
 }(ol3turf || {}));

@@ -1,14 +1,23 @@
 {
   "name": "ol3-turf",
   "version": "0.6.0",
-  "description": "A Turf toolbar for OpenLayers 3.",
+  "description": "A Turf toolbar for OpenLayers.",
   "author": {
     "name": "Daniel Pulido",
     "email": "dpmcmlxxvi@gmail.com"
   },
   "license": "MIT",
   "main": "dist/ol3-turf.js",
+  "module": "src/js/main.js",
+  "unpkg": "dist/ol3-turf.min.js",
+  "jsdelivr": "dist/ol3-turf.min.js",
   "scripts": {
+    "build": "run-s bundle",
+    "bundle": "run-s bundle:js bundle:css",
+    "bundle:css": "run-s bundle:css:*",
+    "bundle:css:cat": "shx cat src/css/*.css > dist/ol3-turf.css",
+    "bundle:css:min": "cleancss -o dist/ol3-turf.min.css -O2 src/css/*.css",
+    "bundle:js": "rollup --silent -c",
     "test": "run-s test:clean test:run test:coverage",
     "test:clean": "shx rm -rf coverage .nyc_output",
     "test:coverage": "nyc report --reporter=lcov",
@@ -29,6 +38,7 @@
   ],
   "devDependencies": {
     "@turf/turf": "^4.3.1",
+    "clean-css-cli": "^4.3.0",
     "coveralls": "^3.0.0",
     "grunt": "^1.0.1",
     "grunt-browserify": "^5.3.0",
@@ -54,6 +64,10 @@
     "openlayers": "^4.6.5",
     "puppeteer": "^1.17.0",
     "puppeteer-to-istanbul": "^1.2.2",
+    "rollup": "^1.15.6",
+    "rollup-plugin-commonjs": "^10.0.0",
+    "rollup-plugin-node-resolve": "^5.0.3",
+    "rollup-plugin-terser": "^5.0.0",
     "shx": "^0.3.2"
   },
   "nyc": {

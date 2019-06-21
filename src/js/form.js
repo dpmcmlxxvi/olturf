@@ -1,10 +1,15 @@
+import utils from './utils';
 
-/*globals document, ol3turf */
+const ol3turf = {
+  utils
+};
+
+/* globals document, ol3turf */
 
 //==================================================
 // input form
 //--------------------------------------------------
-(function (ol3turf) {
+export default (function (ol3turf) {
 
     "use strict";
 
@@ -28,7 +33,7 @@
      * @param attributes Form attributes
      * @private
      */
-    ol3turf.form = function (parent, formId, controls, attributes) {
+    return function (parent, formId, controls, attributes) {
 
         var container = null;
         if (typeof parent === "string") {

@@ -1,10 +1,15 @@
+import Control from './control';
+import utils from './utils';
 
-/*globals ol3turf, turf */
+const ol3turf = {
+  Control,
+  utils
+};
 
 //==================================================
 // bearing control
 //--------------------------------------------------
-(function (ol3turf) {
+export default (function (ol3turf) {
 
     "use strict";
 
@@ -31,7 +36,7 @@
 
     };
 
-    ol3turf.controls[name] = {
+    return {
         /*
          * Create control then attach custom action and it's parent toolbar
          * @param toolbar Parent toolbar
@@ -43,7 +48,5 @@
             return control;
         }
     };
-
-    return ol3turf;
 
 }(ol3turf || {}));

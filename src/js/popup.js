@@ -1,10 +1,15 @@
+import utils from './utils';
 
-/*globals document, ol3turf */
+/* globals document, ol3turf */
+
+const ol3turf = {
+  utils
+};
 
 //==================================================
 // popup form
 //--------------------------------------------------
-(function (ol3turf) {
+export default (function (ol3turf) {
 
     "use strict";
 
@@ -17,7 +22,7 @@
      * @return Popup DOM element
      * @private
      */
-    ol3turf.popup = function (message, callback, parent, attributes) {
+    return function (message, callback, parent, attributes) {
 
         // Popup id
         var id = "ol3-turf-popup";

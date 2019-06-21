@@ -1,25 +1,17 @@
+import controls from './controls';
+import Handler from './handler';
+import toolbars from './toolbars';
 
-/*globals document, ol, ol3turf, window */
+/* globals document, ol, ol3turf, window */
 
 /**
  * @namespace ol3turf
  */
-window.ol3turf = window.ol3turf || {};
-
-/*
- * Default ol3-turf selector prefix
- */
-window.ol3turf.PREFIX = "ol3-turf";
-
-/*
- * Default turf projection
- */
-window.ol3turf.PROJECTION_TURF = "EPSG:4326";
-
-/*
- * Default ol3 projection
- */
-window.ol3turf.PROJECTION_OL3 = "EPSG:3857";
+const ol3turf = {
+  controls,
+  Handler,
+  toolbars,
+};
 
 /**
  * ol3 main namespace
@@ -87,7 +79,7 @@ window.ol3turf.PROJECTION_OL3 = "EPSG:3857";
  * @param {object} [options] Control options extends ol.control.Control options
  * @param {ol3turf.ToolbarOptions} [options.ol3turf] ol3-turf specific options
  */
-ol.control.Turf = function (opt_options) {
+const Toolbar = function (opt_options) {
 
     "use strict";
 
@@ -113,7 +105,7 @@ ol.control.Turf = function (opt_options) {
 
     // Define default prefix
     if (options.ol3turf.prefix === undefined) {
-        options.ol3turf.prefix = ol3turf.PREFIX;
+        options.ol3turf.prefix = 'ol3-turf';
     }
 
     // Create turf toolbar DOM if not provided by user
@@ -145,4 +137,9 @@ ol.control.Turf = function (opt_options) {
     ol.control.Control.call(this, options);
 
 };
-ol.inherits(ol.control.Turf, ol.control.Control);
+ol.inherits(Toolbar, ol.control.Control);
+
+export default {
+  toolbars,
+  Toolbar
+};

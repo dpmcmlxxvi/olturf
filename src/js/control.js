@@ -1,17 +1,23 @@
+import Control from './control';
+import form from './form';
+import popup from './popup';
+import utils from './utils';
 
-/*globals document, ol, ol3turf, turf, window */
+const ol3turf = {
+  Control,
+  form,
+  popup,
+  utils
+};
+
+/* globals document, ol, ol3turf, turf, window */
 
 //==================================================
 // toolbar control
 //--------------------------------------------------
-(function (ol3turf) {
+export default (function (ol3turf) {
 
     "use strict";
-
-    /*
-     * Object to encapsulate all available controls
-     */
-    ol3turf.controls = ol3turf.controls || {};
 
     /**
      * Fit left position of form within map
@@ -191,7 +197,7 @@
         this.form = null;
 
         // Initialize form which needs to be set during creation
-        this.prefix = ol3turf.PREFIX;
+        this.prefix = 'ol3-turf';
 
     };
 
@@ -326,7 +332,7 @@
      */
     Control.prototype.getProjectionMap = function () {
 
-        var projectionMap = ol3turf.PROJECTION_OL3;
+        var projectionMap = 'EPSG:3857';
         var projection = this.getMap().getView().getProjection();
         if (projection !== undefined) {
             projectionMap = projection.getCode();
@@ -342,7 +348,7 @@
      */
     Control.prototype.getProjectionTurf = function () {
 
-        return ol3turf.PROJECTION_TURF;
+        return 'EPSG:4326';
 
     };
 
@@ -475,7 +481,7 @@
         };
 
         // Create control
-        var control = new ol3turf.Control(options);
+        var control = new Control(options);
         control.prefix = prefix;
         control.toolbar = toolbar;
         control.action = function () {
@@ -489,8 +495,6 @@
      * Base control class constructor
      * @private
      */
-    ol3turf.Control = Control;
-
-    return ol3turf;
+   return Control;
 
 }(ol3turf || {}));
