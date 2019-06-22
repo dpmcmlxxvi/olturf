@@ -1,7 +1,4 @@
-.grunt
 .nyc_output/
-bower_components
 coverage
 docs/api
-instrumented-code
 node_modules
