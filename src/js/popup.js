@@ -71,4 +71,3 @@ export default function display(message, callback, parent, attributes) {
 
   return popup;
 };
-

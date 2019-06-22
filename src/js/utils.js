@@ -105,7 +105,6 @@ utils.getControlNumber = function(id, title, text, value, step, min, max) {
   };
 };
 
-
 /**
  * Get control select attributes
  * @param {string} id Control ID

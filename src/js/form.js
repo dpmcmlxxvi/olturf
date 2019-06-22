@@ -92,4 +92,3 @@ export default function(parent, formId, controls, attributes) {
   container.appendChild(form);
   return form;
 };
-

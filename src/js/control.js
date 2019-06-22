@@ -8,7 +8,6 @@ const ol3turf = {
   utils,
 };
 
-
 /**
  * Fit left position of form within map
  * @param {object} sizeForm Form's absolute form position and size
@@ -447,4 +446,3 @@ Control.create = function(toolbar, prefix, name, title, action) {
  * Base control class constructor
  */
 export default Control;
-

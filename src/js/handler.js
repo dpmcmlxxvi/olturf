@@ -43,4 +43,3 @@ Handler.prototype.callback = function(name, output, inputs) {
 };
 
 export default Handler;
-
