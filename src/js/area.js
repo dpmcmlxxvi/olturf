@@ -1,11 +1,6 @@
 import Control from './control';
 import utils from './utils';
 
-const ol3turf = {
-  Control,
-  utils,
-};
-
 // Control name
 const name = 'area';
 
@@ -13,7 +8,7 @@ const name = 'area';
  * Compute area
  */
 const action = function(control) {
-  const collection = ol3turf.utils.getCollection(control, 1, Infinity);
+  const collection = utils.getCollection(control, 1, Infinity);
   const output = turf.area(collection);
   const inputs = {
     input: collection,
@@ -24,6 +19,6 @@ const action = function(control) {
 export default {
   create: function(toolbar, prefix) {
     const title = 'Measure Area';
-    return ol3turf.Control.create(toolbar, prefix, name, title, action);
+    return Control.create(toolbar, prefix, name, title, action);
   },
 };

@@ -1,12 +1,6 @@
 import Control from './control';
 import utils from './utils';
 
-const ol3turf = {
-  Control,
-  utils,
-};
-
-
 // Control name
 const name = 'inside';
 
@@ -15,9 +9,9 @@ const name = 'inside';
  */
 const action = function(control) {
   // Gather point and polygon selected
-  const collection = ol3turf.utils.getCollection(control, 2, 2);
-  const points = ol3turf.utils.getPoints(collection, 1, 1);
-  const polygons = ol3turf.utils.getPolygonsAll(collection, 1, 1);
+  const collection = utils.getCollection(control, 2, 2);
+  const points = utils.getPoints(collection, 1, 1);
+  const polygons = utils.getPolygonsAll(collection, 1, 1);
   const point = points[0];
   const polygon = polygons[0];
 
@@ -32,7 +26,7 @@ const action = function(control) {
 export default {
   create: function(toolbar, prefix) {
     const title = 'Point inside polygon?';
-    return ol3turf.Control.create(toolbar, prefix, name, title, action);
+    return Control.create(toolbar, prefix, name, title, action);
   },
 };
 

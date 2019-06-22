@@ -1,12 +1,6 @@
 import Control from './control';
 import utils from './utils';
 
-const ol3turf = {
-  Control,
-  utils,
-};
-
-
 // Control name
 const name = 'sample';
 
@@ -15,18 +9,18 @@ const name = 'sample';
  */
 const action = function(control) {
   // Define control ids
-  const idCancel = ol3turf.utils.getName([name, 'cancel'], control.prefix);
-  const idCount = ol3turf.utils.getName([name, 'count'], control.prefix);
-  const idForm = ol3turf.utils.getName([name, 'form'], control.prefix);
-  const idOk = ol3turf.utils.getName([name, 'ok'], control.prefix);
+  const idCancel = utils.getName([name, 'cancel'], control.prefix);
+  const idCount = utils.getName([name, 'count'], control.prefix);
+  const idForm = utils.getName([name, 'form'], control.prefix);
+  const idOk = utils.getName([name, 'ok'], control.prefix);
 
   const onOK = function() {
     try {
       // Gather selected features
-      const collection = ol3turf.utils.getCollection(control, 1, Infinity);
+      const collection = utils.getCollection(control, 1, Infinity);
 
       // Get form inputs
-      const count = ol3turf.utils.getFormInteger(idCount, 'count');
+      const count = utils.getFormInteger(idCount, 'count');
       if (count > collection.features.length) {
         throw new Error('Feature count must be greater than sampling count.');
       }
@@ -51,9 +45,10 @@ const action = function(control) {
   };
 
   const controls = [
-    ol3turf.utils.getControlNumber(idCount, 'Count', 'Number of random features to sample', '1', '1', '1'),
-    ol3turf.utils.getControlInput(idOk, onOK, '', 'OK'),
-    ol3turf.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+    utils.getControlNumber(idCount, 'Count',
+        'Number of random features to sample', '1', '1', '1'),
+    utils.getControlInput(idOk, onOK, '', 'OK'),
+    utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
   ];
 
   control.showForm(controls, idForm);
@@ -62,7 +57,7 @@ const action = function(control) {
 export default {
   create: function(toolbar, prefix) {
     const title = 'Randomly sample features';
-    return ol3turf.Control.create(toolbar, prefix, name, title, action);
+    return Control.create(toolbar, prefix, name, title, action);
   },
 };
 

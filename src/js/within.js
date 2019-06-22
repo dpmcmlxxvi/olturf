@@ -1,12 +1,6 @@
 import Control from './control';
 import utils from './utils';
 
-const ol3turf = {
-  Control,
-  utils,
-};
-
-
 // Control name
 const name = 'within';
 
@@ -14,10 +8,10 @@ const name = 'within';
  * Compute points within polygons
  */
 const action = function(control) {
-  const collection = ol3turf.utils.getCollection(control, 2, Infinity);
-  const pts = ol3turf.utils.getPoints(collection, 1, collection.features.length - 1);
+  const collection = utils.getCollection(control, 2, Infinity);
+  const pts = utils.getPoints(collection, 1, collection.features.length - 1);
   const numPolygons = collection.features.length - pts.length;
-  const polys = ol3turf.utils.getPolygons(collection, numPolygons, numPolygons);
+  const polys = utils.getPolygons(collection, numPolygons, numPolygons);
 
   const points = turf.featureCollection(pts);
   const polygons = turf.featureCollection(polys);
@@ -36,7 +30,7 @@ const action = function(control) {
 export default {
   create: function(toolbar, prefix) {
     const title = 'Find points within polygons';
-    return ol3turf.Control.create(toolbar, prefix, name, title, action);
+    return Control.create(toolbar, prefix, name, title, action);
   },
 };
 

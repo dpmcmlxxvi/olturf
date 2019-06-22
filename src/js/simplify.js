@@ -1,12 +1,6 @@
 import Control from './control';
 import utils from './utils';
 
-const ol3turf = {
-  Control,
-  utils,
-};
-
-
 // Control name
 const name = 'simplify';
 
@@ -15,20 +9,20 @@ const name = 'simplify';
  */
 const action = function(control) {
   // Define control ids
-  const idCancel = ol3turf.utils.getName([name, 'cancel'], control.prefix);
-  const idForm = ol3turf.utils.getName([name, 'form'], control.prefix);
-  const idOk = ol3turf.utils.getName([name, 'ok'], control.prefix);
-  const idQuality = ol3turf.utils.getName([name, 'quality'], control.prefix);
-  const idTolerance = ol3turf.utils.getName([name, 'tolerance'], control.prefix);
+  const idCancel = utils.getName([name, 'cancel'], control.prefix);
+  const idForm = utils.getName([name, 'form'], control.prefix);
+  const idOk = utils.getName([name, 'ok'], control.prefix);
+  const idQuality = utils.getName([name, 'quality'], control.prefix);
+  const idTolerance = utils.getName([name, 'tolerance'], control.prefix);
 
   const onOK = function() {
     try {
       // Gather selected features
-      const collection = ol3turf.utils.getCollection(control, 1, Infinity);
+      const collection = utils.getCollection(control, 1, Infinity);
 
       // Get form inputs
-      const tolerance = ol3turf.utils.getFormNumber(idTolerance, 'tolerance');
-      const quality = ol3turf.utils.getFormString(idQuality, 'quality');
+      const tolerance = utils.getFormNumber(idTolerance, 'tolerance');
+      const quality = utils.getFormString(idQuality, 'quality');
       const highQuality = (quality === 'high');
 
       // Collect polygons
@@ -52,10 +46,11 @@ const action = function(control) {
   };
 
   const controls = [
-    ol3turf.utils.getControlNumber(idTolerance, 'Tolerance', 'Simplification tolerance', '1', '0.01', '0'),
-    ol3turf.utils.getControlSelect(idQuality, 'Quality', ol3turf.utils.getOptionsQuality()),
-    ol3turf.utils.getControlInput(idOk, onOK, '', 'OK'),
-    ol3turf.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+    utils.getControlNumber(idTolerance, 'Tolerance',
+        'Simplification tolerance', '1', '0.01', '0'),
+    utils.getControlSelect(idQuality, 'Quality', utils.getOptionsQuality()),
+    utils.getControlInput(idOk, onOK, '', 'OK'),
+    utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
   ];
 
   control.showForm(controls, idForm);
@@ -64,7 +59,7 @@ const action = function(control) {
 export default {
   create: function(toolbar, prefix) {
     const title = 'Simplify shape';
-    return ol3turf.Control.create(toolbar, prefix, name, title, action);
+    return Control.create(toolbar, prefix, name, title, action);
   },
 };
 

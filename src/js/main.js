@@ -2,7 +2,6 @@ import controls from './controls';
 import Handler from './handler';
 import toolbars from './toolbars';
 
-
 /**
  * @namespace ol3turf
  */
@@ -37,7 +36,8 @@ const ol3turf = {
  * @callback ToolbarCallback
  * @memberOf ol3turf
  * @param {string} name Name of control to process
- * @param {object} inputs Inputs passed to the control's corresponding turf function
+ * @param {object} inputs Inputs passed to the control's corresponding turf
+ *                        function
  * @param {*} output Output returned by the turf function
  */
 
@@ -45,24 +45,22 @@ const ol3turf = {
  * @description ol3-turf custom callback handler.
  * @typedef {object} ToolbarHandler
  * @memberOf ol3turf
- * @property {ol3turf.ToolbarCallback} callback Function to handle processing turf commands.
+ * @property {ol3turf.ToolbarCallback} callback Function to handle processing
+ *                                              turf commands.
  */
 
 /**
  * @description ol3-turf constructor options.
  * @typedef {object} ToolbarOptions
  * @memberOf ol3turf
- * @property {string[]} [controls={@link ol3turf.toolbars.ToolbarAll}] Controls to enable
- * @property {ol3turf.ToolbarHandler} [handler=ol3turf.Handler] Optional function that handles
- *                                                              processing the output of the
- *                                                              ol3-turf controls. This is
- *                                                              useful to bypass the default
- *                                                              handler and provide custom
- *                                                              processing of the results. The
- *                                                              default handler adds features
- *                                                              to the map or displays a message
- *                                                              with any values returned by the
- *                                                              turf function.
+ * @property {string[]} [controls={@link ol3turf.toolbars.ToolbarAll}] Controls
+ *           to enable
+ * @property {ol3turf.ToolbarHandler} [handler=ol3turf.Handler] Optional
+ *           function that handles processing the output of the ol3-turf
+ *           controls. This is useful to bypass the default handler and provide
+ *           custom processing of the results. The default handler adds features
+ *           to the map or displays a message with any values returned by the
+ *           turf function.
  * @property {string} [prefix=ol3-turf] Prefix to apply to control element IDs.
  *                                      Only needed to make IDs unique if
  *                                      multiple instances of an ol3-turf

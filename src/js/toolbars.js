@@ -1,5 +1,3 @@
-
-
 /**
  * @description Aggregation toolbar controls
  * @typedef {string[]} ToolbarAggregation
@@ -10,7 +8,8 @@
 /**
  * Aggregation toolbar
  * @memberof ol3turf.toolbars
- * @return {ol3turf.toolbars.ToolbarAggregation} Control names for the aggregation toolbar
+ * @return {ol3turf.toolbars.ToolbarAggregation} Control names for the
+ *                                               aggregation toolbar
  */
 function aggregation() {
   return ['collect'];
@@ -26,7 +25,8 @@ function aggregation() {
 /**
  * Classification toolbar
  * @memberof ol3turf.toolbars
- * @return {ol3turf.toolbars.ToolbarClassification} Control names for the classification toolbar
+ * @return {ol3turf.toolbars.ToolbarClassification} Control names for the
+ *                                                  classification toolbar
  */
 function classification() {
   return ['nearest'];
@@ -90,7 +90,8 @@ function grids() {
 /**
  * Interpolation toolbar
  * @memberof ol3turf.toolbars
- * @return {ol3turf.toolbars.ToolbarInterpolation} Control names for the interpolation toolbar
+ * @return {ol3turf.toolbars.ToolbarInterpolation} Control names for the
+ *                                                 interpolation toolbar
  */
 function interpolation() {
   return [
@@ -145,7 +146,8 @@ function joins() {
 /**
  * Measurement toolbar
  * @memberof ol3turf.toolbars
- * @return {ol3turf.toolbars.ToolbarMeasurement} Control names for the measurement toolbar
+ * @return {ol3turf.toolbars.ToolbarMeasurement} Control names for the
+ *                                               measurement toolbar
  */
 function measurement() {
   return [
@@ -181,7 +183,8 @@ function measurement() {
 /**
  * Miscellaneous toolbar
  * @memberof ol3turf.toolbars
- * @return {ol3turf.toolbars.ToolbarMisc} Control names for the miscellaneous toolbar
+ * @return {ol3turf.toolbars.ToolbarMisc} Control names for the miscellaneous
+ *                                        toolbar
  */
 function misc() {
   return [
@@ -211,7 +214,8 @@ function misc() {
 /**
  * Transformation toolbar
  * @memberof ol3turf.toolbars
- * @return {ol3turf.toolbars.ToolbarTransformation} Control names for the transformation toolbar
+ * @return {ol3turf.toolbars.ToolbarTransformation} Control names for the
+ *                                                  transformation toolbar
  */
 function transformation() {
   return [
@@ -230,15 +234,20 @@ function transformation() {
  * @description Concatenation of all the toolbars
  * @typedef {string[]} ToolbarAll
  * @memberOf ol3turf.toolbars
- * @property {ol3turf.toolbars.ToolbarAggregation} aggregation Aggregation toolbar
- * @property {ol3turf.toolbars.ToolbarClassification} classification Classification toolbar
+ * @property {ol3turf.toolbars.ToolbarAggregation} aggregation Aggregation
+ *           toolbar
+ * @property {ol3turf.toolbars.ToolbarClassification} classification
+ *           Classification toolbar
  * @property {ol3turf.toolbars.ToolbarData} data Data toolbar
  * @property {ol3turf.toolbars.ToolbarGrids} grids Grids toolbar
- * @property {ol3turf.toolbars.ToolbarInterpolation} interpolation Interpolation toolbar
+ * @property {ol3turf.toolbars.ToolbarInterpolation} interpolation
+ *           Interpolation toolbar
  * @property {ol3turf.toolbars.ToolbarJoins} joins Joins toolbar
- * @property {ol3turf.toolbars.ToolbarMeasurement} measurement Measurement toolbar
+ * @property {ol3turf.toolbars.ToolbarMeasurement} measurement Measurement
+ *           toolbar
  * @property {ol3turf.toolbars.ToolbarMisc} miscellaneous Miscellaneous toolbar
- * @property {ol3turf.toolbars.ToolbarTransformation} transformation Transformation toolbar
+ * @property {ol3turf.toolbars.ToolbarTransformation} transformation
+ *           Transformation toolbar
  */
 
 /**

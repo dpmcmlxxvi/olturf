@@ -1,12 +1,6 @@
 import Control from './control';
 import utils from './utils';
 
-const ol3turf = {
-  Control,
-  utils,
-};
-
-
 // Control name
 const name = 'intersect';
 
@@ -14,8 +8,8 @@ const name = 'intersect';
  * Compute intersection of two polygons
  */
 const action = function(control) {
-  const collection = ol3turf.utils.getCollection(control, 2, 2);
-  const polygons = ol3turf.utils.getPolygonsAll(collection, 2, 2);
+  const collection = utils.getCollection(control, 2, 2);
+  const polygons = utils.getPolygonsAll(collection, 2, 2);
 
   const poly1 = polygons[0];
   const poly2 = polygons[1];
@@ -30,7 +24,7 @@ const action = function(control) {
 export default {
   create: function(toolbar, prefix) {
     const title = 'Create Intersection Polygon';
-    return ol3turf.Control.create(toolbar, prefix, name, title, action);
+    return Control.create(toolbar, prefix, name, title, action);
   },
 };
 

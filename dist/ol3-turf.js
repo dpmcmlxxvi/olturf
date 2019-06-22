@@ -13,12 +13,7 @@
   (global = global || self, global.ol3turf = factory());
 }(this, function () { 'use strict';
 
-  /*
-   * Object to encapsulate all available utility methods
-   */
-  const ol3turf = {
-    utils: {},
-  };
+  const utils = {};
 
   /**
    * Extend properties from source to target objects recursively.
@@ -26,7 +21,7 @@
    * @param {object} target Target object
    * @private
    */
-  ol3turf.utils.extend = function(source, target) {
+  utils.extend = function(source, target) {
     if ((source === undefined) || target === undefined) {
       return;
     }
@@ -36,7 +31,7 @@
         if (target[property] === undefined) {
           target[property] = {};
         }
-        ol3turf.utils.extend(src, target[property]);
+        utils.extend(src, target[property]);
         return;
       }
       target[property] = src;
@@ -50,8 +45,8 @@
    * @private
    * @return {string} Class selector string ".ol3-turf-..."
    */
-  ol3turf.utils.getClass = function(suffices, prefix) {
-    return '.' + ol3turf.utils.getName(suffices, prefix);
+  utils.getClass = function(suffices, prefix) {
+    return '.' + utils.getName(suffices, prefix);
   };
 
   /**
@@ -63,7 +58,7 @@
    * @return {object} GeoJSON FeatureCollection
    * @throws {Error} Invalid number of features found
    */
-  ol3turf.utils.getCollection = function(control, min, max) {
+  utils.getCollection = function(control, min, max) {
     const collection = control.getFeatures();
     if (collection.features.length < min) {
       throw new Error('Number of features less than ' + min);
@@ -83,7 +78,7 @@
    * @private
    * @return {object} Control input attributes
    */
-  ol3turf.utils.getControlInput = function(id, onclick, title, value) {
+  utils.getControlInput = function(id, onclick, title, value) {
     return {
       title: title,
       type: 'input',
@@ -108,7 +103,7 @@
    * @private
    * @return {object} Control input attributes
    */
-  ol3turf.utils.getControlNumber = function(id, title, text, value, step, min, max) {
+  utils.getControlNumber = function(id, title, text, value, step, min, max) {
     return {
       title: title,
       type: 'input',
@@ -134,7 +129,7 @@
    * @private
    * @return {object} Control button attributes
    */
-  ol3turf.utils.getControlSelect = function(id, title, options) {
+  utils.getControlSelect = function(id, title, options) {
     return {
       title: title,
       type: 'select',
@@ -154,7 +149,7 @@
    * @private
    * @return {object} Control text attributes
    */
-  ol3turf.utils.getControlText = function(id, title, text) {
+  utils.getControlText = function(id, title, text) {
     return {
       title: title,
       type: 'input',
@@ -175,8 +170,8 @@
    * @private
    * @return {string} Element string (e.g., "input[name=ol3-turf-...")
    */
-  ol3turf.utils.getElement = function(name, suffices, prefix) {
-    return name + '[name=\'' + ol3turf.utils.getName(suffices, prefix) + '\']';
+  utils.getElement = function(name, suffices, prefix) {
+    return name + '[name=\'' + utils.getName(suffices, prefix) + '\']';
   };
 
   /**
@@ -189,7 +184,7 @@
    * @return {object[]} Features found
    * @throws {Error} Invalid number of features found
    */
-  ol3turf.utils.getFeatures = function(types, collection, min, max) {
+  utils.getFeatures = function(types, collection, min, max) {
     const features = [];
     collection.features.forEach(function(feature) {
       if (types.indexOf(feature.geometry.type) > -1) {
@@ -213,8 +208,8 @@
    * @return {number[]} Numeric value of form field
    * @throws {Error} Field value is not numeric array
    */
-  ol3turf.utils.getFormArray = function(id, name) {
-    const input = ol3turf.utils.getFormString(id, name);
+  utils.getFormArray = function(id, name) {
+    const input = utils.getFormString(id, name);
     const values = [];
     input.split(',').forEach(function(value) {
       const num = parseFloat(value);
@@ -234,7 +229,7 @@
    * @return {number} Integer value of form field
    * @throws {Error} Field value is not integer
    */
-  ol3turf.utils.getFormInteger = function(id, name) {
+  utils.getFormInteger = function(id, name) {
     const value = parseInt(document.getElementById(id).value, 10);
     if (Number(value) !== value) {
       throw new Error('Invalid ' + name);
@@ -250,7 +245,7 @@
    * @return {number} Numeric value of form field
    * @throws {Error} Field value is not numeric
    */
-  ol3turf.utils.getFormNumber = function(id, name) {
+  utils.getFormNumber = function(id, name) {
     const value = parseFloat(document.getElementById(id).value);
     if (Number(value) !== value) {
       throw new Error('Invalid ' + name);
@@ -266,7 +261,7 @@
    * @return {string} String value of form field
    * @throws {Error} Field value is not non-empty string
    */
-  ol3turf.utils.getFormString = function(id, name) {
+  utils.getFormString = function(id, name) {
     const value = document.getElementById(id).value;
     if (!value || !value.trim()) {
       throw new Error('Invalid ' + name);
@@ -281,8 +276,8 @@
    * @private
    * @return {string} Id selector string "#ol3-turf-..."
    */
-  ol3turf.utils.getId = function(suffices, prefix) {
-    return '#' + ol3turf.utils.getName(suffices, prefix);
+  utils.getId = function(suffices, prefix) {
+    return '#' + utils.getName(suffices, prefix);
   };
 
   /**
@@ -294,8 +289,8 @@
    * @return {object[]} Lines found
    * @throws {Error} Invalid number of lines found
    */
-  ol3turf.utils.getLines = function(collection, min, max) {
-    return ol3turf.utils.getFeatures(['LineString'], collection, min, max);
+  utils.getLines = function(collection, min, max) {
+    return utils.getFeatures(['LineString'], collection, min, max);
   };
 
   /**
@@ -305,7 +300,7 @@
    * @private
    * @return {string} Control name string "ol3-turf-..."
    */
-  ol3turf.utils.getName = function(suffices, prefix) {
+  utils.getName = function(suffices, prefix) {
     if (prefix === undefined) {
       prefix = 'ol3-turf';
     }
@@ -321,7 +316,7 @@
    * @private
    * @return {object[]} Geometry options
    */
-  ol3turf.utils.getOptionsGeometry = function() {
+  utils.getOptionsGeometry = function() {
     return [
       {
         text: 'Points',
@@ -344,7 +339,7 @@
    * @private
    * @return {object[]} Grid options
    */
-  ol3turf.utils.getOptionsGrids = function() {
+  utils.getOptionsGrids = function() {
     return [
       {
         text: 'Hexagons',
@@ -367,7 +362,7 @@
    * @private
    * @return {object[]} Quality options
    */
-  ol3turf.utils.getOptionsQuality = function() {
+  utils.getOptionsQuality = function() {
     return [
       {
         text: 'High',
@@ -390,7 +385,7 @@
    * @private
    * @return {object[]} Unit options
    */
-  ol3turf.utils.getOptionsUnits = function() {
+  utils.getOptionsUnits = function() {
     return [
       {
         text: 'degrees',
@@ -429,8 +424,8 @@
    * @return {object[]} Points found
    * @throws {Error} Invalid number of points found
    */
-  ol3turf.utils.getPoints = function(collection, min, max) {
-    return ol3turf.utils.getFeatures(['Point'], collection, min, max);
+  utils.getPoints = function(collection, min, max) {
+    return utils.getFeatures(['Point'], collection, min, max);
   };
 
   /**
@@ -442,8 +437,8 @@
    * @return {object[]} Polygons found
    * @throws {Error} Invalid number of polygons found
    */
-  ol3turf.utils.getPolygons = function(collection, min, max) {
-    return ol3turf.utils.getFeatures(['Polygon'], collection, min, max);
+  utils.getPolygons = function(collection, min, max) {
+    return utils.getFeatures(['Polygon'], collection, min, max);
   };
 
   /**
@@ -455,16 +450,9 @@
    * @return {object[]} Polygons found
    * @throws {Error} Invalid number of polygons found
    */
-  ol3turf.utils.getPolygonsAll = function(collection, min, max) {
-    return ol3turf.utils.getFeatures(['Polygon', 'MultiPolygon'], collection, min, max);
+  utils.getPolygonsAll = function(collection, min, max) {
+    return utils.getFeatures(['Polygon', 'MultiPolygon'], collection, min, max);
   };
-
-  var utils = ol3turf.utils;
-
-  const ol3turf$1 = {
-    utils,
-  };
-
 
   /**
    * @description Properties of control form
@@ -509,7 +497,7 @@
     form.id = formId;
     form.className = 'ol3-turf-form ol-unselectable ol-control';
     form.setAttribute('onsubmit', 'return false;');
-    ol3turf$1.utils.extend(attributes, form);
+    utils.extend(attributes, form);
 
     // Create a table to add to form
     const table = document.createElement('table');
@@ -531,7 +519,7 @@
 
       const control = document.createElement(element.type);
       control.className = 'ol3-turf-form-input';
-      ol3turf$1.utils.extend(element.attributes, control);
+      utils.extend(element.attributes, control);
 
       // Check if this is a selection and add pulldown options
       if (element.type === 'select') {
@@ -541,7 +529,7 @@
             const option = document.createElement('option');
             option.innerHTML = opt.text;
             option.className = 'ol3-turf-form-option';
-            ol3turf$1.utils.extend(opt.attributes, option);
+            utils.extend(opt.attributes, option);
             control.appendChild(option);
           });
         }
@@ -558,12 +546,6 @@
     container.appendChild(form);
     return form;
   }
-
-  const ol3turf$2 = {
-    utils,
-  };
-
-  // popup form
 
   /**
    * Displays a message in a popup window.
@@ -611,7 +593,7 @@
     const popup = document.createElement('div');
     popup.className = id;
     popup.id = id;
-    ol3turf$2.utils.extend(attributes, popup);
+    utils.extend(attributes, popup);
 
     // Create a div to contain message
     const divMessage = document.createElement('div');
@@ -637,7 +619,7 @@
     return popup;
   }
 
-  const ol3turf$3 = {
+  const ol3turf = {
     form,
     popup: display,
     utils,
@@ -1015,7 +997,7 @@
     if (id === undefined) {
       id = 'ol3-turf-form';
     }
-    this.form = ol3turf$3.form(oldiv, id, controls, attributes);
+    this.form = ol3turf.form(oldiv, id, controls, attributes);
 
     // Update form position and display
     const position = this.getFormPosition(this.form);
@@ -1038,7 +1020,7 @@
         visibility: 'hidden',
       },
     };
-    const popup = ol3turf$3.popup(message, callback, parent, attributes);
+    const popup = ol3turf.popup(message, callback, parent, attributes);
 
     // Get placement and display
     const position = this.getFormPosition(popup);
@@ -1060,9 +1042,9 @@
    */
   Control.create = function(toolbar, prefix, name, title, action) {
     // Create control options
-    const clsControl = ol3turf$3.utils.getName([name]);
-    const clsButton = ol3turf$3.utils.getName(['control', 'button']);
-    const idControl = ol3turf$3.utils.getName([name], prefix);
+    const clsControl = utils.getName([name]);
+    const clsButton = utils.getName(['control', 'button']);
+    const idControl = utils.getName([name], prefix);
     const options = {
       className: clsControl + ' ' + clsButton,
       id: idControl,
@@ -1078,11 +1060,6 @@
     return control;
   };
 
-  const ol3turf$4 = {
-    Control,
-    utils,
-  };
-
   // Control name
   const name = 'along';
 
@@ -1091,22 +1068,22 @@
    */
   const action = function(control) {
     // Define control ids
-    const idCancel = ol3turf$4.utils.getName([name, 'cancel'], control.prefix);
-    const idDistance = ol3turf$4.utils.getName([name, 'distance'], control.prefix);
-    const idForm = ol3turf$4.utils.getName([name, 'form'], control.prefix);
-    const idOk = ol3turf$4.utils.getName([name, 'ok'], control.prefix);
-    const idUnits = ol3turf$4.utils.getName([name, 'units'], control.prefix);
+    const idCancel = utils.getName([name, 'cancel'], control.prefix);
+    const idDistance = utils.getName([name, 'distance'], control.prefix);
+    const idForm = utils.getName([name, 'form'], control.prefix);
+    const idOk = utils.getName([name, 'ok'], control.prefix);
+    const idUnits = utils.getName([name, 'units'], control.prefix);
 
     const onOK = function() {
       try {
         // Gather line seleted
-        const collection = ol3turf$4.utils.getCollection(control, 1, 1);
-        const lines = ol3turf$4.utils.getLines(collection, 1, 1);
+        const collection = utils.getCollection(control, 1, 1);
+        const lines = utils.getLines(collection, 1, 1);
         const line = lines[0];
 
         // Gather form inputs
-        const distance = ol3turf$4.utils.getFormNumber(idDistance, 'distance');
-        const units = ol3turf$4.utils.getFormString(idUnits, 'units');
+        const distance = utils.getFormNumber(idDistance, 'distance');
+        const units = utils.getFormString(idUnits, 'units');
 
         // Collect polygons
         const output = turf.along(line, distance, units);
@@ -1129,12 +1106,12 @@
     };
 
     const controls = [
-      ol3turf$4.utils.getControlNumber(idDistance,
+      utils.getControlNumber(idDistance,
           'Distance', 'Distance along the line', '0', 'any', '0'),
-      ol3turf$4.utils.getControlSelect(idUnits,
-          'Units', ol3turf$4.utils.getOptionsUnits()),
-      ol3turf$4.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$4.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlSelect(idUnits,
+          'Units', utils.getOptionsUnits()),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -1143,13 +1120,8 @@
   var along = {
     create: function(toolbar, prefix) {
       const title = 'Find point along line at given distance';
-      return ol3turf$4.Control.create(toolbar, prefix, name, title, action);
+      return Control.create(toolbar, prefix, name, title, action);
     },
-  };
-
-  const ol3turf$5 = {
-    Control,
-    utils,
   };
 
   // Control name
@@ -1159,7 +1131,7 @@
    * Compute area
    */
   const action$1 = function(control) {
-    const collection = ol3turf$5.utils.getCollection(control, 1, Infinity);
+    const collection = utils.getCollection(control, 1, Infinity);
     const output = turf.area(collection);
     const inputs = {
       input: collection,
@@ -1170,13 +1142,8 @@
   var area = {
     create: function(toolbar, prefix) {
       const title = 'Measure Area';
-      return ol3turf$5.Control.create(toolbar, prefix, name$1, title, action$1);
+      return Control.create(toolbar, prefix, name$1, title, action$1);
     },
-  };
-
-  const ol3turf$6 = {
-    Control,
-    utils,
   };
 
   // Control name
@@ -1187,8 +1154,8 @@
    */
   const action$2 = function(control) {
     // Gather points seleted
-    const collection = ol3turf$6.utils.getCollection(control, 2, 2);
-    const points = ol3turf$6.utils.getPoints(collection, 2, 2);
+    const collection = utils.getCollection(control, 2, 2);
+    const points = utils.getPoints(collection, 2, 2);
     const start = points[0];
     const end = points[1];
     const output = turf.bearing(start, end);
@@ -1202,13 +1169,8 @@
   var bearing = {
     create: function(toolbar, prefix) {
       const title = 'Measure Bearing';
-      return ol3turf$6.Control.create(toolbar, prefix, name$2, title, action$2);
+      return Control.create(toolbar, prefix, name$2, title, action$2);
     },
-  };
-
-  const ol3turf$7 = {
-    Control,
-    utils,
   };
 
   // Control name
@@ -1219,25 +1181,25 @@
    */
   const action$3 = function(control) {
     // Define control ids
-    const idCancel = ol3turf$7.utils.getName([name$3, 'cancel'], control.prefix);
-    const idForm = ol3turf$7.utils.getName([name$3, 'form'], control.prefix);
-    const idOk = ol3turf$7.utils.getName([name$3, 'ok'], control.prefix);
-    const idResolution = ol3turf$7.utils.getName([name$3, 'resolution'],
+    const idCancel = utils.getName([name$3, 'cancel'], control.prefix);
+    const idForm = utils.getName([name$3, 'form'], control.prefix);
+    const idOk = utils.getName([name$3, 'ok'], control.prefix);
+    const idResolution = utils.getName([name$3, 'resolution'],
         control.prefix);
-    const idSharpness = ol3turf$7.utils.getName([name$3, 'sharpness'],
+    const idSharpness = utils.getName([name$3, 'sharpness'],
         control.prefix);
 
     const onOK = function() {
       try {
         // Gather line seleted
-        const collection = ol3turf$7.utils.getCollection(control, 1, 1);
-        const lines = ol3turf$7.utils.getLines(collection, 1, 1);
+        const collection = utils.getCollection(control, 1, 1);
+        const lines = utils.getLines(collection, 1, 1);
         const line = lines[0];
 
         // Gather form inputs
-        const resolution = ol3turf$7.utils.getFormNumber(idResolution,
+        const resolution = utils.getFormNumber(idResolution,
             'resolution');
-        const sharpness = ol3turf$7.utils.getFormNumber(idSharpness, 'sharpness');
+        const sharpness = utils.getFormNumber(idSharpness, 'sharpness');
 
         // Create bezier curve
         const output = turf.bezier(line, resolution, sharpness);
@@ -1260,13 +1222,13 @@
     };
 
     const controls = [
-      ol3turf$7.utils.getControlNumber(idResolution, 'Resolution',
+      utils.getControlNumber(idResolution, 'Resolution',
           'Time between points (milliseconds)', '10000', 'any', '0'),
-      ol3turf$7.utils.getControlNumber(idSharpness, 'Sharpness',
+      utils.getControlNumber(idSharpness, 'Sharpness',
           'Measure of how curvy the path should be between splines', '0.85',
           '0.01', '0', '1'),
-      ol3turf$7.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$7.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -1275,13 +1237,8 @@
   var bezier = {
     create: function(toolbar, prefix) {
       const title = 'Create bezier curve of line';
-      return ol3turf$7.Control.create(toolbar, prefix, name$3, title, action$3);
+      return Control.create(toolbar, prefix, name$3, title, action$3);
     },
-  };
-
-  const ol3turf$8 = {
-    Control,
-    utils,
   };
 
   // Control name
@@ -1292,20 +1249,20 @@
    */
   const action$4 = function(control) {
     // Define control ids
-    const idCancel = ol3turf$8.utils.getName([name$4, 'cancel'], control.prefix);
-    const idDistance = ol3turf$8.utils.getName([name$4, 'distance'], control.prefix);
-    const idForm = ol3turf$8.utils.getName([name$4, 'form'], control.prefix);
-    const idOk = ol3turf$8.utils.getName([name$4, 'ok'], control.prefix);
-    const idUnits = ol3turf$8.utils.getName([name$4, 'units'], control.prefix);
+    const idCancel = utils.getName([name$4, 'cancel'], control.prefix);
+    const idDistance = utils.getName([name$4, 'distance'], control.prefix);
+    const idForm = utils.getName([name$4, 'form'], control.prefix);
+    const idOk = utils.getName([name$4, 'ok'], control.prefix);
+    const idUnits = utils.getName([name$4, 'units'], control.prefix);
 
     const onOK = function() {
       try {
         // Gather selected features
-        const collection = ol3turf$8.utils.getCollection(control, 1, Infinity);
+        const collection = utils.getCollection(control, 1, Infinity);
 
         // Gather form inputs
-        const distance = ol3turf$8.utils.getFormNumber(idDistance, 'distance');
-        const units = ol3turf$8.utils.getFormString(idUnits, 'units');
+        const distance = utils.getFormNumber(idDistance, 'distance');
+        const units = utils.getFormString(idUnits, 'units');
 
         // Collect polygons
         const output = turf.buffer(collection, distance, units);
@@ -1328,12 +1285,12 @@
     };
 
     const controls = [
-      ol3turf$8.utils.getControlNumber(idDistance, 'Distance',
+      utils.getControlNumber(idDistance, 'Distance',
           'Distance to draw the buffer', '0', 'any', '0'),
-      ol3turf$8.utils.getControlSelect(idUnits, 'Units',
-          ol3turf$8.utils.getOptionsUnits()),
-      ol3turf$8.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$8.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlSelect(idUnits, 'Units',
+          utils.getOptionsUnits()),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -1342,13 +1299,8 @@
   var buffer = {
     create: function(toolbar, prefix) {
       const title = 'Buffer feature by given radius';
-      return ol3turf$8.Control.create(toolbar, prefix, name$4, title, action$4);
+      return Control.create(toolbar, prefix, name$4, title, action$4);
     },
-  };
-
-  const ol3turf$9 = {
-    Control,
-    utils,
   };
 
   // Control name
@@ -1358,7 +1310,7 @@
    * Compute center
    */
   const action$5 = function(control) {
-    const collection = ol3turf$9.utils.getCollection(control, 1, Infinity);
+    const collection = utils.getCollection(control, 1, Infinity);
     const output = turf.center(collection);
     const inputs = {
       features: collection,
@@ -1369,13 +1321,8 @@
   var center = {
     create: function(toolbar, prefix) {
       const title = 'Measure Center';
-      return ol3turf$9.Control.create(toolbar, prefix, name$5, title, action$5);
+      return Control.create(toolbar, prefix, name$5, title, action$5);
     },
-  };
-
-  const ol3turf$a = {
-    Control,
-    utils,
   };
 
   // Control name
@@ -1385,7 +1332,7 @@
    * Compute center-of-mass
    */
   const action$6 = function(control) {
-    const collection = ol3turf$a.utils.getCollection(control, 1, Infinity);
+    const collection = utils.getCollection(control, 1, Infinity);
     const output = turf.centerOfMass(collection);
     const inputs = {
       features: collection,
@@ -1396,13 +1343,8 @@
   var centerOfMass = {
     create: function(toolbar, prefix) {
       const title = 'Measure center of mass';
-      return ol3turf$a.Control.create(toolbar, prefix, name$6, title, action$6);
+      return Control.create(toolbar, prefix, name$6, title, action$6);
     },
-  };
-
-  const ol3turf$b = {
-    Control,
-    utils,
   };
 
   // Control name
@@ -1412,7 +1354,7 @@
    * Compute centroid
    */
   const action$7 = function(control) {
-    const collection = ol3turf$b.utils.getCollection(control, 1, Infinity);
+    const collection = utils.getCollection(control, 1, Infinity);
     const output = turf.centroid(collection);
     const inputs = {
       features: collection,
@@ -1423,13 +1365,8 @@
   var centroid = {
     create: function(toolbar, prefix) {
       const title = 'Measure Centroid';
-      return ol3turf$b.Control.create(toolbar, prefix, name$7, title, action$7);
+      return Control.create(toolbar, prefix, name$7, title, action$7);
     },
-  };
-
-  const ol3turf$c = {
-    Control,
-    utils,
   };
 
   // Control name
@@ -1440,24 +1377,24 @@
    */
   const action$8 = function(control) {
     // Define control ids
-    const idCancel = ol3turf$c.utils.getName([name$8, 'cancel'], control.prefix);
-    const idForm = ol3turf$c.utils.getName([name$8, 'form'], control.prefix);
-    const idOk = ol3turf$c.utils.getName([name$8, 'ok'], control.prefix);
-    const idRadius = ol3turf$c.utils.getName([name$8, 'radius'], control.prefix);
-    const idSteps = ol3turf$c.utils.getName([name$8, 'steps'], control.prefix);
-    const idUnits = ol3turf$c.utils.getName([name$8, 'units'], control.prefix);
+    const idCancel = utils.getName([name$8, 'cancel'], control.prefix);
+    const idForm = utils.getName([name$8, 'form'], control.prefix);
+    const idOk = utils.getName([name$8, 'ok'], control.prefix);
+    const idRadius = utils.getName([name$8, 'radius'], control.prefix);
+    const idSteps = utils.getName([name$8, 'steps'], control.prefix);
+    const idUnits = utils.getName([name$8, 'units'], control.prefix);
 
     const onOK = function() {
       try {
         // Gather center point
-        const collection = ol3turf$c.utils.getCollection(control, 1, 1);
-        const points = ol3turf$c.utils.getPoints(collection, 1, 1);
+        const collection = utils.getCollection(control, 1, 1);
+        const points = utils.getPoints(collection, 1, 1);
         const center = points[0];
 
         // Gather form inputs
-        const radius = ol3turf$c.utils.getFormNumber(idRadius, 'radius');
-        const steps = ol3turf$c.utils.getFormNumber(idSteps, 'steps');
-        const units = ol3turf$c.utils.getFormString(idUnits, 'units');
+        const radius = utils.getFormNumber(idRadius, 'radius');
+        const steps = utils.getFormNumber(idSteps, 'steps');
+        const units = utils.getFormString(idUnits, 'units');
 
         // Collect polygons
         const output = turf.circle(center, radius, steps, units);
@@ -1481,14 +1418,14 @@
     };
 
     const controls = [
-      ol3turf$c.utils.getControlNumber(idRadius, 'Radius', 'Radius of the circle',
+      utils.getControlNumber(idRadius, 'Radius', 'Radius of the circle',
           '0', 'any', '0'),
-      ol3turf$c.utils.getControlNumber(idSteps, 'Steps',
+      utils.getControlNumber(idSteps, 'Steps',
           'Number of steps around circle', '3', '1', '3'),
-      ol3turf$c.utils.getControlSelect(idUnits, 'Units',
-          ol3turf$c.utils.getOptionsUnits()),
-      ol3turf$c.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$c.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlSelect(idUnits, 'Units',
+          utils.getOptionsUnits()),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -1497,15 +1434,9 @@
   var circle = {
     create: function(toolbar, prefix) {
       const title = 'Create circle';
-      return ol3turf$c.Control.create(toolbar, prefix, name$8, title, action$8);
+      return Control.create(toolbar, prefix, name$8, title, action$8);
     },
   };
-
-  const ol3turf$d = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$9 = 'collect';
@@ -1515,23 +1446,24 @@
    */
   const action$9 = function(control) {
     // Define control ids
-    const idCancel = ol3turf$d.utils.getName([name$9, 'cancel'], control.prefix);
-    const idForm = ol3turf$d.utils.getName([name$9, 'form'], control.prefix);
-    const idIn = ol3turf$d.utils.getName([name$9, 'in', 'property'], control.prefix);
-    const idOk = ol3turf$d.utils.getName([name$9, 'ok'], control.prefix);
-    const idOut = ol3turf$d.utils.getName([name$9, 'out', 'property'], control.prefix);
+    const idCancel = utils.getName([name$9, 'cancel'], control.prefix);
+    const idForm = utils.getName([name$9, 'form'], control.prefix);
+    const idIn = utils.getName([name$9, 'in', 'property'], control.prefix);
+    const idOk = utils.getName([name$9, 'ok'], control.prefix);
+    const idOut = utils.getName([name$9, 'out', 'property'], control.prefix);
 
     const onOK = function() {
       try {
         // Gather selected points and polygons
-        const collection = ol3turf$d.utils.getCollection(control, 2, Infinity);
-        const points = ol3turf$d.utils.getPoints(collection, 1, collection.features.length - 1);
+        const collection = utils.getCollection(control, 2, Infinity);
+        const points = utils.getPoints(collection, 1,
+            collection.features.length - 1);
         const numPolygons = collection.features.length - points.length;
-        const polygons = ol3turf$d.utils.getPolygons(collection, numPolygons, numPolygons);
+        const polygons = utils.getPolygons(collection, numPolygons, numPolygons);
 
         // Gather form inputs
-        const inProperty = ol3turf$d.utils.getFormString(idIn, 'In-Property');
-        const outProperty = ol3turf$d.utils.getFormString(idOut, 'Out-Property');
+        const inProperty = utils.getFormString(idIn, 'In-Property');
+        const outProperty = utils.getFormString(idOut, 'Out-Property');
 
         // Collect polygons
         const inPolygons = turf.featureCollection(polygons);
@@ -1560,10 +1492,10 @@
     };
 
     const controls = [
-      ol3turf$d.utils.getControlText(idIn, 'In Property', 'Property to be nested from'),
-      ol3turf$d.utils.getControlText(idOut, 'Out Property', 'Property to be nested into'),
-      ol3turf$d.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$d.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlText(idIn, 'In Property', 'Property to be nested from'),
+      utils.getControlText(idOut, 'Out Property', 'Property to be nested into'),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -1572,15 +1504,9 @@
   var collect = {
     create: function(toolbar, prefix) {
       const title = 'Collect points within polygons';
-      return ol3turf$d.Control.create(toolbar, prefix, name$9, title, action$9);
+      return Control.create(toolbar, prefix, name$9, title, action$9);
     },
   };
-
-  const ol3turf$e = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$a = 'combine';
@@ -1589,7 +1515,7 @@
    * Compute combine of feature collection
    */
   const action$a = function(control) {
-    const collection = ol3turf$e.utils.getCollection(control, 1, Infinity);
+    const collection = utils.getCollection(control, 1, Infinity);
 
     const output = turf.combine(collection);
     const inputs = {
@@ -1601,15 +1527,9 @@
   var combine = {
     create: function(toolbar, prefix) {
       const title = 'Combine feature collection';
-      return ol3turf$e.Control.create(toolbar, prefix, name$a, title, action$a);
+      return Control.create(toolbar, prefix, name$a, title, action$a);
     },
   };
-
-  const ol3turf$f = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$b = 'concave';
@@ -1619,22 +1539,22 @@
    */
   const action$b = function(control) {
     // Define control ids
-    const idCancel = ol3turf$f.utils.getName([name$b, 'cancel'], control.prefix);
-    const idForm = ol3turf$f.utils.getName([name$b, 'form'], control.prefix);
-    const idMaxEdge = ol3turf$f.utils.getName([name$b, 'max', 'edge'], control.prefix);
-    const idOk = ol3turf$f.utils.getName([name$b, 'ok'], control.prefix);
-    const idUnits = ol3turf$f.utils.getName([name$b, 'units'], control.prefix);
+    const idCancel = utils.getName([name$b, 'cancel'], control.prefix);
+    const idForm = utils.getName([name$b, 'form'], control.prefix);
+    const idMaxEdge = utils.getName([name$b, 'max', 'edge'], control.prefix);
+    const idOk = utils.getName([name$b, 'ok'], control.prefix);
+    const idUnits = utils.getName([name$b, 'units'], control.prefix);
 
     const onOK = function() {
       try {
         // Gather selected features
-        const collection = ol3turf$f.utils.getCollection(control, 3, Infinity);
+        const collection = utils.getCollection(control, 3, Infinity);
         const numPoints = collection.features.length;
-        const pts = ol3turf$f.utils.getPoints(collection, numPoints, numPoints);
+        const pts = utils.getPoints(collection, numPoints, numPoints);
 
         // Gather form inputs
-        const maxEdge = ol3turf$f.utils.getFormNumber(idMaxEdge, 'Max Edge');
-        const units = ol3turf$f.utils.getFormString(idUnits, 'units');
+        const maxEdge = utils.getFormNumber(idMaxEdge, 'Max Edge');
+        const units = utils.getFormString(idUnits, 'units');
 
         // Collect polygons
         const points = turf.featureCollection(pts);
@@ -1658,10 +1578,12 @@
     };
 
     const controls = [
-      ol3turf$f.utils.getControlNumber(idMaxEdge, 'Max Edge Size', 'Maximum size of an edge necessary for part of the hull to become concave', '0', 'any', '0'),
-      ol3turf$f.utils.getControlSelect(idUnits, 'Units', ol3turf$f.utils.getOptionsUnits()),
-      ol3turf$f.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$f.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlNumber(idMaxEdge, 'Max Edge Size',
+          'Maximum size of an edge necessary for part of the hull to become ' +
+          'concave', '0', 'any', '0'),
+      utils.getControlSelect(idUnits, 'Units', utils.getOptionsUnits()),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -1670,15 +1592,9 @@
   var concave = {
     create: function(toolbar, prefix) {
       const title = 'Create Concave Hull';
-      return ol3turf$f.Control.create(toolbar, prefix, name$b, title, action$b);
+      return Control.create(toolbar, prefix, name$b, title, action$b);
     },
   };
-
-  const ol3turf$g = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$c = 'convex';
@@ -1687,7 +1603,7 @@
    * Compute convex hull
    */
   const action$c = function(control) {
-    const collection = ol3turf$g.utils.getCollection(control, 1, Infinity);
+    const collection = utils.getCollection(control, 1, Infinity);
 
     const output = turf.convex(collection);
     const inputs = {
@@ -1699,15 +1615,9 @@
   var convex = {
     create: function(toolbar, prefix) {
       const title = 'Create Convex Hull';
-      return ol3turf$g.Control.create(toolbar, prefix, name$c, title, action$c);
+      return Control.create(toolbar, prefix, name$c, title, action$c);
     },
   };
-
-  const ol3turf$h = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$d = 'destination';
@@ -1717,24 +1627,24 @@
    */
   const action$d = function(control) {
     // Define control ids
-    const idBearing = ol3turf$h.utils.getName([name$d, 'bearing'], control.prefix);
-    const idCancel = ol3turf$h.utils.getName([name$d, 'cancel'], control.prefix);
-    const idDistance = ol3turf$h.utils.getName([name$d, 'distance'], control.prefix);
-    const idForm = ol3turf$h.utils.getName([name$d, 'form'], control.prefix);
-    const idOk = ol3turf$h.utils.getName([name$d, 'ok'], control.prefix);
-    const idUnits = ol3turf$h.utils.getName([name$d, 'units'], control.prefix);
+    const idBearing = utils.getName([name$d, 'bearing'], control.prefix);
+    const idCancel = utils.getName([name$d, 'cancel'], control.prefix);
+    const idDistance = utils.getName([name$d, 'distance'], control.prefix);
+    const idForm = utils.getName([name$d, 'form'], control.prefix);
+    const idOk = utils.getName([name$d, 'ok'], control.prefix);
+    const idUnits = utils.getName([name$d, 'units'], control.prefix);
 
     const onOK = function() {
       try {
         // Gather point seleted
-        const collection = ol3turf$h.utils.getCollection(control, 1, 1);
-        const points = ol3turf$h.utils.getPoints(collection, 1, 1);
+        const collection = utils.getCollection(control, 1, 1);
+        const points = utils.getPoints(collection, 1, 1);
         const point = points[0];
 
         // Gather form inputs
-        const distance = ol3turf$h.utils.getFormNumber(idDistance, 'distance');
-        const bearing = ol3turf$h.utils.getFormNumber(idBearing, 'bearing');
-        const units = ol3turf$h.utils.getFormString(idUnits, 'units');
+        const distance = utils.getFormNumber(idDistance, 'distance');
+        const bearing = utils.getFormNumber(idBearing, 'bearing');
+        const units = utils.getFormString(idUnits, 'units');
 
         // Collect polygons
         const output = turf.destination(point,
@@ -1761,11 +1671,13 @@
     };
 
     const controls = [
-      ol3turf$h.utils.getControlNumber(idBearing, 'Bearing', 'Bearing angle (degrees)', '0', 'any', '-180', '180'),
-      ol3turf$h.utils.getControlNumber(idDistance, 'Distance', 'Distance from the starting point', '0', 'any', '0'),
-      ol3turf$h.utils.getControlSelect(idUnits, 'Units', ol3turf$h.utils.getOptionsUnits()),
-      ol3turf$h.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$h.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlNumber(idBearing, 'Bearing', 'Bearing angle (degrees)',
+          '0', 'any', '-180', '180'),
+      utils.getControlNumber(idDistance, 'Distance',
+          'Distance from the starting point', '0', 'any', '0'),
+      utils.getControlSelect(idUnits, 'Units', utils.getOptionsUnits()),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -1774,15 +1686,9 @@
   var destination = {
     create: function(toolbar, prefix) {
       const title = 'Find destination point from given point';
-      return ol3turf$h.Control.create(toolbar, prefix, name$d, title, action$d);
+      return Control.create(toolbar, prefix, name$d, title, action$d);
     },
   };
-
-  const ol3turf$i = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$e = 'difference';
@@ -1791,8 +1697,8 @@
    * Compute difference between two polygons
    */
   const action$e = function(control) {
-    const collection = ol3turf$i.utils.getCollection(control, 2, 2);
-    const polygons = ol3turf$i.utils.getPolygons(collection, 2, 2);
+    const collection = utils.getCollection(control, 2, 2);
+    const polygons = utils.getPolygons(collection, 2, 2);
     const poly1 = polygons[0];
     const poly2 = polygons[1];
     const output = turf.difference(poly1, poly2);
@@ -1806,15 +1712,9 @@
   var difference = {
     create: function(toolbar, prefix) {
       const title = 'Create Difference Polygon';
-      return ol3turf$i.Control.create(toolbar, prefix, name$e, title, action$e);
+      return Control.create(toolbar, prefix, name$e, title, action$e);
     },
   };
-
-  const ol3turf$j = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$f = 'distance';
@@ -1824,21 +1724,21 @@
    */
   const action$f = function(control) {
     // Define control ids
-    const idCancel = ol3turf$j.utils.getName([name$f, 'cancel'], control.prefix);
-    const idForm = ol3turf$j.utils.getName([name$f, 'form'], control.prefix);
-    const idOk = ol3turf$j.utils.getName([name$f, 'ok'], control.prefix);
-    const idUnits = ol3turf$j.utils.getName([name$f, 'units'], control.prefix);
+    const idCancel = utils.getName([name$f, 'cancel'], control.prefix);
+    const idForm = utils.getName([name$f, 'form'], control.prefix);
+    const idOk = utils.getName([name$f, 'ok'], control.prefix);
+    const idUnits = utils.getName([name$f, 'units'], control.prefix);
 
     const onOK = function() {
       try {
         // Gather points seleted
-        const collection = ol3turf$j.utils.getCollection(control, 2, 2);
-        const points = ol3turf$j.utils.getPoints(collection, 2, 2);
+        const collection = utils.getCollection(control, 2, 2);
+        const points = utils.getPoints(collection, 2, 2);
         const from = points[0];
         const to = points[1];
 
         // Gather form inputs
-        const units = ol3turf$j.utils.getFormString(idUnits, 'units');
+        const units = utils.getFormString(idUnits, 'units');
 
         // Collect polygons
         const output = turf.distance(from, to, units);
@@ -1861,9 +1761,9 @@
     };
 
     const controls = [
-      ol3turf$j.utils.getControlSelect(idUnits, 'Units', ol3turf$j.utils.getOptionsUnits()),
-      ol3turf$j.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$j.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlSelect(idUnits, 'Units', utils.getOptionsUnits()),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -1872,15 +1772,9 @@
   var distance = {
     create: function(toolbar, prefix) {
       const title = 'Find distance between points';
-      return ol3turf$j.Control.create(toolbar, prefix, name$f, title, action$f);
+      return Control.create(toolbar, prefix, name$f, title, action$f);
     },
   };
-
-  const ol3turf$k = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$g = 'envelope';
@@ -1889,7 +1783,7 @@
    * Compute envelope
    */
   const action$g = function(control) {
-    const collection = ol3turf$k.utils.getCollection(control, 1, Infinity);
+    const collection = utils.getCollection(control, 1, Infinity);
 
     const output = turf.envelope(collection);
     const inputs = {
@@ -1901,15 +1795,9 @@
   var envelope = {
     create: function(toolbar, prefix) {
       const title = 'Measure Envelope';
-      return ol3turf$k.Control.create(toolbar, prefix, name$g, title, action$g);
+      return Control.create(toolbar, prefix, name$g, title, action$g);
     },
   };
-
-  const ol3turf$l = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$h = 'explode';
@@ -1918,7 +1806,7 @@
    * Compute explode of feature collection
    */
   const action$h = function(control) {
-    const collection = ol3turf$l.utils.getCollection(control, 1, Infinity);
+    const collection = utils.getCollection(control, 1, Infinity);
 
     const output = turf.explode(collection);
     const inputs = {
@@ -1930,15 +1818,9 @@
   var explode = {
     create: function(toolbar, prefix) {
       const title = 'Explode feature collection';
-      return ol3turf$l.Control.create(toolbar, prefix, name$h, title, action$h);
+      return Control.create(toolbar, prefix, name$h, title, action$h);
     },
   };
-
-  const ol3turf$m = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$i = 'flip';
@@ -1947,7 +1829,7 @@
    * Compute feature coordinate flip
    */
   const action$i = function(control) {
-    const collection = ol3turf$m.utils.getCollection(control, 1, Infinity);
+    const collection = utils.getCollection(control, 1, Infinity);
 
     const output = turf.flip(collection);
     const inputs = {
@@ -1959,15 +1841,9 @@
   var flip = {
     create: function(toolbar, prefix) {
       const title = 'Flip features coordinates';
-      return ol3turf$m.Control.create(toolbar, prefix, name$i, title, action$i);
+      return Control.create(toolbar, prefix, name$i, title, action$i);
     },
   };
-
-  const ol3turf$n = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$j = 'hex-grid';
@@ -1977,22 +1853,22 @@
    */
   const action$j = function(control) {
     // Define control ids
-    const idCancel = ol3turf$n.utils.getName([name$j, 'cancel'], control.prefix);
-    const idCellSize = ol3turf$n.utils.getName([name$j, 'cell-size'], control.prefix);
-    const idForm = ol3turf$n.utils.getName([name$j, 'form'], control.prefix);
-    const idType = ol3turf$n.utils.getName([name$j, 'type'], control.prefix);
-    const idOk = ol3turf$n.utils.getName([name$j, 'ok'], control.prefix);
-    const idUnits = ol3turf$n.utils.getName([name$j, 'units'], control.prefix);
+    const idCancel = utils.getName([name$j, 'cancel'], control.prefix);
+    const idCellSize = utils.getName([name$j, 'cell-size'], control.prefix);
+    const idForm = utils.getName([name$j, 'form'], control.prefix);
+    const idType = utils.getName([name$j, 'type'], control.prefix);
+    const idOk = utils.getName([name$j, 'ok'], control.prefix);
+    const idUnits = utils.getName([name$j, 'units'], control.prefix);
 
     const onOK = function() {
       try {
         // Gather selected features
-        const collection = ol3turf$n.utils.getCollection(control, 1, Infinity);
+        const collection = utils.getCollection(control, 1, Infinity);
 
         // Gather form inputs
-        const cellSize = ol3turf$n.utils.getFormNumber(idCellSize, 'cell size');
-        const type = ol3turf$n.utils.getFormString(idType, 'grid type');
-        const units = ol3turf$n.utils.getFormString(idUnits, 'units');
+        const cellSize = utils.getFormNumber(idCellSize, 'cell size');
+        const type = utils.getFormString(idType, 'grid type');
+        const units = utils.getFormString(idUnits, 'units');
         const isTriangles = (type === 'triangles');
 
         // Collect polygons
@@ -2018,11 +1894,12 @@
     };
 
     const controls = [
-      ol3turf$n.utils.getControlNumber(idCellSize, 'Cell Size', 'Dimension of cell', '1', 'any', '0'),
-      ol3turf$n.utils.getControlSelect(idUnits, 'Units', ol3turf$n.utils.getOptionsUnits()),
-      ol3turf$n.utils.getControlSelect(idType, 'Type', ol3turf$n.utils.getOptionsGrids()),
-      ol3turf$n.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$n.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlNumber(idCellSize, 'Cell Size', 'Dimension of cell', '1',
+          'any', '0'),
+      utils.getControlSelect(idUnits, 'Units', utils.getOptionsUnits()),
+      utils.getControlSelect(idType, 'Type', utils.getOptionsGrids()),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -2031,15 +1908,9 @@
   var hexGrid = {
     create: function(toolbar, prefix) {
       const title = 'Generate Hex Grid';
-      return ol3turf$n.Control.create(toolbar, prefix, name$j, title, action$j);
+      return Control.create(toolbar, prefix, name$j, title, action$j);
     },
   };
-
-  const ol3turf$o = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$k = 'inside';
@@ -2049,9 +1920,9 @@
    */
   const action$k = function(control) {
     // Gather point and polygon selected
-    const collection = ol3turf$o.utils.getCollection(control, 2, 2);
-    const points = ol3turf$o.utils.getPoints(collection, 1, 1);
-    const polygons = ol3turf$o.utils.getPolygonsAll(collection, 1, 1);
+    const collection = utils.getCollection(control, 2, 2);
+    const points = utils.getPoints(collection, 1, 1);
+    const polygons = utils.getPolygonsAll(collection, 1, 1);
     const point = points[0];
     const polygon = polygons[0];
 
@@ -2066,15 +1937,9 @@
   var inside = {
     create: function(toolbar, prefix) {
       const title = 'Point inside polygon?';
-      return ol3turf$o.Control.create(toolbar, prefix, name$k, title, action$k);
+      return Control.create(toolbar, prefix, name$k, title, action$k);
     },
   };
-
-  const ol3turf$p = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$l = 'intersect';
@@ -2083,8 +1948,8 @@
    * Compute intersection of two polygons
    */
   const action$l = function(control) {
-    const collection = ol3turf$p.utils.getCollection(control, 2, 2);
-    const polygons = ol3turf$p.utils.getPolygonsAll(collection, 2, 2);
+    const collection = utils.getCollection(control, 2, 2);
+    const polygons = utils.getPolygonsAll(collection, 2, 2);
 
     const poly1 = polygons[0];
     const poly2 = polygons[1];
@@ -2099,15 +1964,9 @@
   var intersect = {
     create: function(toolbar, prefix) {
       const title = 'Create Intersection Polygon';
-      return ol3turf$p.Control.create(toolbar, prefix, name$l, title, action$l);
+      return Control.create(toolbar, prefix, name$l, title, action$l);
     },
   };
-
-  const ol3turf$q = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$m = 'isolines';
@@ -2117,22 +1976,22 @@
    */
   const action$m = function(control) {
     // Define control ids
-    const idBreaks = ol3turf$q.utils.getName([name$m, 'breaks'], control.prefix);
-    const idCancel = ol3turf$q.utils.getName([name$m, 'cancel'], control.prefix);
-    const idForm = ol3turf$q.utils.getName([name$m, 'form'], control.prefix);
-    const idOk = ol3turf$q.utils.getName([name$m, 'ok'], control.prefix);
-    const idResolution = ol3turf$q.utils.getName([name$m, 'resolution'], control.prefix);
-    const idZ = ol3turf$q.utils.getName([name$m, 'z'], control.prefix);
+    const idBreaks = utils.getName([name$m, 'breaks'], control.prefix);
+    const idCancel = utils.getName([name$m, 'cancel'], control.prefix);
+    const idForm = utils.getName([name$m, 'form'], control.prefix);
+    const idOk = utils.getName([name$m, 'ok'], control.prefix);
+    const idResolution = utils.getName([name$m, 'resolution'], control.prefix);
+    const idZ = utils.getName([name$m, 'z'], control.prefix);
 
     const onOK = function() {
       try {
         // Gather selected features
-        const collection = ol3turf$q.utils.getCollection(control, 1, Infinity);
+        const collection = utils.getCollection(control, 1, Infinity);
 
         // Gather form inputs
-        const breaks = ol3turf$q.utils.getFormArray(idBreaks, 'breaks');
-        const resolution = ol3turf$q.utils.getFormNumber(idResolution, 'resolution');
-        const z = ol3turf$q.utils.getFormString(idZ, 'z');
+        const breaks = utils.getFormArray(idBreaks, 'breaks');
+        const resolution = utils.getFormNumber(idResolution, 'resolution');
+        const z = utils.getFormString(idZ, 'z');
 
         // Generate isolines features
         const output = turf.isolines(collection, z, resolution, breaks);
@@ -2156,11 +2015,14 @@
     };
 
     const controls = [
-      ol3turf$q.utils.getControlNumber(idResolution, 'Resolution', 'Resolution of the underlying grid', '1', 'any', '0.01'),
-      ol3turf$q.utils.getControlText(idZ, 'Z Property', 'Property name in points from which z-values will be pulled'),
-      ol3turf$q.utils.getControlText(idBreaks, 'Breaks', 'Comma separated list of where to draw contours'),
-      ol3turf$q.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$q.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlNumber(idResolution, 'Resolution',
+          'Resolution of the underlying grid', '1', 'any', '0.01'),
+      utils.getControlText(idZ, 'Z Property',
+          'Property name in points from which z-values will be pulled'),
+      utils.getControlText(idBreaks, 'Breaks',
+          'Comma separated list of where to draw contours'),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -2169,15 +2031,9 @@
   var isolines = {
     create: function(toolbar, prefix) {
       const title = 'Create isolines';
-      return ol3turf$q.Control.create(toolbar, prefix, name$m, title, action$m);
+      return Control.create(toolbar, prefix, name$m, title, action$m);
     },
   };
-
-  const ol3turf$r = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$n = 'kinks';
@@ -2186,8 +2042,8 @@
    * Compute polygon kinks
    */
   const action$n = function(control) {
-    const collection = ol3turf$r.utils.getCollection(control, 1, 1);
-    const polygons = ol3turf$r.utils.getPolygons(collection, 1, 1);
+    const collection = utils.getCollection(control, 1, 1);
+    const polygons = utils.getPolygons(collection, 1, 1);
     const polygon = polygons[0];
     const output = turf.kinks(polygon);
     if (output.features.length === 0) {
@@ -2202,15 +2058,9 @@
   var kinks = {
     create: function(toolbar, prefix) {
       const title = 'Create polygon self-intersections';
-      return ol3turf$r.Control.create(toolbar, prefix, name$n, title, action$n);
+      return Control.create(toolbar, prefix, name$n, title, action$n);
     },
   };
-
-  const ol3turf$s = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$o = 'line-distance';
@@ -2220,18 +2070,18 @@
    */
   const action$o = function(control) {
     // Define control ids
-    const idCancel = ol3turf$s.utils.getName([name$o, 'cancel'], control.prefix);
-    const idForm = ol3turf$s.utils.getName([name$o, 'form'], control.prefix);
-    const idOk = ol3turf$s.utils.getName([name$o, 'ok'], control.prefix);
-    const idUnits = ol3turf$s.utils.getName([name$o, 'units'], control.prefix);
+    const idCancel = utils.getName([name$o, 'cancel'], control.prefix);
+    const idForm = utils.getName([name$o, 'form'], control.prefix);
+    const idOk = utils.getName([name$o, 'ok'], control.prefix);
+    const idUnits = utils.getName([name$o, 'units'], control.prefix);
 
     const onOK = function() {
       try {
         // Gather selected features
-        const collection = ol3turf$s.utils.getCollection(control, 1, Infinity);
+        const collection = utils.getCollection(control, 1, Infinity);
 
         // Gather form inputs
-        const units = ol3turf$s.utils.getFormString(idUnits, 'units');
+        const units = utils.getFormString(idUnits, 'units');
 
         // Compute length
         const output = turf.lineDistance(collection, units);
@@ -2253,9 +2103,9 @@
     };
 
     const controls = [
-      ol3turf$s.utils.getControlSelect(idUnits, 'Units', ol3turf$s.utils.getOptionsUnits()),
-      ol3turf$s.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$s.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlSelect(idUnits, 'Units', utils.getOptionsUnits()),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -2264,15 +2114,9 @@
   var lineDistance = {
     create: function(toolbar, prefix) {
       const title = 'Measure Length';
-      return ol3turf$s.Control.create(toolbar, prefix, name$o, title, action$o);
+      return Control.create(toolbar, prefix, name$o, title, action$o);
     },
   };
-
-  const ol3turf$t = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$p = 'line-slice-along';
@@ -2282,23 +2126,23 @@
    */
   const action$p = function(control) {
     // Define control ids
-    const idCancel = ol3turf$t.utils.getName([name$p, 'cancel'], control.prefix);
-    const idForm = ol3turf$t.utils.getName([name$p, 'form'], control.prefix);
-    const idOk = ol3turf$t.utils.getName([name$p, 'ok'], control.prefix);
-    const idStart = ol3turf$t.utils.getName([name$p, 'start'], control.prefix);
-    const idStop = ol3turf$t.utils.getName([name$p, 'stop'], control.prefix);
-    const idUnits = ol3turf$t.utils.getName([name$p, 'units'], control.prefix);
+    const idCancel = utils.getName([name$p, 'cancel'], control.prefix);
+    const idForm = utils.getName([name$p, 'form'], control.prefix);
+    const idOk = utils.getName([name$p, 'ok'], control.prefix);
+    const idStart = utils.getName([name$p, 'start'], control.prefix);
+    const idStop = utils.getName([name$p, 'stop'], control.prefix);
+    const idUnits = utils.getName([name$p, 'units'], control.prefix);
 
     const onOK = function() {
       try {
         // Gather line seleted
-        const collection = ol3turf$t.utils.getCollection(control, 1, 1);
-        const lines = ol3turf$t.utils.getLines(collection, 1, 1);
+        const collection = utils.getCollection(control, 1, 1);
+        const lines = utils.getLines(collection, 1, 1);
         const line = lines[0];
 
         // Gather form inputs
-        const start = ol3turf$t.utils.getFormNumber(idStart, 'start');
-        const stop = ol3turf$t.utils.getFormNumber(idStop, 'stop');
+        const start = utils.getFormNumber(idStart, 'start');
+        const stop = utils.getFormNumber(idStop, 'stop');
 
         const isOrdered = (start < stop);
         if (isOrdered !== true) {
@@ -2306,7 +2150,7 @@
         }
 
         // Truncate at line length otherwise lineSliceAlong fails
-        const units = ol3turf$t.utils.getFormString(idUnits, 'units');
+        const units = utils.getFormString(idUnits, 'units');
         const length = turf.lineDistance(line, units);
         if (start > length) {
           throw new Error('Start must be less than line length');
@@ -2337,11 +2181,13 @@
     };
 
     const controls = [
-      ol3turf$t.utils.getControlNumber(idStart, 'Start', 'Starting distance along the line', '0', 'any', '0'),
-      ol3turf$t.utils.getControlNumber(idStop, 'Stop', 'Stoping distance along the line', '0', 'any', '0'),
-      ol3turf$t.utils.getControlSelect(idUnits, 'Units', ol3turf$t.utils.getOptionsUnits()),
-      ol3turf$t.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$t.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlNumber(idStart, 'Start',
+          'Starting distance along the line', '0', 'any', '0'),
+      utils.getControlNumber(idStop, 'Stop', 'Stoping distance along the line',
+          '0', 'any', '0'),
+      utils.getControlSelect(idUnits, 'Units', utils.getOptionsUnits()),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -2350,15 +2196,9 @@
   var lineSliceAlong = {
     create: function(toolbar, prefix) {
       const title = 'Create line slice';
-      return ol3turf$t.Control.create(toolbar, prefix, name$p, title, action$p);
+      return Control.create(toolbar, prefix, name$p, title, action$p);
     },
   };
-
-  const ol3turf$u = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$q = 'midpoint';
@@ -2367,8 +2207,8 @@
    * Compute midpoint
    */
   const action$q = function(control) {
-    const collection = ol3turf$u.utils.getCollection(control, 2, 2);
-    const points = ol3turf$u.utils.getPoints(collection, 2, 2);
+    const collection = utils.getCollection(control, 2, 2);
+    const points = utils.getPoints(collection, 2, 2);
     const from = points[0];
     const to = points[1];
     const output = turf.midpoint(from, to);
@@ -2382,15 +2222,9 @@
   var midpoint = {
     create: function(toolbar, prefix) {
       const title = 'Measure Midpoint';
-      return ol3turf$u.Control.create(toolbar, prefix, name$q, title, action$q);
+      return Control.create(toolbar, prefix, name$q, title, action$q);
     },
   };
-
-  const ol3turf$v = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$r = 'nearest';
@@ -2399,9 +2233,9 @@
    * Compute nearest point
    */
   const action$r = function(control) {
-    const collection = ol3turf$v.utils.getCollection(control, 2, Infinity);
+    const collection = utils.getCollection(control, 2, Infinity);
     const numPoints = collection.features.length;
-    const pts = ol3turf$v.utils.getPoints(collection, numPoints, numPoints);
+    const pts = utils.getPoints(collection, numPoints, numPoints);
     const targetPoint = pts[0];
     const points = turf.featureCollection(pts.slice(1));
 
@@ -2416,15 +2250,9 @@
   var nearest = {
     create: function(toolbar, prefix) {
       const title = 'Find set point nearest to first point';
-      return ol3turf$v.Control.create(toolbar, prefix, name$r, title, action$r);
+      return Control.create(toolbar, prefix, name$r, title, action$r);
     },
   };
-
-  const ol3turf$w = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$s = 'planepoint';
@@ -2433,9 +2261,9 @@
    * Triangulate a point in a plane
    */
   const action$s = function(control) {
-    const collection = ol3turf$w.utils.getCollection(control, 2, 2);
-    const pt = ol3turf$w.utils.getPoints(collection, 1, 1);
-    const tr = ol3turf$w.utils.getPolygons(collection, 1, 1);
+    const collection = utils.getCollection(control, 2, 2);
+    const pt = utils.getPoints(collection, 1, 1);
+    const tr = utils.getPolygons(collection, 1, 1);
     const point = pt[0];
     const triangle = tr[0];
 
@@ -2450,15 +2278,9 @@
   var planepoint = {
     create: function(toolbar, prefix) {
       const title = 'Triangulate a point in a plane';
-      return ol3turf$w.Control.create(toolbar, prefix, name$s, title, action$s);
+      return Control.create(toolbar, prefix, name$s, title, action$s);
     },
   };
-
-  const ol3turf$x = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$t = 'point-grid';
@@ -2468,20 +2290,20 @@
    */
   const action$t = function(control) {
     // Define control ids
-    const idCancel = ol3turf$x.utils.getName([name$t, 'cancel'], control.prefix);
-    const idCellSize = ol3turf$x.utils.getName([name$t, 'cell-size'], control.prefix);
-    const idForm = ol3turf$x.utils.getName([name$t, 'form'], control.prefix);
-    const idOk = ol3turf$x.utils.getName([name$t, 'ok'], control.prefix);
-    const idUnits = ol3turf$x.utils.getName([name$t, 'units'], control.prefix);
+    const idCancel = utils.getName([name$t, 'cancel'], control.prefix);
+    const idCellSize = utils.getName([name$t, 'cell-size'], control.prefix);
+    const idForm = utils.getName([name$t, 'form'], control.prefix);
+    const idOk = utils.getName([name$t, 'ok'], control.prefix);
+    const idUnits = utils.getName([name$t, 'units'], control.prefix);
 
     const onOK = function() {
       try {
         // Gather selected features
-        const collection = ol3turf$x.utils.getCollection(control, 1, Infinity);
+        const collection = utils.getCollection(control, 1, Infinity);
 
         // Gather form inputs
-        const cellSize = ol3turf$x.utils.getFormNumber(idCellSize, 'cell size');
-        const units = ol3turf$x.utils.getFormString(idUnits, 'units');
+        const cellSize = utils.getFormNumber(idCellSize, 'cell size');
+        const units = utils.getFormString(idUnits, 'units');
 
         // Collect polygons
         const bbox = turf.bbox(collection);
@@ -2505,10 +2327,11 @@
     };
 
     const controls = [
-      ol3turf$x.utils.getControlNumber(idCellSize, 'Cell Size', 'Dimension of cell', '1', 'any', '0'),
-      ol3turf$x.utils.getControlSelect(idUnits, 'Units', ol3turf$x.utils.getOptionsUnits()),
-      ol3turf$x.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$x.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlNumber(idCellSize, 'Cell Size', 'Dimension of cell', '1',
+          'any', '0'),
+      utils.getControlSelect(idUnits, 'Units', utils.getOptionsUnits()),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -2517,15 +2340,9 @@
   var pointGrid = {
     create: function(toolbar, prefix) {
       const title = 'Generate Point Grid';
-      return ol3turf$x.Control.create(toolbar, prefix, name$t, title, action$t);
+      return Control.create(toolbar, prefix, name$t, title, action$t);
     },
   };
-
-  const ol3turf$y = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$u = 'point-on-line';
@@ -2534,9 +2351,9 @@
    * Compute point on line
    */
   const action$u = function(control) {
-    const collection = ol3turf$y.utils.getCollection(control, 2, 2);
-    const points = ol3turf$y.utils.getPoints(collection, 1, 1);
-    const lines = ol3turf$y.utils.getLines(collection, 1, 1);
+    const collection = utils.getCollection(control, 2, 2);
+    const points = utils.getPoints(collection, 1, 1);
+    const lines = utils.getLines(collection, 1, 1);
     const line = lines[0];
     const point = points[0];
 
@@ -2551,15 +2368,9 @@
   var pointOnLine = {
     create: function(toolbar, prefix) {
       const title = 'Project point on line';
-      return ol3turf$y.Control.create(toolbar, prefix, name$u, title, action$u);
+      return Control.create(toolbar, prefix, name$u, title, action$u);
     },
   };
-
-  const ol3turf$z = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$v = 'point-on-surface';
@@ -2568,7 +2379,7 @@
    * Compute pointOnSurface
    */
   const action$v = function(control) {
-    const collection = ol3turf$z.utils.getCollection(control, 1, Infinity);
+    const collection = utils.getCollection(control, 1, Infinity);
 
     const output = turf.pointOnSurface(collection);
     const inputs = {
@@ -2580,15 +2391,9 @@
   var pointOnSurface = {
     create: function(toolbar, prefix) {
       const title = 'Measure Point on Surface';
-      return ol3turf$z.Control.create(toolbar, prefix, name$v, title, action$v);
+      return Control.create(toolbar, prefix, name$v, title, action$v);
     },
   };
-
-  const ol3turf$A = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$w = 'random';
@@ -2598,28 +2403,31 @@
    */
   const action$w = function(control) {
     // Define control ids
-    const idCancel = ol3turf$A.utils.getName([name$w, 'cancel'], control.prefix);
-    const idCount = ol3turf$A.utils.getName([name$w, 'count'], control.prefix);
-    const idForm = ol3turf$A.utils.getName([name$w, 'form'], control.prefix);
-    const idMaxRadialLength = ol3turf$A.utils.getName([name$w, 'max-radial-length'], control.prefix);
-    const idNumVertices = ol3turf$A.utils.getName([name$w, 'num-vertices'], control.prefix);
-    const idOk = ol3turf$A.utils.getName([name$w, 'ok'], control.prefix);
-    const idType = ol3turf$A.utils.getName([name$w, 'type'], control.prefix);
+    const idCancel = utils.getName([name$w, 'cancel'], control.prefix);
+    const idCount = utils.getName([name$w, 'count'], control.prefix);
+    const idForm = utils.getName([name$w, 'form'], control.prefix);
+    const idMaxRadialLength = utils.getName([name$w, 'max-radial-length'],
+        control.prefix);
+    const idNumVertices = utils.getName([name$w, 'num-vertices'], control.prefix);
+    const idOk = utils.getName([name$w, 'ok'], control.prefix);
+    const idType = utils.getName([name$w, 'type'], control.prefix);
 
     const onOK = function() {
       try {
         // Gather selected features
         let bbox = null;
-        const collection = ol3turf$A.utils.getCollection(control, 0, Infinity);
+        const collection = utils.getCollection(control, 0, Infinity);
         if (collection.features.length !== 0) {
           bbox = turf.bbox(collection);
         }
 
         // Get form inputs
-        const count = ol3turf$A.utils.getFormInteger(idCount, 'count');
-        const maxRadialLength = ol3turf$A.utils.getFormInteger(idMaxRadialLength, 'maximum radial length');
-        const numVertices = ol3turf$A.utils.getFormInteger(idNumVertices, 'number of vertices');
-        const type = ol3turf$A.utils.getFormString(idType, 'type');
+        const count = utils.getFormInteger(idCount, 'count');
+        const maxRadialLength = utils.getFormInteger(idMaxRadialLength,
+            'maximum radial length');
+        const numVertices = utils.getFormInteger(idNumVertices,
+            'number of vertices');
+        const type = utils.getFormString(idType, 'type');
 
         // Generate random polygons
         const options = {
@@ -2649,12 +2457,16 @@
     };
 
     const controls = [
-      ol3turf$A.utils.getControlSelect(idType, 'Type', ol3turf$A.utils.getOptionsGeometry()),
-      ol3turf$A.utils.getControlNumber(idCount, 'Count', 'How many geometries should be generated', '1', '1', '1'),
-      ol3turf$A.utils.getControlNumber(idNumVertices, '# Vertices', 'Used only for polygon type', '10', '1', '3'),
-      ol3turf$A.utils.getControlNumber(idMaxRadialLength, 'Max Length', 'Maximum degrees a polygon can extent outwards from its center (degrees)', '10', '0.01', '0', '180'),
-      ol3turf$A.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$A.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlSelect(idType, 'Type', utils.getOptionsGeometry()),
+      utils.getControlNumber(idCount, 'Count',
+          'How many geometries should be generated', '1', '1', '1'),
+      utils.getControlNumber(idNumVertices, '# Vertices',
+          'Used only for polygon type', '10', '1', '3'),
+      utils.getControlNumber(idMaxRadialLength, 'Max Length',
+          'Maximum degrees a polygon can extent outwards from its center ' +
+          '(degrees)', '10', '0.01', '0', '180'),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -2663,15 +2475,9 @@
   var random = {
     create: function(toolbar, prefix) {
       const title = 'Create random data';
-      return ol3turf$A.Control.create(toolbar, prefix, name$w, title, action$w);
+      return Control.create(toolbar, prefix, name$w, title, action$w);
     },
   };
-
-  const ol3turf$B = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$x = 'sample';
@@ -2681,18 +2487,18 @@
    */
   const action$x = function(control) {
     // Define control ids
-    const idCancel = ol3turf$B.utils.getName([name$x, 'cancel'], control.prefix);
-    const idCount = ol3turf$B.utils.getName([name$x, 'count'], control.prefix);
-    const idForm = ol3turf$B.utils.getName([name$x, 'form'], control.prefix);
-    const idOk = ol3turf$B.utils.getName([name$x, 'ok'], control.prefix);
+    const idCancel = utils.getName([name$x, 'cancel'], control.prefix);
+    const idCount = utils.getName([name$x, 'count'], control.prefix);
+    const idForm = utils.getName([name$x, 'form'], control.prefix);
+    const idOk = utils.getName([name$x, 'ok'], control.prefix);
 
     const onOK = function() {
       try {
         // Gather selected features
-        const collection = ol3turf$B.utils.getCollection(control, 1, Infinity);
+        const collection = utils.getCollection(control, 1, Infinity);
 
         // Get form inputs
-        const count = ol3turf$B.utils.getFormInteger(idCount, 'count');
+        const count = utils.getFormInteger(idCount, 'count');
         if (count > collection.features.length) {
           throw new Error('Feature count must be greater than sampling count.');
         }
@@ -2717,9 +2523,10 @@
     };
 
     const controls = [
-      ol3turf$B.utils.getControlNumber(idCount, 'Count', 'Number of random features to sample', '1', '1', '1'),
-      ol3turf$B.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$B.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlNumber(idCount, 'Count',
+          'Number of random features to sample', '1', '1', '1'),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -2728,15 +2535,9 @@
   var sample = {
     create: function(toolbar, prefix) {
       const title = 'Randomly sample features';
-      return ol3turf$B.Control.create(toolbar, prefix, name$x, title, action$x);
+      return Control.create(toolbar, prefix, name$x, title, action$x);
     },
   };
-
-  const ol3turf$C = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$y = 'simplify';
@@ -2746,20 +2547,20 @@
    */
   const action$y = function(control) {
     // Define control ids
-    const idCancel = ol3turf$C.utils.getName([name$y, 'cancel'], control.prefix);
-    const idForm = ol3turf$C.utils.getName([name$y, 'form'], control.prefix);
-    const idOk = ol3turf$C.utils.getName([name$y, 'ok'], control.prefix);
-    const idQuality = ol3turf$C.utils.getName([name$y, 'quality'], control.prefix);
-    const idTolerance = ol3turf$C.utils.getName([name$y, 'tolerance'], control.prefix);
+    const idCancel = utils.getName([name$y, 'cancel'], control.prefix);
+    const idForm = utils.getName([name$y, 'form'], control.prefix);
+    const idOk = utils.getName([name$y, 'ok'], control.prefix);
+    const idQuality = utils.getName([name$y, 'quality'], control.prefix);
+    const idTolerance = utils.getName([name$y, 'tolerance'], control.prefix);
 
     const onOK = function() {
       try {
         // Gather selected features
-        const collection = ol3turf$C.utils.getCollection(control, 1, Infinity);
+        const collection = utils.getCollection(control, 1, Infinity);
 
         // Get form inputs
-        const tolerance = ol3turf$C.utils.getFormNumber(idTolerance, 'tolerance');
-        const quality = ol3turf$C.utils.getFormString(idQuality, 'quality');
+        const tolerance = utils.getFormNumber(idTolerance, 'tolerance');
+        const quality = utils.getFormString(idQuality, 'quality');
         const highQuality = (quality === 'high');
 
         // Collect polygons
@@ -2783,10 +2584,11 @@
     };
 
     const controls = [
-      ol3turf$C.utils.getControlNumber(idTolerance, 'Tolerance', 'Simplification tolerance', '1', '0.01', '0'),
-      ol3turf$C.utils.getControlSelect(idQuality, 'Quality', ol3turf$C.utils.getOptionsQuality()),
-      ol3turf$C.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$C.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlNumber(idTolerance, 'Tolerance',
+          'Simplification tolerance', '1', '0.01', '0'),
+      utils.getControlSelect(idQuality, 'Quality', utils.getOptionsQuality()),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -2795,15 +2597,9 @@
   var simplify = {
     create: function(toolbar, prefix) {
       const title = 'Simplify shape';
-      return ol3turf$C.Control.create(toolbar, prefix, name$y, title, action$y);
+      return Control.create(toolbar, prefix, name$y, title, action$y);
     },
   };
-
-  const ol3turf$D = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$z = 'square-grid';
@@ -2813,20 +2609,20 @@
    */
   const action$z = function(control) {
     // Define control ids
-    const idCancel = ol3turf$D.utils.getName([name$z, 'cancel'], control.prefix);
-    const idCellSize = ol3turf$D.utils.getName([name$z, 'cell-size'], control.prefix);
-    const idForm = ol3turf$D.utils.getName([name$z, 'form'], control.prefix);
-    const idOk = ol3turf$D.utils.getName([name$z, 'ok'], control.prefix);
-    const idUnits = ol3turf$D.utils.getName([name$z, 'units'], control.prefix);
+    const idCancel = utils.getName([name$z, 'cancel'], control.prefix);
+    const idCellSize = utils.getName([name$z, 'cell-size'], control.prefix);
+    const idForm = utils.getName([name$z, 'form'], control.prefix);
+    const idOk = utils.getName([name$z, 'ok'], control.prefix);
+    const idUnits = utils.getName([name$z, 'units'], control.prefix);
 
     const onOK = function() {
       try {
         // Gather selected features
-        const collection = ol3turf$D.utils.getCollection(control, 1, Infinity);
+        const collection = utils.getCollection(control, 1, Infinity);
 
         // Get form inputs
-        const cellSize = ol3turf$D.utils.getFormNumber(idCellSize, 'cell size');
-        const units = ol3turf$D.utils.getFormString(idUnits, 'units');
+        const cellSize = utils.getFormNumber(idCellSize, 'cell size');
+        const units = utils.getFormString(idUnits, 'units');
 
         // Collect polygons
         const bbox = turf.bbox(collection);
@@ -2850,10 +2646,11 @@
     };
 
     const controls = [
-      ol3turf$D.utils.getControlNumber(idCellSize, 'Cell Size', 'Dimension of cell', '1', 'any', '0'),
-      ol3turf$D.utils.getControlSelect(idUnits, 'Units', ol3turf$D.utils.getOptionsUnits()),
-      ol3turf$D.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$D.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlNumber(idCellSize, 'Cell Size', 'Dimension of cell', '1',
+          'any', '0'),
+      utils.getControlSelect(idUnits, 'Units', utils.getOptionsUnits()),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -2862,15 +2659,9 @@
   var squareGrid = {
     create: function(toolbar, prefix) {
       const title = 'Generate Square Grid';
-      return ol3turf$D.Control.create(toolbar, prefix, name$z, title, action$z);
+      return Control.create(toolbar, prefix, name$z, title, action$z);
     },
   };
-
-  const ol3turf$E = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$A = 'square';
@@ -2880,7 +2671,7 @@
    */
   const action$A = function(control) {
     // Gather selected features
-    const collection = ol3turf$E.utils.getCollection(control, 1, Infinity);
+    const collection = utils.getCollection(control, 1, Infinity);
     const bbox = turf.bbox(collection);
     const square = turf.square(bbox);
 
@@ -2894,15 +2685,9 @@
   var square = {
     create: function(toolbar, prefix) {
       const title = 'Create Square';
-      return ol3turf$E.Control.create(toolbar, prefix, name$A, title, action$A);
+      return Control.create(toolbar, prefix, name$A, title, action$A);
     },
   };
-
-  const ol3turf$F = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$B = 'tag';
@@ -2912,23 +2697,25 @@
    */
   const action$B = function(control) {
     // Define control ids
-    const idCancel = ol3turf$F.utils.getName([name$B, 'cancel'], control.prefix);
-    const idField = ol3turf$F.utils.getName([name$B, 'field-property'], control.prefix);
-    const idForm = ol3turf$F.utils.getName([name$B, 'form'], control.prefix);
-    const idOk = ol3turf$F.utils.getName([name$B, 'ok'], control.prefix);
-    const idOutField = ol3turf$F.utils.getName([name$B, 'out-field-property'], control.prefix);
+    const idCancel = utils.getName([name$B, 'cancel'], control.prefix);
+    const idField = utils.getName([name$B, 'field-property'], control.prefix);
+    const idForm = utils.getName([name$B, 'form'], control.prefix);
+    const idOk = utils.getName([name$B, 'ok'], control.prefix);
+    const idOutField = utils.getName([name$B, 'out-field-property'],
+        control.prefix);
 
     const onOK = function() {
       try {
         // Gather selected features
-        const collection = ol3turf$F.utils.getCollection(control, 2, Infinity);
-        const points = ol3turf$F.utils.getPoints(collection, 1, collection.features.length - 1);
+        const collection = utils.getCollection(control, 2, Infinity);
+        const points = utils.getPoints(collection, 1,
+            collection.features.length - 1);
         const numPolygons = collection.features.length - points.length;
-        const polygons = ol3turf$F.utils.getPolygons(collection, numPolygons, numPolygons);
+        const polygons = utils.getPolygons(collection, numPolygons, numPolygons);
 
         // Get form inputs
-        const field = ol3turf$F.utils.getFormString(idField, 'field');
-        const outField = ol3turf$F.utils.getFormString(idOutField, 'out field');
+        const field = utils.getFormString(idField, 'field');
+        const outField = utils.getFormString(idOutField, 'out field');
 
         // Collect polygons
         const inPolygons = turf.featureCollection(polygons);
@@ -2954,10 +2741,12 @@
     };
 
     const controls = [
-      ol3turf$F.utils.getControlText(idField, 'Field', 'Property in polygons to add to joined point features'),
-      ol3turf$F.utils.getControlText(idOutField, 'Out Field', 'Property in points in which to store joined property from polygons'),
-      ol3turf$F.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$F.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlText(idField, 'Field',
+          'Property in polygons to add to joined point features'),
+      utils.getControlText(idOutField, 'Out Field',
+          'Property in points in which to store joined property from polygons'),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -2966,15 +2755,9 @@
   var tag = {
     create: function(toolbar, prefix) {
       const title = 'Perform spatial join of points and polygons';
-      return ol3turf$F.Control.create(toolbar, prefix, name$B, title, action$B);
+      return Control.create(toolbar, prefix, name$B, title, action$B);
     },
   };
-
-  const ol3turf$G = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$C = 'tesselate';
@@ -2983,8 +2766,8 @@
    * Compute tesselation
    */
   const action$C = function(control) {
-    const collection = ol3turf$G.utils.getCollection(control, 1, 1);
-    const polygons = ol3turf$G.utils.getPolygons(collection, 1, 1);
+    const collection = utils.getCollection(control, 1, 1);
+    const polygons = utils.getPolygons(collection, 1, 1);
     const polygon = polygons[0];
 
     const output = turf.tesselate(polygon);
@@ -2997,15 +2780,9 @@
   var tesselate = {
     create: function(toolbar, prefix) {
       const title = 'Create tesselation';
-      return ol3turf$G.Control.create(toolbar, prefix, name$C, title, action$C);
+      return Control.create(toolbar, prefix, name$C, title, action$C);
     },
   };
-
-  const ol3turf$H = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$D = 'tin';
@@ -3015,20 +2792,20 @@
    */
   const action$D = function(control) {
     // Define control ids
-    const idCancel = ol3turf$H.utils.getName([name$D, 'cancel'], control.prefix);
-    const idForm = ol3turf$H.utils.getName([name$D, 'form'], control.prefix);
-    const idOk = ol3turf$H.utils.getName([name$D, 'ok'], control.prefix);
-    const idZ = ol3turf$H.utils.getName([name$D, 'z'], control.prefix);
+    const idCancel = utils.getName([name$D, 'cancel'], control.prefix);
+    const idForm = utils.getName([name$D, 'form'], control.prefix);
+    const idOk = utils.getName([name$D, 'ok'], control.prefix);
+    const idZ = utils.getName([name$D, 'z'], control.prefix);
 
     const onOK = function() {
       try {
-        let collection = ol3turf$H.utils.getCollection(control, 3, Infinity);
+        let collection = utils.getCollection(control, 3, Infinity);
         const numPoints = collection.features.length;
-        const points = ol3turf$H.utils.getPoints(collection, numPoints, numPoints);
+        const points = utils.getPoints(collection, numPoints, numPoints);
         collection = turf.featureCollection(points);
 
         // Get form inputs
-        const z = ol3turf$H.utils.getFormString(idZ, 'z');
+        const z = utils.getFormString(idZ, 'z');
 
         const output = turf.tin(collection, z);
         const inputs = {
@@ -3046,9 +2823,10 @@
     };
 
     const controls = [
-      ol3turf$H.utils.getControlText(idZ, 'Z', '(Optional) Property from which to pull z values'),
-      ol3turf$H.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$H.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlText(idZ, 'Z',
+          '(Optional) Property from which to pull z values'),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -3057,7 +2835,7 @@
   var tin = {
     create: function(toolbar, prefix) {
       const title = 'Create TIN';
-      return ol3turf$H.Control.create(toolbar, prefix, name$D, title, action$D);
+      return Control.create(toolbar, prefix, name$D, title, action$D);
     },
   };
 
@@ -3071,7 +2849,8 @@
   /**
    * Aggregation toolbar
    * @memberof ol3turf.toolbars
-   * @return {ol3turf.toolbars.ToolbarAggregation} Control names for the aggregation toolbar
+   * @return {ol3turf.toolbars.ToolbarAggregation} Control names for the
+   *                                               aggregation toolbar
    */
   function aggregation() {
     return ['collect'];
@@ -3086,7 +2865,8 @@
   /**
    * Classification toolbar
    * @memberof ol3turf.toolbars
-   * @return {ol3turf.toolbars.ToolbarClassification} Control names for the classification toolbar
+   * @return {ol3turf.toolbars.ToolbarClassification} Control names for the
+   *                                                  classification toolbar
    */
   function classification() {
     return ['nearest'];
@@ -3147,7 +2927,8 @@
   /**
    * Interpolation toolbar
    * @memberof ol3turf.toolbars
-   * @return {ol3turf.toolbars.ToolbarInterpolation} Control names for the interpolation toolbar
+   * @return {ol3turf.toolbars.ToolbarInterpolation} Control names for the
+   *                                                 interpolation toolbar
    */
   function interpolation() {
     return [
@@ -3200,7 +2981,8 @@
   /**
    * Measurement toolbar
    * @memberof ol3turf.toolbars
-   * @return {ol3turf.toolbars.ToolbarMeasurement} Control names for the measurement toolbar
+   * @return {ol3turf.toolbars.ToolbarMeasurement} Control names for the
+   *                                               measurement toolbar
    */
   function measurement() {
     return [
@@ -3235,7 +3017,8 @@
   /**
    * Miscellaneous toolbar
    * @memberof ol3turf.toolbars
-   * @return {ol3turf.toolbars.ToolbarMisc} Control names for the miscellaneous toolbar
+   * @return {ol3turf.toolbars.ToolbarMisc} Control names for the miscellaneous
+   *                                        toolbar
    */
   function misc() {
     return [
@@ -3264,7 +3047,8 @@
   /**
    * Transformation toolbar
    * @memberof ol3turf.toolbars
-   * @return {ol3turf.toolbars.ToolbarTransformation} Control names for the transformation toolbar
+   * @return {ol3turf.toolbars.ToolbarTransformation} Control names for the
+   *                                                  transformation toolbar
    */
   function transformation() {
     return [
@@ -3282,15 +3066,20 @@
    * @description Concatenation of all the toolbars
    * @typedef {string[]} ToolbarAll
    * @memberOf ol3turf.toolbars
-   * @property {ol3turf.toolbars.ToolbarAggregation} aggregation Aggregation toolbar
-   * @property {ol3turf.toolbars.ToolbarClassification} classification Classification toolbar
+   * @property {ol3turf.toolbars.ToolbarAggregation} aggregation Aggregation
+   *           toolbar
+   * @property {ol3turf.toolbars.ToolbarClassification} classification
+   *           Classification toolbar
    * @property {ol3turf.toolbars.ToolbarData} data Data toolbar
    * @property {ol3turf.toolbars.ToolbarGrids} grids Grids toolbar
-   * @property {ol3turf.toolbars.ToolbarInterpolation} interpolation Interpolation toolbar
+   * @property {ol3turf.toolbars.ToolbarInterpolation} interpolation
+   *           Interpolation toolbar
    * @property {ol3turf.toolbars.ToolbarJoins} joins Joins toolbar
-   * @property {ol3turf.toolbars.ToolbarMeasurement} measurement Measurement toolbar
+   * @property {ol3turf.toolbars.ToolbarMeasurement} measurement Measurement
+   *           toolbar
    * @property {ol3turf.toolbars.ToolbarMisc} miscellaneous Miscellaneous toolbar
-   * @property {ol3turf.toolbars.ToolbarTransformation} transformation Transformation toolbar
+   * @property {ol3turf.toolbars.ToolbarTransformation} transformation
+   *           Transformation toolbar
    */
 
   /**
@@ -3324,12 +3113,6 @@
     transformation,
   };
 
-  const ol3turf$I = {
-    Control,
-    utils,
-  };
-
-
   // Control name
   const name$E = 'triangle-grid';
 
@@ -3338,20 +3121,20 @@
    */
   const action$E = function(control) {
     // Define control ids
-    const idCancel = ol3turf$I.utils.getName([name$E, 'cancel'], control.prefix);
-    const idCellSize = ol3turf$I.utils.getName([name$E, 'cell-size'], control.prefix);
-    const idForm = ol3turf$I.utils.getName([name$E, 'form'], control.prefix);
-    const idOk = ol3turf$I.utils.getName([name$E, 'ok'], control.prefix);
-    const idUnits = ol3turf$I.utils.getName([name$E, 'units'], control.prefix);
+    const idCancel = utils.getName([name$E, 'cancel'], control.prefix);
+    const idCellSize = utils.getName([name$E, 'cell-size'], control.prefix);
+    const idForm = utils.getName([name$E, 'form'], control.prefix);
+    const idOk = utils.getName([name$E, 'ok'], control.prefix);
+    const idUnits = utils.getName([name$E, 'units'], control.prefix);
 
     const onOK = function() {
       try {
         // Gather selected features
-        const collection = ol3turf$I.utils.getCollection(control, 1, Infinity);
+        const collection = utils.getCollection(control, 1, Infinity);
 
         // Get form inputs
-        const cellSize = ol3turf$I.utils.getFormNumber(idCellSize, 'cell size');
-        const units = ol3turf$I.utils.getFormString(idUnits, 'units');
+        const cellSize = utils.getFormNumber(idCellSize, 'cell size');
+        const units = utils.getFormString(idUnits, 'units');
 
         // Collect polygons
         const bbox = turf.bbox(collection);
@@ -3375,10 +3158,11 @@
     };
 
     const controls = [
-      ol3turf$I.utils.getControlNumber(idCellSize, 'Cell Size', 'Dimension of cell', '1', 'any', '0'),
-      ol3turf$I.utils.getControlSelect(idUnits, 'Units', ol3turf$I.utils.getOptionsUnits()),
-      ol3turf$I.utils.getControlInput(idOk, onOK, '', 'OK'),
-      ol3turf$I.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+      utils.getControlNumber(idCellSize, 'Cell Size', 'Dimension of cell', '1',
+          'any', '0'),
+      utils.getControlSelect(idUnits, 'Units', utils.getOptionsUnits()),
+      utils.getControlInput(idOk, onOK, '', 'OK'),
+      utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
     ];
 
     control.showForm(controls, idForm);
@@ -3387,15 +3171,9 @@
   var triangleGrid = {
     create: function(toolbar, prefix) {
       const title = 'Generate Triangle Grid';
-      return ol3turf$I.Control.create(toolbar, prefix, name$E, title, action$E);
+      return Control.create(toolbar, prefix, name$E, title, action$E);
     },
   };
-
-  const ol3turf$J = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$F = 'union';
@@ -3404,8 +3182,8 @@
    * Compute union of two polygons
    */
   const action$F = function(control) {
-    const collection = ol3turf$J.utils.getCollection(control, 2, 2);
-    const polygons = ol3turf$J.utils.getPolygons(collection, 2, 2);
+    const collection = utils.getCollection(control, 2, 2);
+    const polygons = utils.getPolygons(collection, 2, 2);
     const poly1 = polygons[0];
     const poly2 = polygons[1];
 
@@ -3420,15 +3198,9 @@
   var union = {
     create: function(toolbar, prefix) {
       const title = 'Create Union Polygon';
-      return ol3turf$J.Control.create(toolbar, prefix, name$F, title, action$F);
+      return Control.create(toolbar, prefix, name$F, title, action$F);
     },
   };
-
-  const ol3turf$K = {
-    Control,
-    utils,
-  };
-
 
   // Control name
   const name$G = 'within';
@@ -3437,10 +3209,10 @@
    * Compute points within polygons
    */
   const action$G = function(control) {
-    const collection = ol3turf$K.utils.getCollection(control, 2, Infinity);
-    const pts = ol3turf$K.utils.getPoints(collection, 1, collection.features.length - 1);
+    const collection = utils.getCollection(control, 2, Infinity);
+    const pts = utils.getPoints(collection, 1, collection.features.length - 1);
     const numPolygons = collection.features.length - pts.length;
-    const polys = ol3turf$K.utils.getPolygons(collection, numPolygons, numPolygons);
+    const polys = utils.getPolygons(collection, numPolygons, numPolygons);
 
     const points = turf.featureCollection(pts);
     const polygons = turf.featureCollection(polys);
@@ -3459,7 +3231,7 @@
   var within = {
     create: function(toolbar, prefix) {
       const title = 'Find points within polygons';
-      return ol3turf$K.Control.create(toolbar, prefix, name$G, title, action$G);
+      return Control.create(toolbar, prefix, name$G, title, action$G);
     },
   };
 
@@ -3559,7 +3331,7 @@
   /**
    * @namespace ol3turf
    */
-  const ol3turf$L = {
+  const ol3turf$1 = {
     controls,
     Handler,
     toolbars,
@@ -3590,7 +3362,8 @@
    * @callback ToolbarCallback
    * @memberOf ol3turf
    * @param {string} name Name of control to process
-   * @param {object} inputs Inputs passed to the control's corresponding turf function
+   * @param {object} inputs Inputs passed to the control's corresponding turf
+   *                        function
    * @param {*} output Output returned by the turf function
    */
 
@@ -3598,24 +3371,22 @@
    * @description ol3-turf custom callback handler.
    * @typedef {object} ToolbarHandler
    * @memberOf ol3turf
-   * @property {ol3turf.ToolbarCallback} callback Function to handle processing turf commands.
+   * @property {ol3turf.ToolbarCallback} callback Function to handle processing
+   *                                              turf commands.
    */
 
   /**
    * @description ol3-turf constructor options.
    * @typedef {object} ToolbarOptions
    * @memberOf ol3turf
-   * @property {string[]} [controls={@link ol3turf.toolbars.ToolbarAll}] Controls to enable
-   * @property {ol3turf.ToolbarHandler} [handler=ol3turf.Handler] Optional function that handles
-   *                                                              processing the output of the
-   *                                                              ol3-turf controls. This is
-   *                                                              useful to bypass the default
-   *                                                              handler and provide custom
-   *                                                              processing of the results. The
-   *                                                              default handler adds features
-   *                                                              to the map or displays a message
-   *                                                              with any values returned by the
-   *                                                              turf function.
+   * @property {string[]} [controls={@link ol3turf.toolbars.ToolbarAll}] Controls
+   *           to enable
+   * @property {ol3turf.ToolbarHandler} [handler=ol3turf.Handler] Optional
+   *           function that handles processing the output of the ol3-turf
+   *           controls. This is useful to bypass the default handler and provide
+   *           custom processing of the results. The default handler adds features
+   *           to the map or displays a message with any values returned by the
+   *           turf function.
    * @property {string} [prefix=ol3-turf] Prefix to apply to control element IDs.
    *                                      Only needed to make IDs unique if
    *                                      multiple instances of an ol3-turf
@@ -3639,12 +3410,12 @@
     opts.ol3turf = opts.ol3turf || {};
     if (opts.ol3turf.controls === undefined) {
       // Default is to enable all controls and display them in this order.
-      opts.ol3turf.controls = ol3turf$L.toolbars.all();
+      opts.ol3turf.controls = ol3turf$1.toolbars.all();
     }
 
     // Set control handler
     if (opts.ol3turf.handler === undefined) {
-      opts.ol3turf.handler = new ol3turf$L.Handler(self);
+      opts.ol3turf.handler = new ol3turf$1.Handler(self);
     }
 
     // Define default style
@@ -3668,9 +3439,9 @@
     // Add controls to toolbar
     const ol3turfcontrols = {};
     opts.ol3turf.controls.forEach(function(name) {
-      if (ol3turf$L.controls[name] !== undefined) {
+      if (ol3turf$1.controls[name] !== undefined) {
         // Store control in ol3turf member and add button to div
-        const control = ol3turf$L.controls[name].create(self, opts.ol3turf.prefix);
+        const control = ol3turf$1.controls[name].create(self, opts.ol3turf.prefix);
         ol3turfcontrols[name] = control;
         opts.element.appendChild(control.element);
       }

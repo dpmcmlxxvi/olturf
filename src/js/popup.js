@@ -1,12 +1,5 @@
 import utils from './utils';
 
-
-const ol3turf = {
-  utils,
-};
-
-// popup form
-
 /**
  * Displays a message in a popup window.
  * @param {string} message Message to display
@@ -53,7 +46,7 @@ export default function display(message, callback, parent, attributes) {
   const popup = document.createElement('div');
   popup.className = id;
   popup.id = id;
-  ol3turf.utils.extend(attributes, popup);
+  utils.extend(attributes, popup);
 
   // Create a div to contain message
   const divMessage = document.createElement('div');

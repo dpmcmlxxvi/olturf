@@ -1,12 +1,6 @@
 import Control from './control';
 import utils from './utils';
 
-const ol3turf = {
-  Control,
-  utils,
-};
-
-
 // Control name
 const name = 'point-grid';
 
@@ -15,20 +9,20 @@ const name = 'point-grid';
  */
 const action = function(control) {
   // Define control ids
-  const idCancel = ol3turf.utils.getName([name, 'cancel'], control.prefix);
-  const idCellSize = ol3turf.utils.getName([name, 'cell-size'], control.prefix);
-  const idForm = ol3turf.utils.getName([name, 'form'], control.prefix);
-  const idOk = ol3turf.utils.getName([name, 'ok'], control.prefix);
-  const idUnits = ol3turf.utils.getName([name, 'units'], control.prefix);
+  const idCancel = utils.getName([name, 'cancel'], control.prefix);
+  const idCellSize = utils.getName([name, 'cell-size'], control.prefix);
+  const idForm = utils.getName([name, 'form'], control.prefix);
+  const idOk = utils.getName([name, 'ok'], control.prefix);
+  const idUnits = utils.getName([name, 'units'], control.prefix);
 
   const onOK = function() {
     try {
       // Gather selected features
-      const collection = ol3turf.utils.getCollection(control, 1, Infinity);
+      const collection = utils.getCollection(control, 1, Infinity);
 
       // Gather form inputs
-      const cellSize = ol3turf.utils.getFormNumber(idCellSize, 'cell size');
-      const units = ol3turf.utils.getFormString(idUnits, 'units');
+      const cellSize = utils.getFormNumber(idCellSize, 'cell size');
+      const units = utils.getFormString(idUnits, 'units');
 
       // Collect polygons
       const bbox = turf.bbox(collection);
@@ -52,10 +46,11 @@ const action = function(control) {
   };
 
   const controls = [
-    ol3turf.utils.getControlNumber(idCellSize, 'Cell Size', 'Dimension of cell', '1', 'any', '0'),
-    ol3turf.utils.getControlSelect(idUnits, 'Units', ol3turf.utils.getOptionsUnits()),
-    ol3turf.utils.getControlInput(idOk, onOK, '', 'OK'),
-    ol3turf.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+    utils.getControlNumber(idCellSize, 'Cell Size', 'Dimension of cell', '1',
+        'any', '0'),
+    utils.getControlSelect(idUnits, 'Units', utils.getOptionsUnits()),
+    utils.getControlInput(idOk, onOK, '', 'OK'),
+    utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
   ];
 
   control.showForm(controls, idForm);
@@ -64,7 +59,7 @@ const action = function(control) {
 export default {
   create: function(toolbar, prefix) {
     const title = 'Generate Point Grid';
-    return ol3turf.Control.create(toolbar, prefix, name, title, action);
+    return Control.create(toolbar, prefix, name, title, action);
   },
 };
 

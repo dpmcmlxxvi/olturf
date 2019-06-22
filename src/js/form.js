@@ -1,10 +1,5 @@
 import utils from './utils';
 
-const ol3turf = {
-  utils,
-};
-
-
 /**
  * @description Properties of control form
  * @typedef {object} FormProperties
@@ -48,7 +43,7 @@ export default function(parent, formId, controls, attributes) {
   form.id = formId;
   form.className = 'ol3-turf-form ol-unselectable ol-control';
   form.setAttribute('onsubmit', 'return false;');
-  ol3turf.utils.extend(attributes, form);
+  utils.extend(attributes, form);
 
   // Create a table to add to form
   const table = document.createElement('table');
@@ -70,7 +65,7 @@ export default function(parent, formId, controls, attributes) {
 
     const control = document.createElement(element.type);
     control.className = 'ol3-turf-form-input';
-    ol3turf.utils.extend(element.attributes, control);
+    utils.extend(element.attributes, control);
 
     // Check if this is a selection and add pulldown options
     if (element.type === 'select') {
@@ -80,7 +75,7 @@ export default function(parent, formId, controls, attributes) {
           const option = document.createElement('option');
           option.innerHTML = opt.text;
           option.className = 'ol3-turf-form-option';
-          ol3turf.utils.extend(opt.attributes, option);
+          utils.extend(opt.attributes, option);
           control.appendChild(option);
         });
       }

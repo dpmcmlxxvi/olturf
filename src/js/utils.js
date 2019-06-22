@@ -1,10 +1,4 @@
-
-/*
- * Object to encapsulate all available utility methods
- */
-const ol3turf = {
-  utils: {},
-};
+const utils = {};
 
 /**
  * Extend properties from source to target objects recursively.
@@ -12,7 +6,7 @@ const ol3turf = {
  * @param {object} target Target object
  * @private
  */
-ol3turf.utils.extend = function(source, target) {
+utils.extend = function(source, target) {
   if ((source === undefined) || target === undefined) {
     return;
   }
@@ -22,7 +16,7 @@ ol3turf.utils.extend = function(source, target) {
       if (target[property] === undefined) {
         target[property] = {};
       }
-      ol3turf.utils.extend(src, target[property]);
+      utils.extend(src, target[property]);
       return;
     }
     target[property] = src;
@@ -36,8 +30,8 @@ ol3turf.utils.extend = function(source, target) {
  * @private
  * @return {string} Class selector string ".ol3-turf-..."
  */
-ol3turf.utils.getClass = function(suffices, prefix) {
-  return '.' + ol3turf.utils.getName(suffices, prefix);
+utils.getClass = function(suffices, prefix) {
+  return '.' + utils.getName(suffices, prefix);
 };
 
 /**
@@ -49,7 +43,7 @@ ol3turf.utils.getClass = function(suffices, prefix) {
  * @return {object} GeoJSON FeatureCollection
  * @throws {Error} Invalid number of features found
  */
-ol3turf.utils.getCollection = function(control, min, max) {
+utils.getCollection = function(control, min, max) {
   const collection = control.getFeatures();
   if (collection.features.length < min) {
     throw new Error('Number of features less than ' + min);
@@ -69,7 +63,7 @@ ol3turf.utils.getCollection = function(control, min, max) {
  * @private
  * @return {object} Control input attributes
  */
-ol3turf.utils.getControlInput = function(id, onclick, title, value) {
+utils.getControlInput = function(id, onclick, title, value) {
   return {
     title: title,
     type: 'input',
@@ -94,7 +88,7 @@ ol3turf.utils.getControlInput = function(id, onclick, title, value) {
  * @private
  * @return {object} Control input attributes
  */
-ol3turf.utils.getControlNumber = function(id, title, text, value, step, min, max) {
+utils.getControlNumber = function(id, title, text, value, step, min, max) {
   return {
     title: title,
     type: 'input',
@@ -120,7 +114,7 @@ ol3turf.utils.getControlNumber = function(id, title, text, value, step, min, max
  * @private
  * @return {object} Control button attributes
  */
-ol3turf.utils.getControlSelect = function(id, title, options) {
+utils.getControlSelect = function(id, title, options) {
   return {
     title: title,
     type: 'select',
@@ -140,7 +134,7 @@ ol3turf.utils.getControlSelect = function(id, title, options) {
  * @private
  * @return {object} Control text attributes
  */
-ol3turf.utils.getControlText = function(id, title, text) {
+utils.getControlText = function(id, title, text) {
   return {
     title: title,
     type: 'input',
@@ -161,8 +155,8 @@ ol3turf.utils.getControlText = function(id, title, text) {
  * @private
  * @return {string} Element string (e.g., "input[name=ol3-turf-...")
  */
-ol3turf.utils.getElement = function(name, suffices, prefix) {
-  return name + '[name=\'' + ol3turf.utils.getName(suffices, prefix) + '\']';
+utils.getElement = function(name, suffices, prefix) {
+  return name + '[name=\'' + utils.getName(suffices, prefix) + '\']';
 };
 
 /**
@@ -175,7 +169,7 @@ ol3turf.utils.getElement = function(name, suffices, prefix) {
  * @return {object[]} Features found
  * @throws {Error} Invalid number of features found
  */
-ol3turf.utils.getFeatures = function(types, collection, min, max) {
+utils.getFeatures = function(types, collection, min, max) {
   const features = [];
   collection.features.forEach(function(feature) {
     if (types.indexOf(feature.geometry.type) > -1) {
@@ -199,8 +193,8 @@ ol3turf.utils.getFeatures = function(types, collection, min, max) {
  * @return {number[]} Numeric value of form field
  * @throws {Error} Field value is not numeric array
  */
-ol3turf.utils.getFormArray = function(id, name) {
-  const input = ol3turf.utils.getFormString(id, name);
+utils.getFormArray = function(id, name) {
+  const input = utils.getFormString(id, name);
   const values = [];
   input.split(',').forEach(function(value) {
     const num = parseFloat(value);
@@ -220,7 +214,7 @@ ol3turf.utils.getFormArray = function(id, name) {
  * @return {number} Integer value of form field
  * @throws {Error} Field value is not integer
  */
-ol3turf.utils.getFormInteger = function(id, name) {
+utils.getFormInteger = function(id, name) {
   const value = parseInt(document.getElementById(id).value, 10);
   if (Number(value) !== value) {
     throw new Error('Invalid ' + name);
@@ -236,7 +230,7 @@ ol3turf.utils.getFormInteger = function(id, name) {
  * @return {number} Numeric value of form field
  * @throws {Error} Field value is not numeric
  */
-ol3turf.utils.getFormNumber = function(id, name) {
+utils.getFormNumber = function(id, name) {
   const value = parseFloat(document.getElementById(id).value);
   if (Number(value) !== value) {
     throw new Error('Invalid ' + name);
@@ -252,7 +246,7 @@ ol3turf.utils.getFormNumber = function(id, name) {
  * @return {string} String value of form field
  * @throws {Error} Field value is not non-empty string
  */
-ol3turf.utils.getFormString = function(id, name) {
+utils.getFormString = function(id, name) {
   const value = document.getElementById(id).value;
   if (!value || !value.trim()) {
     throw new Error('Invalid ' + name);
@@ -267,8 +261,8 @@ ol3turf.utils.getFormString = function(id, name) {
  * @private
  * @return {string} Id selector string "#ol3-turf-..."
  */
-ol3turf.utils.getId = function(suffices, prefix) {
-  return '#' + ol3turf.utils.getName(suffices, prefix);
+utils.getId = function(suffices, prefix) {
+  return '#' + utils.getName(suffices, prefix);
 };
 
 /**
@@ -280,8 +274,8 @@ ol3turf.utils.getId = function(suffices, prefix) {
  * @return {object[]} Lines found
  * @throws {Error} Invalid number of lines found
  */
-ol3turf.utils.getLines = function(collection, min, max) {
-  return ol3turf.utils.getFeatures(['LineString'], collection, min, max);
+utils.getLines = function(collection, min, max) {
+  return utils.getFeatures(['LineString'], collection, min, max);
 };
 
 /**
@@ -291,7 +285,7 @@ ol3turf.utils.getLines = function(collection, min, max) {
  * @private
  * @return {string} Control name string "ol3-turf-..."
  */
-ol3turf.utils.getName = function(suffices, prefix) {
+utils.getName = function(suffices, prefix) {
   if (prefix === undefined) {
     prefix = 'ol3-turf';
   }
@@ -307,7 +301,7 @@ ol3turf.utils.getName = function(suffices, prefix) {
  * @private
  * @return {object[]} Geometry options
  */
-ol3turf.utils.getOptionsGeometry = function() {
+utils.getOptionsGeometry = function() {
   return [
     {
       text: 'Points',
@@ -330,7 +324,7 @@ ol3turf.utils.getOptionsGeometry = function() {
  * @private
  * @return {object[]} Grid options
  */
-ol3turf.utils.getOptionsGrids = function() {
+utils.getOptionsGrids = function() {
   return [
     {
       text: 'Hexagons',
@@ -353,7 +347,7 @@ ol3turf.utils.getOptionsGrids = function() {
  * @private
  * @return {object[]} Quality options
  */
-ol3turf.utils.getOptionsQuality = function() {
+utils.getOptionsQuality = function() {
   return [
     {
       text: 'High',
@@ -376,7 +370,7 @@ ol3turf.utils.getOptionsQuality = function() {
  * @private
  * @return {object[]} Unit options
  */
-ol3turf.utils.getOptionsUnits = function() {
+utils.getOptionsUnits = function() {
   return [
     {
       text: 'degrees',
@@ -415,8 +409,8 @@ ol3turf.utils.getOptionsUnits = function() {
  * @return {object[]} Points found
  * @throws {Error} Invalid number of points found
  */
-ol3turf.utils.getPoints = function(collection, min, max) {
-  return ol3turf.utils.getFeatures(['Point'], collection, min, max);
+utils.getPoints = function(collection, min, max) {
+  return utils.getFeatures(['Point'], collection, min, max);
 };
 
 /**
@@ -428,8 +422,8 @@ ol3turf.utils.getPoints = function(collection, min, max) {
  * @return {object[]} Polygons found
  * @throws {Error} Invalid number of polygons found
  */
-ol3turf.utils.getPolygons = function(collection, min, max) {
-  return ol3turf.utils.getFeatures(['Polygon'], collection, min, max);
+utils.getPolygons = function(collection, min, max) {
+  return utils.getFeatures(['Polygon'], collection, min, max);
 };
 
 /**
@@ -441,8 +435,8 @@ ol3turf.utils.getPolygons = function(collection, min, max) {
  * @return {object[]} Polygons found
  * @throws {Error} Invalid number of polygons found
  */
-ol3turf.utils.getPolygonsAll = function(collection, min, max) {
-  return ol3turf.utils.getFeatures(['Polygon', 'MultiPolygon'], collection, min, max);
+utils.getPolygonsAll = function(collection, min, max) {
+  return utils.getFeatures(['Polygon', 'MultiPolygon'], collection, min, max);
 };
 
-export default ol3turf.utils;
+export default utils;

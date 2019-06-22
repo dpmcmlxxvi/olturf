@@ -425,9 +425,9 @@ Control.prototype.showMessage = function(message) {
  */
 Control.create = function(toolbar, prefix, name, title, action) {
   // Create control options
-  const clsControl = ol3turf.utils.getName([name]);
-  const clsButton = ol3turf.utils.getName(['control', 'button']);
-  const idControl = ol3turf.utils.getName([name], prefix);
+  const clsControl = utils.getName([name]);
+  const clsButton = utils.getName(['control', 'button']);
+  const idControl = utils.getName([name], prefix);
   const options = {
     className: clsControl + ' ' + clsButton,
     id: idControl,

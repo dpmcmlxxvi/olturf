@@ -1,12 +1,6 @@
 import Control from './control';
 import utils from './utils';
 
-const ol3turf = {
-  Control,
-  utils,
-};
-
-
 // Control name
 const name = 'random';
 
@@ -15,28 +9,31 @@ const name = 'random';
  */
 const action = function(control) {
   // Define control ids
-  const idCancel = ol3turf.utils.getName([name, 'cancel'], control.prefix);
-  const idCount = ol3turf.utils.getName([name, 'count'], control.prefix);
-  const idForm = ol3turf.utils.getName([name, 'form'], control.prefix);
-  const idMaxRadialLength = ol3turf.utils.getName([name, 'max-radial-length'], control.prefix);
-  const idNumVertices = ol3turf.utils.getName([name, 'num-vertices'], control.prefix);
-  const idOk = ol3turf.utils.getName([name, 'ok'], control.prefix);
-  const idType = ol3turf.utils.getName([name, 'type'], control.prefix);
+  const idCancel = utils.getName([name, 'cancel'], control.prefix);
+  const idCount = utils.getName([name, 'count'], control.prefix);
+  const idForm = utils.getName([name, 'form'], control.prefix);
+  const idMaxRadialLength = utils.getName([name, 'max-radial-length'],
+      control.prefix);
+  const idNumVertices = utils.getName([name, 'num-vertices'], control.prefix);
+  const idOk = utils.getName([name, 'ok'], control.prefix);
+  const idType = utils.getName([name, 'type'], control.prefix);
 
   const onOK = function() {
     try {
       // Gather selected features
       let bbox = null;
-      const collection = ol3turf.utils.getCollection(control, 0, Infinity);
+      const collection = utils.getCollection(control, 0, Infinity);
       if (collection.features.length !== 0) {
         bbox = turf.bbox(collection);
       }
 
       // Get form inputs
-      const count = ol3turf.utils.getFormInteger(idCount, 'count');
-      const maxRadialLength = ol3turf.utils.getFormInteger(idMaxRadialLength, 'maximum radial length');
-      const numVertices = ol3turf.utils.getFormInteger(idNumVertices, 'number of vertices');
-      const type = ol3turf.utils.getFormString(idType, 'type');
+      const count = utils.getFormInteger(idCount, 'count');
+      const maxRadialLength = utils.getFormInteger(idMaxRadialLength,
+          'maximum radial length');
+      const numVertices = utils.getFormInteger(idNumVertices,
+          'number of vertices');
+      const type = utils.getFormString(idType, 'type');
 
       // Generate random polygons
       const options = {
@@ -66,12 +63,16 @@ const action = function(control) {
   };
 
   const controls = [
-    ol3turf.utils.getControlSelect(idType, 'Type', ol3turf.utils.getOptionsGeometry()),
-    ol3turf.utils.getControlNumber(idCount, 'Count', 'How many geometries should be generated', '1', '1', '1'),
-    ol3turf.utils.getControlNumber(idNumVertices, '# Vertices', 'Used only for polygon type', '10', '1', '3'),
-    ol3turf.utils.getControlNumber(idMaxRadialLength, 'Max Length', 'Maximum degrees a polygon can extent outwards from its center (degrees)', '10', '0.01', '0', '180'),
-    ol3turf.utils.getControlInput(idOk, onOK, '', 'OK'),
-    ol3turf.utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+    utils.getControlSelect(idType, 'Type', utils.getOptionsGeometry()),
+    utils.getControlNumber(idCount, 'Count',
+        'How many geometries should be generated', '1', '1', '1'),
+    utils.getControlNumber(idNumVertices, '# Vertices',
+        'Used only for polygon type', '10', '1', '3'),
+    utils.getControlNumber(idMaxRadialLength, 'Max Length',
+        'Maximum degrees a polygon can extent outwards from its center ' +
+        '(degrees)', '10', '0.01', '0', '180'),
+    utils.getControlInput(idOk, onOK, '', 'OK'),
+    utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
   ];
 
   control.showForm(controls, idForm);
@@ -80,7 +81,7 @@ const action = function(control) {
 export default {
   create: function(toolbar, prefix) {
     const title = 'Create random data';
-    return ol3turf.Control.create(toolbar, prefix, name, title, action);
+    return Control.create(toolbar, prefix, name, title, action);
   },
 };
 
