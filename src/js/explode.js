@@ -1,7 +1,6 @@
 import Control from './control';
 import utils from './utils';
 
-// Control name
 const name = 'explode';
 
 /*
