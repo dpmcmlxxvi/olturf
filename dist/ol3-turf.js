@@ -120,7 +120,6 @@
     };
   };
 
-
   /**
    * Get control select attributes
    * @param {string} id Control ID
@@ -625,7 +624,6 @@
     utils,
   };
 
-
   /**
    * Fit left position of form within map
    * @param {object} sizeForm Form's absolute form position and size
@@ -1060,7 +1058,6 @@
     return control;
   };
 
-  // Control name
   const name = 'along';
 
   /*
@@ -1124,7 +1121,6 @@
     },
   };
 
-  // Control name
   const name$1 = 'area';
 
   /*
@@ -1146,7 +1142,6 @@
     },
   };
 
-  // Control name
   const name$2 = 'bearing';
 
   /*
@@ -1173,7 +1168,6 @@
     },
   };
 
-  // Control name
   const name$3 = 'bezier';
 
   /*
@@ -1241,7 +1235,6 @@
     },
   };
 
-  // Control name
   const name$4 = 'buffer';
 
   /*
@@ -1303,7 +1296,6 @@
     },
   };
 
-  // Control name
   const name$5 = 'center';
 
   /*
@@ -1325,7 +1317,6 @@
     },
   };
 
-  // Control name
   const name$6 = 'center-of-mass';
 
   /*
@@ -1347,7 +1338,6 @@
     },
   };
 
-  // Control name
   const name$7 = 'centroid';
 
   /*
@@ -1369,7 +1359,6 @@
     },
   };
 
-  // Control name
   const name$8 = 'circle';
 
   /*
@@ -1438,7 +1427,6 @@
     },
   };
 
-  // Control name
   const name$9 = 'collect';
 
   /*
@@ -1508,7 +1496,6 @@
     },
   };
 
-  // Control name
   const name$a = 'combine';
 
   /*
@@ -1531,7 +1518,6 @@
     },
   };
 
-  // Control name
   const name$b = 'concave';
 
   /*
@@ -1596,7 +1582,6 @@
     },
   };
 
-  // Control name
   const name$c = 'convex';
 
   /*
@@ -1619,7 +1604,6 @@
     },
   };
 
-  // Control name
   const name$d = 'destination';
 
   /*
@@ -1690,7 +1674,6 @@
     },
   };
 
-  // Control name
   const name$e = 'difference';
 
   /*
@@ -1716,7 +1699,6 @@
     },
   };
 
-  // Control name
   const name$f = 'distance';
 
   /*
@@ -1776,7 +1758,6 @@
     },
   };
 
-  // Control name
   const name$g = 'envelope';
 
   /*
@@ -1799,7 +1780,6 @@
     },
   };
 
-  // Control name
   const name$h = 'explode';
 
   /*
@@ -1822,7 +1802,6 @@
     },
   };
 
-  // Control name
   const name$i = 'flip';
 
   /*
@@ -1845,7 +1824,6 @@
     },
   };
 
-  // Control name
   const name$j = 'hex-grid';
 
   /*
@@ -1912,7 +1890,6 @@
     },
   };
 
-  // Control name
   const name$k = 'inside';
 
   /*
@@ -1941,7 +1918,6 @@
     },
   };
 
-  // Control name
   const name$l = 'intersect';
 
   /*
@@ -1968,7 +1944,6 @@
     },
   };
 
-  // Control name
   const name$m = 'isolines';
 
   /*
@@ -2035,7 +2010,6 @@
     },
   };
 
-  // Control name
   const name$n = 'kinks';
 
   /*
@@ -2062,7 +2036,6 @@
     },
   };
 
-  // Control name
   const name$o = 'line-distance';
 
   /*
@@ -2118,7 +2091,6 @@
     },
   };
 
-  // Control name
   const name$p = 'line-slice-along';
 
   /*
@@ -2200,7 +2172,6 @@
     },
   };
 
-  // Control name
   const name$q = 'midpoint';
 
   /*
@@ -2226,7 +2197,6 @@
     },
   };
 
-  // Control name
   const name$r = 'nearest';
 
   /*
@@ -2254,7 +2224,6 @@
     },
   };
 
-  // Control name
   const name$s = 'planepoint';
 
   /*
@@ -2282,7 +2251,6 @@
     },
   };
 
-  // Control name
   const name$t = 'point-grid';
 
   /*
@@ -2344,7 +2312,6 @@
     },
   };
 
-  // Control name
   const name$u = 'point-on-line';
 
   /*
@@ -2372,7 +2339,6 @@
     },
   };
 
-  // Control name
   const name$v = 'point-on-surface';
 
   /*
@@ -2395,7 +2361,6 @@
     },
   };
 
-  // Control name
   const name$w = 'random';
 
   /*
@@ -2479,7 +2444,6 @@
     },
   };
 
-  // Control name
   const name$x = 'sample';
 
   /*
@@ -2539,7 +2503,6 @@
     },
   };
 
-  // Control name
   const name$y = 'simplify';
 
   /*
@@ -2601,7 +2564,6 @@
     },
   };
 
-  // Control name
   const name$z = 'square-grid';
 
   /*
@@ -2663,7 +2625,6 @@
     },
   };
 
-  // Control name
   const name$A = 'square';
 
   /*
@@ -2689,7 +2650,6 @@
     },
   };
 
-  // Control name
   const name$B = 'tag';
 
   /*
@@ -2759,7 +2719,6 @@
     },
   };
 
-  // Control name
   const name$C = 'tesselate';
 
   /*
@@ -2784,7 +2743,6 @@
     },
   };
 
-  // Control name
   const name$D = 'tin';
 
   /*
@@ -3113,7 +3071,6 @@
     transformation,
   };
 
-  // Control name
   const name$E = 'triangle-grid';
 
   /*
@@ -3175,7 +3132,6 @@
     },
   };
 
-  // Control name
   const name$F = 'union';
 
   /*
@@ -3202,7 +3158,6 @@
     },
   };
 
-  // Control name
   const name$G = 'within';
 
   /*
