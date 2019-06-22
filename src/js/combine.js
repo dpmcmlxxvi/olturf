@@ -6,41 +6,27 @@ const ol3turf = {
   utils,
 };
 
-/* globals ol3turf, turf */
 
-// ==================================================
-// combine control
-// --------------------------------------------------
-export default (function(ol3turf) {
-  'use strict';
+// Control name
+const name = 'combine';
 
-  // Control name
-  const name = 'combine';
+/*
+ * Compute combine of feature collection
+ */
+const action = function(control) {
+  const collection = ol3turf.utils.getCollection(control, 1, Infinity);
 
-  /**
-     * Compute combine of feature collection
-     * @private
-     */
-  const action = function(control) {
-    const collection = ol3turf.utils.getCollection(control, 1, Infinity);
-
-    const output = turf.combine(collection);
-    const inputs = {
-      fc: collection,
-    };
-    control.toolbar.ol3turf.handler.callback(name, output, inputs);
+  const output = turf.combine(collection);
+  const inputs = {
+    fc: collection,
   };
+  control.toolbar.ol3turf.handler.callback(name, output, inputs);
+};
 
-  return {
-    /*
-         * Create control then attach custom action and it's parent toolbar
-         * @param toolbar Parent toolbar
-         * @param prefix Selector prefix.
-         */
-    create: function(toolbar, prefix) {
-      const title = 'Combine feature collection';
-      const control = ol3turf.Control.create(toolbar, prefix, name, title, action);
-      return control;
-    },
-  };
-}(ol3turf || {}));
+export default {
+  create: function(toolbar, prefix) {
+    const title = 'Combine feature collection';
+    return ol3turf.Control.create(toolbar, prefix, name, title, action);
+  },
+};
+

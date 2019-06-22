@@ -1,13 +1,9 @@
-
-/* globals ol */
-
 /**
- * Create ol map
- * @param id ol.Map DOM id
+ * @description Create ol map
+ * @param {string} id ol.Map DOM id
+ * @return {ol.Map} OpenLayers map.
  */
-function createMap(id) {
-  'use strict';
-
+function createMap(id) { // eslint-disable-line no-unused-vars
   // ==================================================
   // Create map
   // --------------------------------------------------

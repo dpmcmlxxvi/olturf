@@ -6,40 +6,24 @@ const ol3turf = {
   utils,
 };
 
-/* globals ol3turf, turf */
+// Control name
+const name = 'center';
 
-// ==================================================
-// center control
-// --------------------------------------------------
-export default (function(ol3turf) {
-  'use strict';
-
-  // Control name
-  const name = 'center';
-
-  /**
-     * Compute center
-     * @private
-     */
-  const action = function(control) {
-    const collection = ol3turf.utils.getCollection(control, 1, Infinity);
-    const output = turf.center(collection);
-    const inputs = {
-      features: collection,
-    };
-    control.toolbar.ol3turf.handler.callback(name, output, inputs);
+/*
+ * Compute center
+ */
+const action = function(control) {
+  const collection = ol3turf.utils.getCollection(control, 1, Infinity);
+  const output = turf.center(collection);
+  const inputs = {
+    features: collection,
   };
+  control.toolbar.ol3turf.handler.callback(name, output, inputs);
+};
 
-  return {
-    /*
-         * Create control then attach custom action and it's parent toolbar
-         * @param toolbar Parent toolbar
-         * @param prefix Selector prefix.
-         */
-    create: function(toolbar, prefix) {
-      const title = 'Measure Center';
-      const control = ol3turf.Control.create(toolbar, prefix, name, title, action);
-      return control;
-    },
-  };
-}(ol3turf || {}));
+export default {
+  create: function(toolbar, prefix) {
+    const title = 'Measure Center';
+    return ol3turf.Control.create(toolbar, prefix, name, title, action);
+  },
+};

@@ -6,41 +6,27 @@ const ol3turf = {
   utils,
 };
 
-/* globals ol3turf, turf */
 
-// ==================================================
-// flip control
-// --------------------------------------------------
-export default (function(ol3turf) {
-  'use strict';
+// Control name
+const name = 'flip';
 
-  // Control name
-  const name = 'flip';
+/*
+ * Compute feature coordinate flip
+ */
+const action = function(control) {
+  const collection = ol3turf.utils.getCollection(control, 1, Infinity);
 
-  /**
-     * Compute feature coordinate flip
-     * @private
-     */
-  const action = function(control) {
-    const collection = ol3turf.utils.getCollection(control, 1, Infinity);
-
-    const output = turf.flip(collection);
-    const inputs = {
-      input: collection,
-    };
-    control.toolbar.ol3turf.handler.callback(name, output, inputs);
+  const output = turf.flip(collection);
+  const inputs = {
+    input: collection,
   };
+  control.toolbar.ol3turf.handler.callback(name, output, inputs);
+};
 
-  return {
-    /*
-         * Create control then attach custom action and it's parent toolbar
-         * @param toolbar Parent toolbar
-         * @param prefix Selector prefix.
-         */
-    create: function(toolbar, prefix) {
-      const title = 'Flip features coordinates';
-      const control = ol3turf.Control.create(toolbar, prefix, name, title, action);
-      return control;
-    },
-  };
-}(ol3turf || {}));
+export default {
+  create: function(toolbar, prefix) {
+    const title = 'Flip features coordinates';
+    return ol3turf.Control.create(toolbar, prefix, name, title, action);
+  },
+};
+
