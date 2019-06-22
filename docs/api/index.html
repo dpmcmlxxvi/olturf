@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width">
+	<title>ol3-turf Index</title>
+
+	<!--[if lt IE 9]>
+	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+	<![endif]-->
+	<link type="text/css" rel="stylesheet" href="styles/sunlight.default.css">
+
+	<link type="text/css" rel="stylesheet" href="styles/site.simplex.css">
+
+</head>
+
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top ">
+<div class="container">
+	<div class="navbar-header">
+		<a class="navbar-brand" href="index.html">ol3-turf</a>
+		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+			<span class="icon-bar"></span>
+        </button>
+	</div>
+	<div class="navbar-collapse collapse" id="topNavigation">
+		<ul class="nav navbar-nav">
+			
+			<li class="dropdown">
+				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="external-ol.control.html">external:ol.control</a></li><li><a href="ol3turf.html">ol3turf</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="external-ol.control.Control.html">external:ol.control.Control</a></li><li><a href="Toolbar.html">Toolbar</a></li>
+				</ul>
+			</li>
+			
+			<li class="dropdown">
+				<a href="externals.list.html" class="dropdown-toggle" data-toggle="dropdown">Externals<b class="caret"></b></a>
+				<ul class="dropdown-menu ">
+					<li><a href="external-ol.html">ol</a></li>
+				</ul>
+			</li>
+			
+		</ul>
+        
+            <div class="col-sm-3 col-md-3">
+                <form class="navbar-form" role="search">
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="Search" name="q" id="search-input">
+                        <div class="input-group-btn">
+                            <button class="btn btn-default" id="search-submit"><i class="glyphicon glyphicon-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        
+	</div>
+
+</div>
+</div>
+
+
+<div class="container" id="toc-content">
+<div class="row">
+
+	
+	<div class="col-md-8">
+	
+		<div id="main">
+			
+
+	
+	
+
+
+
+
+
+
+
+
+
+
+
+	
+	
+
+
+
+
+
+    <section class="readme-section">
+        <article><h1>ol3-turf</h1>
+<p><a href="https://travis-ci.org/dpmcmlxxvi/ol3-turf"><img src="https://travis-ci.org/dpmcmlxxvi/ol3-turf.svg?branch=master" alt="build"></a>
+<a href="https://coveralls.io/r/dpmcmlxxvi/ol3-turf?branch=master"><img src="https://img.shields.io/coveralls/dpmcmlxxvi/ol3-turf.svg" alt="coverage"></a>
+<a href="https://www.codacy.com/app/dpmcmlxxvi/ol3-turf?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dpmcmlxxvi/ol3-turf&amp;utm_campaign=Badge_Grade"><img src="https://img.shields.io/codacy/grade/44810a70e6a34122818dfa31e4304c50.svg" alt="codacy"></a>
+<a href="https://badge.fury.io/js/ol3-turf"><img src="https://badge.fury.io/js/ol3-turf.svg" alt="npm"></a>
+<a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/dpmcmlxxvi/ol3-turf.svg" alt="Greenkeeper"></a></p>
+<p>The ol3-turf library is a <a href="http://turfjs.org/">Turf</a> toolbar for
+<a href="http://openlayers.org/">OpenLayers 3</a>. The toolbar is a OpenLayers 3 custom
+control that provides access to Turf commands. For commands that require user
+inputs (e.g., point grid) a popup form is displayed. The Turf command output is
+either added to the map (e.g., a feature) or displayed as a popup message
+(e.g., polygon area). The toolbar is customizable in the commands displayed
+and its styling.</p>
+<p><img src="docs/web/img/ol3turf-example-screenshot.png" alt=""></p>
+<h2>DOCUMENTATION</h2>
+<p>The following help is available at the ol3-turf
+<a href="http://dpmcmlxxvi.github.io/ol3-turf">website</a>:</p>
+<ul>
+<li><a href="http://dpmcmlxxvi.github.io/ol3-turf/web/">Inroduction</a></li>
+<li><a href="http://dpmcmlxxvi.github.io/ol3-turf/web/demos.html">Examples</a></li>
+<li><a href="http://dpmcmlxxvi.github.io/ol3-turf/api/">API</a></li>
+</ul>
+<h2>BUILD</h2>
+<p>The only requirement for building ol3-turf is <a href="https://nodejs.org">node.js</a>.
+The following instructions assume that <code>grunt-cli</code> has been installed globally:</p>
+<pre class="prettyprint source lang-shell"><code>npm install -g grunt-cli
+</code></pre>
+<p>To build the library clone it, install it, then grunt it</p>
+<pre class="prettyprint source lang-shell"><code>git clone https://github.com/dpmcmlxxvi/ol3-turf.git
+npm install
+grunt
+</code></pre>
+<h2>TEST</h2>
+<p>To run the unit tests</p>
+<pre class="prettyprint source lang-shell"><code>grunt test
+</code></pre>
+<p>Then open the coverage report in the <code>coverage</code> directory in a browser.</p>
+<h2>USAGE</h2>
+<p>The ol3-turf library consists of two files</p>
+<ul>
+<li>ol3-turf.js</li>
+<li>ol3-turf.css</li>
+</ul>
+<p>and their minified versions. The main class exposed is
+<a href="http://dpmcmlxxvi.github.io/ol3-turf/api/ol.control.Turf.html">ol.control.Turf</a>
+which is a OpenLayers 3 custom control that extends the
+<a href="http://openlayers.org/en/latest/apidoc/ol.control.Control.html">ol.control.Control</a>
+class. The simplest use case is to create the control and add it to an existing
+<a href="http://openlayers.org/en/latest/apidoc/ol.Map.html">ol.Map</a>. This will add all
+available Turf commands to the toolbar and use the default styling.</p>
+<pre class="prettyprint source lang-javascript"><code>const toolbar = new ol.control.Turf();
+const map = new ol.Map({...});
+map.addControl(toolbar);
+</code></pre>
+<p>The toolbar constructor takes an optional <code>options</code> argument which extends the
+<a href="http://openlayers.org/en/latest/apidoc/ol.control.Control.html">ol.control.Control</a>
+options object. See the
+<a href="http://dpmcmlxxvi.github.io/ol3-turf/api/ol.control.Turf.html">ol.control.Turf</a>
+documentation for details. The options allow modifying the toolbar's defaut
+behavior by controlling which Turf controls are displayed, providing a custom
+callback function to handle the processing of the Turf outputs, and providing a
+custom style sheet class for the toolbar. In addition, the various <code>ol3-turf-*</code>
+style sheet classes for the toolbar, controls, forms, and popups can be
+overridden to suit an application's look and feel.</p>
+<h2>LICENSE</h2>
+<p>Copyright (c) 2016 Daniel Pulido <a href="mailto:dpmcmlxxvi@gmail.com">mailto:dpmcmlxxvi@gmail.com</a></p>
+<p>Source code is released under the <a href="http://opensource.org/licenses/MIT">MIT License</a>.
+Documentation is released under the <a href="http://creativecommons.org/licenses/by-sa/4.0/">CC BY 4.0</a>.
+Icons are from <a href="http://trac.osgeo.org/osgeo/wiki">OSGeo</a> and released under the
+<a href="http://creativecommons.org/licenses/by-sa/3.0/">CC BY 3.0</a>.</p></article>
+    </section>
+
+
+
+
+
+
+
+		</div>
+	</div>
+
+	<div class="clearfix"></div>
+
+	
+		<div class="col-md-3">
+			<div id="toc" class="col-md-3 hidden-xs hidden-sm hidden-md"></div>
+		</div>
+	
+
+</div>
+</div>
+
+
+    <div class="modal fade" id="searchResults">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">Search results</h4>
+          </div>
+          <div class="modal-body"></div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div>
+
+
+<footer>
+
+
+<span class="jsdoc-message">
+	Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.6.2</a>
+	
+	using the <a href="https://github.com/docstrap/docstrap">DocStrap template</a>.
+</span>
+</footer>
+
+<script src="scripts/docstrap.lib.js"></script>
+<script src="scripts/toc.js"></script>
+
+    <script type="text/javascript" src="scripts/fulltext-search-ui.js"></script>
+
+
+<script>
+$( function () {
+	$( "[id*='$']" ).each( function () {
+		var $this = $( this );
+
+		$this.attr( "id", $this.attr( "id" ).replace( "$", "__" ) );
+	} );
+
+	$( ".tutorial-section pre, .readme-section pre, pre.prettyprint.source" ).each( function () {
+		var $this = $( this );
+
+		var example = $this.find( "code" );
+		exampleText = example.html();
+		var lang = /{@lang (.*?)}/.exec( exampleText );
+		if ( lang && lang[1] ) {
+			exampleText = exampleText.replace( lang[0], "" );
+			example.html( exampleText );
+			lang = lang[1];
+		} else {
+			var langClassMatch = example.parent()[0].className.match(/lang\-(\S+)/);
+			lang = langClassMatch ? langClassMatch[1] : "javascript";
+		}
+
+		if ( lang ) {
+
+			$this
+			.addClass( "sunlight-highlight-" + lang )
+			.addClass( "linenums" )
+			.html( example.html() );
+
+		}
+	} );
+
+	Sunlight.highlightAll( {
+		lineNumbers : false,
+		showMenu : true,
+		enableDoclinks : true
+	} );
+
+	$.catchAnchorLinks( {
+        navbarOffset: 10
+	} );
+	$( "#toc" ).toc( {
+		anchorName  : function ( i, heading, prefix ) {
+			return $( heading ).attr( "id" ) || ( prefix + i );
+		},
+		selectors   : "#toc-content h1,#toc-content h2,#toc-content h3,#toc-content h4",
+		showAndHide : false,
+		smoothScrolling: true
+	} );
+
+	$( "#main span[id^='toc']" ).addClass( "toc-shim" );
+	$( '.dropdown-toggle' ).dropdown();
+
+    $( "table" ).each( function () {
+      var $this = $( this );
+      $this.addClass('table');
+    } );
+
+} );
+</script>
+
+
+
+<!--Navigation and Symbol Display-->
+
+
+<!--Google Analytics-->
+
+
+
+    <script type="text/javascript">
+        $(document).ready(function() {
+            SearcherDisplay.init();
+        });
+    </script>
+
+
+</body>
+</html>
