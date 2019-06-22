@@ -21,7 +21,7 @@ export default (function(ol3turf) {
      * @return Popup DOM element
      * @private
      */
-  return function(message, callback, parent, attributes) {
+  return function display(message, callback, parent, attributes) {
     // Popup id
     const id = 'ol3-turf-popup';
 
@@ -45,7 +45,7 @@ export default (function(ol3turf) {
       if (callback !== undefined && callback !== null) {
         callback();
       }
-      ol3turf.popup();
+      display();
     }
 
     // If no parent then add to body
