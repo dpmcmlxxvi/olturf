@@ -33,14 +33,14 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="external-ol.control.html">external:ol.control</a></li><li><a href="ol3turf.html">ol3turf</a></li>
+					<li><a href="external-ol.control.html">external:ol.control</a></li><li><a href="ol3turf.html">ol3turf</a></li><li><a href="ol3turf.toolbars.html">ol3turf.toolbars</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="external-ol.control.Control.html">external:ol.control.Control</a></li><li><a href="Toolbar.html">Toolbar</a></li>
+					<li><a href="external-ol.control.Control.html">external:ol.control.Control</a></li><li><a href="ol3turf.Toolbar.html">ol3turf.Toolbar</a></li>
 				</ul>
 			</li>
 			
@@ -146,9 +146,23 @@
     
 
     
+        <h3 class="subsection-title">Classes</h3>
+
+        <dl>
+            <dt><a href="ol3turf.Toolbar.html">Toolbar</a></dt>
+            <dd></dd>
+        </dl>
+    
 
     
 
+    
+        <h3 class="subsection-title">Namespaces</h3>
+
+        <dl>
+            <dt><a href="namespaces.html#ol3turf.toolbars"><a href="ol3turf.toolbars.html">toolbars</a></a></dt>
+            <dd></dd>
+        </dl>
     
 
     
@@ -162,7 +176,7 @@
                 
 <hr>
 <dt>
-    <h4 class="name" id=".ToolbarCallback"><span class="type-signature"></span>ToolbarCallback(name, inputs, output)</h4>
+    <h4 class="name" id=".Callback"><span class="type-signature"></span>Callback(name, inputs, output)</h4>
     
     
 </dt>
@@ -338,8 +352,8 @@ function</p></td>
             
                 
 <hr>
-<dt class="name" id=".ToolbarHandler">
-    <h4 id=".ToolbarHandler">ToolbarHandler</h4>
+<dt class="name" id=".Handler">
+    <h4 id=".Handler">Handler</h4>
 
     
 </dt>
@@ -399,7 +413,7 @@ function</p></td>
             <td class="type">
             
                 
-<span class="param-type"><a href="ol3turf.html#.ToolbarCallback">ol3turf.ToolbarCallback</a></span>
+<span class="param-type"><a href="ol3turf.html#.Callback">ol3turf.Callback</a></span>
 
 
 
@@ -463,8 +477,8 @@ turf commands.</p></td>
             
                 
 <hr>
-<dt class="name" id=".ToolbarOptions">
-    <h4 id=".ToolbarOptions">ToolbarOptions</h4>
+<dt class="name" id=".Options">
+    <h4 id=".Options">Options</h4>
 
     
 </dt>
@@ -548,7 +562,7 @@ turf commands.</p></td>
             
                 <td class="default">
                 
-                    <a href="ol3turf.toolbars.html#.ToolbarAll">ol3turf.toolbars.ToolbarAll</a>
+                    <a href="ol3turf.toolbars.html#.all">ol3turf.toolbars.all</a>
                 
                 </td>
             
@@ -567,7 +581,7 @@ to enable</p></td>
             <td class="type">
             
                 
-<span class="param-type"><a href="ol3turf.html#.ToolbarHandler">ol3turf.ToolbarHandler</a></span>
+<span class="param-type"><a href="ol3turf.html#.Handler">ol3turf.Handler</a></span>
 
 
 
@@ -587,17 +601,16 @@ to enable</p></td>
             
                 <td class="default">
                 
-                    ol3turf.Handler
+                    'undefined'
                 
                 </td>
             
 
-            <td class="description last"><p>Optional
-function that handles processing the output of the ol3-turf
-controls. This is useful to bypass the default handler and provide
-custom processing of the results. The default handler adds features
-to the map or displays a message with any values returned by the
-turf function.</p></td>
+            <td class="description last"><p>Optional function that
+handles processing the output of the ol3-turf controls. This is
+useful to bypass the default handler and provide custom processing
+of the results. The default handler adds features to the map or
+displays a message with any values returned by the turf function.</p></td>
         </tr>
 
     
@@ -630,15 +643,14 @@ turf function.</p></td>
             
                 <td class="default">
                 
-                    ol3-turf
+                    'ol3-turf'
                 
                 </td>
             
 
-            <td class="description last"><p>Prefix to apply to control element IDs.
-Only needed to make IDs unique if
-multiple instances of an ol3-turf
-toolbar are used on the same page.</p></td>
+            <td class="description last"><p>Prefix to apply to control element
+IDs. Only needed to make IDs unique if multiple instances of an
+ol3-turf toolbar are used on the same page.</p></td>
         </tr>
 
     
@@ -671,7 +683,7 @@ toolbar are used on the same page.</p></td>
             
                 <td class="default">
                 
-                    ol3-turf-toolbar
+                    'ol3-turf-toolbar'
                 
                 </td>
             

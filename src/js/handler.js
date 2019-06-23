@@ -1,18 +1,18 @@
-/*
+/**
  * Callback handler
  * @constructor
- * @param toolbar ol3-turf toolbar
+ * @param {ol3turf.Toolbar} toolbar ol3-turf toolbar
  * @private
  */
 const Handler = function(toolbar) {
   this.toolbar = toolbar;
 };
 
-/*
+/**
  * Default function called by each control when turf function is completed.
- * @param name Name of ol3-turf control being handled
- * @param output Output of turf function
- * @param inputs Object with inputs provided to turf function as properties
+ * @param {string} name Name of ol3-turf control being handled
+ * @param {object} output Output of turf function
+ * @param {object} inputs Inputs provided to turf function as properties
  * @private
  */
 Handler.prototype.callback = function(name, output, inputs) {
