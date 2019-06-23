@@ -3,7 +3,7 @@ const pti = require('puppeteer-to-istanbul');
 
 const url = 'file://' + __dirname + '/index.html';
 
-describe('ol3turf', () => {
+describe('olturf', () => {
   beforeAll(async () => {
     await page.coverage.startJSCoverage();
     await page.goto(url);
@@ -15,9 +15,9 @@ describe('ol3turf', () => {
   });
 
   describe('API', () => {
-    it('creates a valid ol3turf object', async () => {
-      const ol3turf = await page.evaluate(() => ol3turf);
-      expect(ol3turf).not.toBeNull();
+    it('creates a valid olturf object', async () => {
+      const olturf = await page.evaluate(() => olturf);
+      expect(olturf).not.toBeNull();
     });
   });
 });

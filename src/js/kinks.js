@@ -17,7 +17,7 @@ const action = function(control) {
   const inputs = {
     polygon: polygon,
   };
-  control.toolbar.ol3turf.handler.callback(name, output, inputs);
+  control.toolbar.olturf.handler.callback(name, output, inputs);
 };
 
 export default {

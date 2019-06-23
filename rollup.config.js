@@ -20,12 +20,12 @@ const build = (filename, plugins) => ({
     banner: banner,
     file: filename,
     format: 'umd',
-    name: 'ol3turf',
+    name: 'olturf',
   },
   plugins,
 });
 
 export default [
-  build('dist/ol3-turf.js', [commonjs(), resolve()]),
-  build('dist/ol3-turf.min.js', [commonjs(), resolve(), terser()]),
+  build('dist/olturf.js', [commonjs(), resolve()]),
+  build('dist/olturf.min.js', [commonjs(), resolve(), terser()]),
 ];

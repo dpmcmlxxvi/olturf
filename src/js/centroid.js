@@ -12,7 +12,7 @@ const action = function(control) {
   const inputs = {
     features: collection,
   };
-  control.toolbar.ol3turf.handler.callback(name, output, inputs);
+  control.toolbar.olturf.handler.callback(name, output, inputs);
 };
 
 export default {

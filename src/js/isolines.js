@@ -36,7 +36,7 @@ const action = function(control) {
         resolution: resolution,
         breaks: breaks,
       };
-      control.toolbar.ol3turf.handler.callback(name, output, inputs);
+      control.toolbar.olturf.handler.callback(name, output, inputs);
     } catch (e) {
       control.showMessage(e);
     }

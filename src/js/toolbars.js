@@ -1,11 +1,11 @@
 /**
  * @namespace toolbars
- * @memberof ol3turf
+ * @memberof olturf
  */
 
 /**
  * Aggregation toolbar: 'collect'
- * @memberof ol3turf.toolbars
+ * @memberof olturf.toolbars
  * @return {string[]} Control names for the aggregation toolbar
  */
 function aggregation() {
@@ -14,7 +14,7 @@ function aggregation() {
 
 /**
  * Classification toolbar: 'nearest'
- * @memberof ol3turf.toolbars
+ * @memberof olturf.toolbars
  * @return {string[]} Control names for the classification toolbar
  */
 function classification() {
@@ -23,7 +23,7 @@ function classification() {
 
 /**
  * Data toolbar: 'random', 'sample'
- * @memberof ol3turf.toolbars
+ * @memberof olturf.toolbars
  * @return {string[]} Control names for the data toolbar
  */
 function data() {
@@ -36,7 +36,7 @@ function data() {
 /**
  * Grids toolbar: 'hex-grid', 'point-grid', 'square-grid', 'triangle-grid',
  *                'tesselate'
- * @memberof ol3turf.toolbars
+ * @memberof olturf.toolbars
  * @return {string[]} Control names for the grids toolbar
  */
 function grids() {
@@ -51,7 +51,7 @@ function grids() {
 
 /**
  * Interpolation toolbar: 'isolines', 'planepoint', 'tin'
- * @memberof ol3turf.toolbars
+ * @memberof olturf.toolbars
  * @return {string[]} Control names for the interpolation toolbar
  */
 function interpolation() {
@@ -64,7 +64,7 @@ function interpolation() {
 
 /**
  * Joins toolbar: 'inside', 'tag', 'within'
- * @memberof ol3turf.toolbars
+ * @memberof olturf.toolbars
  * @return {string[]} Control names for the joins toolbar
  */
 function joins() {
@@ -80,7 +80,7 @@ function joins() {
  *                      'center-of-mass', 'center', 'centroid', 'midpoint',
  *                      'point-on-surface', 'envelope', 'square', 'circle',
  *                      'along', 'destination'
- * @memberof ol3turf.toolbars
+ * @memberof olturf.toolbars
  * @return {string[]} Control names for the measurement toolbar
  */
 function measurement() {
@@ -105,7 +105,7 @@ function measurement() {
 /**
  * Miscellaneous toolbar: 'combine', 'explode', 'flip', 'kinks',
  *                        'line-slice-along', 'point-on-line'
- * @memberof ol3turf.toolbars
+ * @memberof olturf.toolbars
  * @return {string[]} Control names for the miscellaneous toolbar
  */
 function misc() {
@@ -122,7 +122,7 @@ function misc() {
 /**
  * Transformation toolbar: 'bezier', 'buffer', 'concave', 'convex',
  *                         'difference', 'intersect', 'simplify', 'union'
- * @memberof ol3turf.toolbars
+ * @memberof olturf.toolbars
  * @return {string[]} Control names for the transformation toolbar
  */
 function transformation() {
@@ -140,7 +140,7 @@ function transformation() {
 
 /**
  * Toolbar with all controls
- * @memberof ol3turf.toolbars
+ * @memberof olturf.toolbars
  * @return {string[]} Control names for all the controls
  */
 function all() {

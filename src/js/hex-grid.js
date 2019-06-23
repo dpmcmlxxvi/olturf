@@ -38,7 +38,7 @@ const action = function(control) {
         units: units,
         triangles: isTriangles,
       };
-      control.toolbar.ol3turf.handler.callback(name, output, inputs);
+      control.toolbar.olturf.handler.callback(name, output, inputs);
     } catch (e) {
       control.showMessage(e);
     }

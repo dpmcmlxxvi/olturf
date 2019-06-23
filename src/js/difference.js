@@ -16,7 +16,7 @@ const action = function(control) {
     poly1: poly1,
     poly2: poly2,
   };
-  control.toolbar.ol3turf.handler.callback(name, output, inputs);
+  control.toolbar.olturf.handler.callback(name, output, inputs);
 };
 
 export default {

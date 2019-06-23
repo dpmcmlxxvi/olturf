@@ -34,7 +34,7 @@ const action = function(control) {
         cellSize: cellSize,
         units: units,
       };
-      control.toolbar.ol3turf.handler.callback(name, output, inputs);
+      control.toolbar.olturf.handler.callback(name, output, inputs);
     } catch (e) {
       control.showMessage(e);
     }

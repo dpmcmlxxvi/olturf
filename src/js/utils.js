@@ -24,11 +24,11 @@ utils.extend = function(source, target) {
 };
 
 /**
- * Get ol3-turf class selector with given suffices
+ * Get olturf class selector with given suffices
  * @param {string[]} suffices List of suffices to append to base name
  * @param {string} prefix Selector prefix
  * @private
- * @return {string} Class selector string ".ol3-turf-..."
+ * @return {string} Class selector string ".olturf-..."
  */
 utils.getClass = function(suffices, prefix) {
   return '.' + utils.getName(suffices, prefix);
@@ -36,7 +36,7 @@ utils.getClass = function(suffices, prefix) {
 
 /**
  * Get selected features collection
- * @param {ol3turf.Control} control Control to extract feature collection
+ * @param {olturf.Control} control Control to extract feature collection
  * @param {number} min Minimum number of expected features in collection
  * @param {number} max Maximum number of expected features in collection
  * @private
@@ -147,12 +147,12 @@ utils.getControlText = function(id, title, text) {
 };
 
 /**
- * Get element string for a given array of ol3-turf suffices
+ * Get element string for a given array of olturf suffices
  * @param {string} name Element name string (e.g., input, select)
  * @param {string[]} suffices List of suffices to append to base name
  * @param {string} prefix Selector prefix
  * @private
- * @return {string} Element string (e.g., "input[name=ol3-turf-...")
+ * @return {string} Element string (e.g., "input[name=olturf-...")
  */
 utils.getElement = function(name, suffices, prefix) {
   return name + '[name=\'' + utils.getName(suffices, prefix) + '\']';
@@ -254,11 +254,11 @@ utils.getFormString = function(id, name) {
 };
 
 /**
- * Get ol3-turf id selector with given suffices
+ * Get olturf id selector with given suffices
  * @param {string[]} suffices List of suffices to append to base name
  * @param {string} prefix Selector prefix
  * @private
- * @return {string} Id selector string "#ol3-turf-..."
+ * @return {string} Id selector string "#olturf-..."
  */
 utils.getId = function(suffices, prefix) {
   return '#' + utils.getName(suffices, prefix);
@@ -278,15 +278,15 @@ utils.getLines = function(collection, min, max) {
 };
 
 /**
- * Get ol3-turf name with given suffices appended with hyphens
+ * Get olturf name with given suffices appended with hyphens
  * @param {string[]} suffices List of suffices to append to base name
  * @param {string} prefix Selector prefix
  * @private
- * @return {string} Control name string "ol3-turf-..."
+ * @return {string} Control name string "olturf-..."
  */
 utils.getName = function(suffices, prefix) {
   if (prefix === undefined) {
-    prefix = 'ol3-turf';
+    prefix = 'olturf';
   }
   let name = prefix;
   suffices.forEach(function(suffix) {

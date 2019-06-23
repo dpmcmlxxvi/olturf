@@ -11,7 +11,7 @@ import utils from './utils';
  */
 export default function display(message, callback, parent, attributes) {
   // Popup id
-  const id = 'ol3-turf-popup';
+  const id = 'olturf-popup';
 
   // Remove existing popup
   const currentPopup = document.getElementById(id);
@@ -50,18 +50,18 @@ export default function display(message, callback, parent, attributes) {
 
   // Create a div to contain message
   const divMessage = document.createElement('div');
-  divMessage.className = 'ol3-turf-popup-message';
+  divMessage.className = 'olturf-popup-message';
   divMessage.innerHTML = message;
 
   // Create a button
   const button = document.createElement('button');
-  button.className = 'ol3-turf-popup-button';
+  button.className = 'olturf-popup-button';
   button.innerHTML = 'OK';
   button.onclick = onClick;
   button.type = 'button';
 
   const divButton = document.createElement('div');
-  divButton.className = 'ol3-turf-popup-button-container';
+  divButton.className = 'olturf-popup-button-container';
   divButton.appendChild(button);
 
   // Create popup

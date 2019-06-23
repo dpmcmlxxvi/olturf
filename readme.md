@@ -1,4 +1,4 @@
-# ol3-turf
+# OpenLayers Turf
 
 [![build](https://travis-ci.org/dpmcmlxxvi/ol3-turf.svg?branch=master)](https://travis-ci.org/dpmcmlxxvi/ol3-turf)
 [![coverage](https://img.shields.io/coveralls/dpmcmlxxvi/ol3-turf.svg)](https://coveralls.io/r/dpmcmlxxvi/ol3-turf?branch=master)
@@ -6,19 +6,34 @@
 [![npm](https://badge.fury.io/js/ol3-turf.svg)](https://badge.fury.io/js/ol3-turf)
 [![Greenkeeper](https://badges.greenkeeper.io/dpmcmlxxvi/ol3-turf.svg)](https://greenkeeper.io/)
 
-The ol3-turf library is a [Turf](http://turfjs.org/) toolbar for
-[OpenLayers 3](http://openlayers.org/). The toolbar is a OpenLayers 3 custom
-control that provides access to Turf commands. For commands that require user
-inputs (e.g., point grid) a popup form is displayed. The Turf command output is
-either added to the map (e.g., a feature) or displayed as a popup message
-(e.g., polygon area). The toolbar is customizable in the commands displayed
-and its styling.
+[OpenLayers Turf](https://github.com/dpmcmlxxvi/ol3-turf) (olturf) is a
+[Turf](http://turfjs.org/) toolbar for [OpenLayers](http://openlayers.org/).
+The toolbar provides the following features:
 
-  ![](docs/web/img/ol3turf-example-screenshot.png)
+- **Customizable** commands to display
+- **Forms** to collect command inputs
+- **Popups** to display numerical outputs
+- **Input** features are selected in the map
+- **Output** features are displayed in the map
+
+Instead of displaying all the Turf commands available, individual commands can
+be selected or a subset of pre-defined groups can be displayed. The following
+groups are available `aggregation`, `classification`, `data`, `grids`,
+`interpolation`, `measurement`, `misc`, `joins`, `transformation`. A toolbar can
+be added to an OpenLayers map easily by creating an instance and adding it to
+the map:
+
+```javascript
+const toolbar = new olturf.Toolbar();
+const map = new ol.Map({...});
+map.addControl(toolbar);
+```
+
+  ![](docs/web/img/olturf-example-screenshot.png)
 
 ## DOCUMENTATION
 
-The following help is available at the ol3-turf
+The following help is available at the olturf
 [website](http://dpmcmlxxvi.github.io/ol3-turf):
 
 - [Inroduction](http://dpmcmlxxvi.github.io/ol3-turf/web/)
@@ -27,62 +42,15 @@ The following help is available at the ol3-turf
 
 ## BUILD
 
-The only requirement for building ol3-turf is [node.js](https://nodejs.org).
-The following instructions assume that `grunt-cli` has been installed globally:
+To build and test the library locally:
 
 ```shell
-npm install -g grunt-cli
-```
-
-To build the library clone it, install it, then grunt it
-
-```shell
-git clone https://github.com/dpmcmlxxvi/ol3-turf.git
 npm install
-grunt
+npm test
 ```
 
-## TEST
-
-To run the unit tests
-
-```shell
-grunt test
-```
-
-Then open the coverage report in the `coverage` directory in a browser.
-
-## USAGE
-
-The ol3-turf library consists of two files
-
- - ol3-turf.js
- - ol3-turf.css
-
-and their minified versions. The main class exposed is
-[ol.control.Turf](http://dpmcmlxxvi.github.io/ol3-turf/api/ol.control.Turf.html)
-which is a OpenLayers 3 custom control that extends the 
-[ol.control.Control](http://openlayers.org/en/latest/apidoc/ol.control.Control.html)
-class. The simplest use case is to create the control and add it to an existing
-[ol.Map](http://openlayers.org/en/latest/apidoc/ol.Map.html). This will add all
-available Turf commands to the toolbar and use the default styling.
-
-```javascript
-const toolbar = new ol.control.Turf();
-const map = new ol.Map({...});
-map.addControl(toolbar);
-```
-
-The toolbar constructor takes an optional `options` argument which extends the
-[ol.control.Control](http://openlayers.org/en/latest/apidoc/ol.control.Control.html)
-options object. See the
-[ol.control.Turf](http://dpmcmlxxvi.github.io/ol3-turf/api/ol.control.Turf.html)
-documentation for details. The options allow modifying the toolbar's defaut
-behavior by controlling which Turf controls are displayed, providing a custom
-callback function to handle the processing of the Turf outputs, and providing a
-custom style sheet class for the toolbar. In addition, the various `ol3-turf-*`
-style sheet classes for the toolbar, controls, forms, and popups can be
-overridden to suit an application's look and feel.
+The bundled library and stylesheet are at `dist/olturf.min.js` and
+`dist/olturf.min.css`.
 
 ## LICENSE
 

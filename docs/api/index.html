@@ -4,7 +4,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width">
-	<title>ol3-turf Index</title>
+	<title>olturf Index</title>
 
 	<!--[if lt IE 9]>
 	<script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -20,7 +20,7 @@
 <div class="navbar navbar-default navbar-fixed-top ">
 <div class="container">
 	<div class="navbar-header">
-		<a class="navbar-brand" href="index.html">ol3-turf</a>
+		<a class="navbar-brand" href="index.html">olturf</a>
 		<button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#topNavigation">
 			<span class="icon-bar"></span>
 			<span class="icon-bar"></span>
@@ -33,14 +33,14 @@
 			<li class="dropdown">
 				<a href="namespaces.list.html" class="dropdown-toggle" data-toggle="dropdown">Namespaces<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="external-ol.control.html">external:ol.control</a></li><li><a href="ol3turf.html">ol3turf</a></li><li><a href="ol3turf.toolbars.html">ol3turf.toolbars</a></li>
+					<li><a href="external-ol.control.html">external:ol.control</a></li><li><a href="olturf.html">olturf</a></li><li><a href="olturf.toolbars.html">olturf.toolbars</a></li>
 				</ul>
 			</li>
 			
 			<li class="dropdown">
 				<a href="classes.list.html" class="dropdown-toggle" data-toggle="dropdown">Classes<b class="caret"></b></a>
 				<ul class="dropdown-menu ">
-					<li><a href="external-ol.control.Control.html">external:ol.control.Control</a></li><li><a href="ol3turf.Toolbar.html">ol3turf.Toolbar</a></li>
+					<li><a href="external-ol.control.Control.html">external:ol.control.Control</a></li><li><a href="olturf.Toolbar.html">olturf.Toolbar</a></li>
 				</ul>
 			</li>
 			
@@ -100,22 +100,35 @@
 
 
     <section class="readme-section">
-        <article><h1>ol3-turf</h1>
+        <article><h1>OpenLayers Turf</h1>
 <p><a href="https://travis-ci.org/dpmcmlxxvi/ol3-turf"><img src="https://travis-ci.org/dpmcmlxxvi/ol3-turf.svg?branch=master" alt="build"></a>
 <a href="https://coveralls.io/r/dpmcmlxxvi/ol3-turf?branch=master"><img src="https://img.shields.io/coveralls/dpmcmlxxvi/ol3-turf.svg" alt="coverage"></a>
 <a href="https://www.codacy.com/app/dpmcmlxxvi/ol3-turf?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dpmcmlxxvi/ol3-turf&amp;utm_campaign=Badge_Grade"><img src="https://img.shields.io/codacy/grade/44810a70e6a34122818dfa31e4304c50.svg" alt="codacy"></a>
 <a href="https://badge.fury.io/js/ol3-turf"><img src="https://badge.fury.io/js/ol3-turf.svg" alt="npm"></a>
 <a href="https://greenkeeper.io/"><img src="https://badges.greenkeeper.io/dpmcmlxxvi/ol3-turf.svg" alt="Greenkeeper"></a></p>
-<p>The ol3-turf library is a <a href="http://turfjs.org/">Turf</a> toolbar for
-<a href="http://openlayers.org/">OpenLayers 3</a>. The toolbar is a OpenLayers 3 custom
-control that provides access to Turf commands. For commands that require user
-inputs (e.g., point grid) a popup form is displayed. The Turf command output is
-either added to the map (e.g., a feature) or displayed as a popup message
-(e.g., polygon area). The toolbar is customizable in the commands displayed
-and its styling.</p>
-<p><img src="docs/web/img/ol3turf-example-screenshot.png" alt=""></p>
+<p><a href="https://github.com/dpmcmlxxvi/ol3-turf">OpenLayers Turf</a> (olturf) is a
+<a href="http://turfjs.org/">Turf</a> toolbar for <a href="http://openlayers.org/">OpenLayers</a>.
+The toolbar provides the following features:</p>
+<ul>
+<li><strong>Customizable</strong> commands to display</li>
+<li><strong>Forms</strong> to collect command inputs</li>
+<li><strong>Popups</strong> to display numerical outputs</li>
+<li><strong>Input</strong> features are selected in the map</li>
+<li><strong>Output</strong> features are displayed in the map</li>
+</ul>
+<p>Instead of displaying all the Turf commands available, individual commands can
+be selected or a subset of pre-defined groups can be displayed. The following
+groups are available <code>aggregation</code>, <code>classification</code>, <code>data</code>, <code>grids</code>,
+<code>interpolation</code>, <code>measurement</code>, <code>misc</code>, <code>joins</code>, <code>transformation</code>. A toolbar can
+be added to an OpenLayers map easily by creating an instance and adding it to
+the map:</p>
+<pre class="prettyprint source lang-javascript"><code>const toolbar = new olturf.Toolbar();
+const map = new ol.Map({...});
+map.addControl(toolbar);
+</code></pre>
+<p><img src="docs/web/img/olturf-example-screenshot.png" alt=""></p>
 <h2>DOCUMENTATION</h2>
-<p>The following help is available at the ol3-turf
+<p>The following help is available at the olturf
 <a href="http://dpmcmlxxvi.github.io/ol3-turf">website</a>:</p>
 <ul>
 <li><a href="http://dpmcmlxxvi.github.io/ol3-turf/web/">Inroduction</a></li>
@@ -123,47 +136,12 @@ and its styling.</p>
 <li><a href="http://dpmcmlxxvi.github.io/ol3-turf/api/">API</a></li>
 </ul>
 <h2>BUILD</h2>
-<p>The only requirement for building ol3-turf is <a href="https://nodejs.org">node.js</a>.
-The following instructions assume that <code>grunt-cli</code> has been installed globally:</p>
-<pre class="prettyprint source lang-shell"><code>npm install -g grunt-cli
+<p>To build and test the library locally:</p>
+<pre class="prettyprint source lang-shell"><code>npm install
+npm test
 </code></pre>
-<p>To build the library clone it, install it, then grunt it</p>
-<pre class="prettyprint source lang-shell"><code>git clone https://github.com/dpmcmlxxvi/ol3-turf.git
-npm install
-grunt
-</code></pre>
-<h2>TEST</h2>
-<p>To run the unit tests</p>
-<pre class="prettyprint source lang-shell"><code>grunt test
-</code></pre>
-<p>Then open the coverage report in the <code>coverage</code> directory in a browser.</p>
-<h2>USAGE</h2>
-<p>The ol3-turf library consists of two files</p>
-<ul>
-<li>ol3-turf.js</li>
-<li>ol3-turf.css</li>
-</ul>
-<p>and their minified versions. The main class exposed is
-<a href="http://dpmcmlxxvi.github.io/ol3-turf/api/ol.control.Turf.html">ol.control.Turf</a>
-which is a OpenLayers 3 custom control that extends the
-<a href="http://openlayers.org/en/latest/apidoc/ol.control.Control.html">ol.control.Control</a>
-class. The simplest use case is to create the control and add it to an existing
-<a href="http://openlayers.org/en/latest/apidoc/ol.Map.html">ol.Map</a>. This will add all
-available Turf commands to the toolbar and use the default styling.</p>
-<pre class="prettyprint source lang-javascript"><code>const toolbar = new ol.control.Turf();
-const map = new ol.Map({...});
-map.addControl(toolbar);
-</code></pre>
-<p>The toolbar constructor takes an optional <code>options</code> argument which extends the
-<a href="http://openlayers.org/en/latest/apidoc/ol.control.Control.html">ol.control.Control</a>
-options object. See the
-<a href="http://dpmcmlxxvi.github.io/ol3-turf/api/ol.control.Turf.html">ol.control.Turf</a>
-documentation for details. The options allow modifying the toolbar's defaut
-behavior by controlling which Turf controls are displayed, providing a custom
-callback function to handle the processing of the Turf outputs, and providing a
-custom style sheet class for the toolbar. In addition, the various <code>ol3-turf-*</code>
-style sheet classes for the toolbar, controls, forms, and popups can be
-overridden to suit an application's look and feel.</p>
+<p>The bundled library and stylesheet are at <code>dist/olturf.min.js</code> and
+<code>dist/olturf.min.css</code>.</p>
 <h2>LICENSE</h2>
 <p>Copyright (c) 2016 Daniel Pulido <a href="mailto:dpmcmlxxvi@gmail.com">mailto:dpmcmlxxvi@gmail.com</a></p>
 <p>Source code is released under the <a href="http://opensource.org/licenses/MIT">MIT License</a>.

@@ -1,4 +1,4 @@
-.ol3-turf-popup {
+.olturf-popup {
   background-color: #fff;
   background-color: rgba(255, 255, 255, 1);
   border-radius: 4px;
@@ -11,14 +11,14 @@
   z-index: 9999;
 }
 
-.ol3-turf-popup-message {
+.olturf-popup-message {
   background-color: #00a088;
   background-color: rgba(0, 60, 136, 0.5);
   border-radius: 2px;
   padding: 10px;
 }
 
-.ol3-turf-popup-button-container {
+.olturf-popup-button-container {
   display: inline-block;
   padding: 10px;
 }

@@ -2,7 +2,7 @@ import form from './form';
 import popup from './popup';
 import utils from './utils';
 
-const ol3turf = {
+const olturf = {
   form,
   popup,
   utils,
@@ -165,7 +165,7 @@ const Control = function(options) {
     self.button[key] = opts[key];
   });
   this.element = document.createElement('div');
-  this.element.className = 'ol3-turf-control';
+  this.element.className = 'olturf-control';
   this.element.appendChild(this.button);
 
   // Initialize ol.control.Turf which needs to be set during creation
@@ -175,7 +175,7 @@ const Control = function(options) {
   this.form = null;
 
   // Initialize form which needs to be set during creation
-  this.prefix = 'ol3-turf';
+  this.prefix = 'olturf';
 };
 
 /**
@@ -234,9 +234,9 @@ Control.prototype.getFeatures = function() {
 };
 
 /**
- * @description ol3-turf custom callback handler.
+ * @description olturf custom callback handler.
  * @typedef {object} ControlPosition
- * @memberOf ol3turf
+ * @memberOf olturf
  * @property {object} [position] Form position relative to parent map
  * @property {object} [position.top] Top position of form
  * @property {object} [position.left] Left position of form
@@ -246,7 +246,7 @@ Control.prototype.getFeatures = function() {
 /**
  * Get control's form position
  * @param {object} form Element of form to position
- * @return {ol3turf.ControlPosition} Current form's form position.
+ * @return {olturf.ControlPosition} Current form's form position.
  * @private
  */
 Control.prototype.getFormPosition = function(form) {
@@ -254,7 +254,7 @@ Control.prototype.getFormPosition = function(form) {
   const sizeButton = getAbsoluteRect(this.button);
   const sizeForm = getAbsoluteRect(form);
   const sizeMap = getAbsoluteRect(this.getMap().getTargetElement());
-  const sizeToolbar = getAbsoluteRect(this.toolbar.ol3turf.element);
+  const sizeToolbar = getAbsoluteRect(this.toolbar.olturf.element);
 
   // Initialize form to be at the parent button's position
   sizeForm.top = sizeButton.top;
@@ -281,7 +281,7 @@ Control.prototype.getFormPosition = function(form) {
 
 /**
  * Get parent map
- * @return {ol.Map|null} Current ol3 map
+ * @return {ol.Map|null} Current ol map
  * @private
  */
 Control.prototype.getMap = function() {
@@ -377,9 +377,9 @@ Control.prototype.showForm = function(controls, id) {
 
   // Create new form
   if (id === undefined) {
-    id = 'ol3-turf-form';
+    id = 'olturf-form';
   }
-  this.form = ol3turf.form(oldiv, id, controls, attributes);
+  this.form = olturf.form(oldiv, id, controls, attributes);
 
   // Update form position and display
   const position = this.getFormPosition(this.form);
@@ -396,13 +396,13 @@ Control.prototype.showForm = function(controls, id) {
 Control.prototype.showMessage = function(message) {
   // Create popup message and hide
   const callback = null;
-  const parent = this.toolbar.ol3turf.element.parentNode;
+  const parent = this.toolbar.olturf.element.parentNode;
   const attributes = {
     style: {
       visibility: 'hidden',
     },
   };
-  const popup = ol3turf.popup(message, callback, parent, attributes);
+  const popup = olturf.popup(message, callback, parent, attributes);
 
   // Get placement and display
   const position = this.getFormPosition(popup);

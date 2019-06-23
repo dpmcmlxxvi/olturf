@@ -34,6 +34,6 @@
     "templates": 
     {
         "includeDate": false,
-        "systemName": "ol3-turf"
+        "systemName": "olturf"
     }
 }

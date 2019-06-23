@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>ol3-turf | Home</title>
+    <title>OpenLayers Turf | Home</title>
 
     <link
       href="https://unpkg.com/bootstrap@3.3.6/dist/css/bootstrap.min.css"
@@ -19,8 +19,8 @@
       rel="stylesheet"
       type="text/css"
     />
-    <link href="../../dist/ol3-turf.min.css" rel="stylesheet" type="text/css" />
-    <link href="css/ol3turf.css" rel="stylesheet" />
+    <link href="../../dist/olturf.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/olturf.css" rel="stylesheet" />
     <style>
       #map {
         height: 350px;
@@ -54,7 +54,7 @@
             <li><a href="demos.html">Demos</a></li>
             <li><a href="../api/">Docs</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right ol3turf-github-logo">
+          <ul class="nav navbar-nav navbar-right olturf-github-logo">
             <li>
               <a href="https://github.com/dpmcmlxxvi/ol3-turf">
                 <img src="./img/GitHub-Mark-Light-32px.png" />
@@ -72,18 +72,18 @@
         </div>
         <div class="media-body">
           <div class="media-heading">
-            <h1>ol3-turf.js</h1>
+            <h1>OpenLayers Turf</h1>
           </div>
         </div>
         <p>
           A Javascript library that provides a
           <a href="http://turfjs.org/">Turf</a>
           toolbar for
-          <a href="http://www.openlayers.org">OpenLayers</a>.
+          <a href="http://www.openlayers.org">OpenLayers</a>
         </p>
         <p>
           <a
-            id="ol3turf-download"
+            id="olturf-download"
             class="btn btn-primary btn-lg"
             href="https://github.com/dpmcmlxxvi/ol3-turf"
             role="button"
@@ -99,7 +99,7 @@
         <div class="col-md-4">
           <h2>Goal</h2>
           <p>
-            The main goal of <code>ol3-turf</code> is to provide a easy-to-use
+            The main goal of <code>olturf</code> is to provide a easy-to-use
             library that combines the mapping capabilities of OpenLayers with
             the geospatial analysis tools of Turf.
           </p>
@@ -161,7 +161,7 @@
     <script src="https://unpkg.com/bootstrap@3.3.6/dist/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.14.2/ol.js"></script>
     <script src="js/turf.min.js"></script>
-    <script src="../../dist/ol3-turf.js"></script>
+    <script src="../../dist/olturf.js"></script>
     <script src="js/example.js"></script>
     <script>
       $(document).ready(function() {
@@ -169,7 +169,7 @@
           const api =
             "https://api.github.com/repos/dpmcmlxxvi/ol3-turf/releases/latest";
           $.getJSON(api).done(function(json) {
-            const anchor = $("#ol3turf-download");
+            const anchor = $("#olturf-download");
             anchor.attr("href", json.zipball_url);
             anchor.html("Download " + json.tag_name + " &raquo;");
           });
@@ -177,7 +177,7 @@
       });
 
       window.onload = function() {
-        window.toolbar = new ol3turf.Toolbar();
+        window.toolbar = new olturf.Toolbar();
         window.map = createMap("map");
         window.map.addControl(toolbar);
       };

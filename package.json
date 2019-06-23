@@ -1,5 +1,5 @@
 {
-  "name": "ol3-turf",
+  "name": "olturf",
   "version": "0.6.0",
   "description": "A Turf toolbar for OpenLayers.",
   "author": {
@@ -7,16 +7,16 @@
     "email": "dpmcmlxxvi@gmail.com"
   },
   "license": "MIT",
-  "main": "dist/ol3-turf.js",
+  "main": "dist/olturf.js",
   "module": "src/js/main.js",
-  "unpkg": "dist/ol3-turf.min.js",
-  "jsdelivr": "dist/ol3-turf.min.js",
+  "unpkg": "dist/olturf.min.js",
+  "jsdelivr": "dist/olturf.min.js",
   "scripts": {
     "build": "run-s lint bundle docs",
     "bundle": "run-s bundle:js bundle:css",
     "bundle:css": "run-s bundle:css:*",
-    "bundle:css:cat": "shx cat src/css/*.css > dist/ol3-turf.css",
-    "bundle:css:min": "cleancss -o dist/ol3-turf.min.css -O2 src/css/*.css",
+    "bundle:css:cat": "shx cat src/css/*.css > dist/olturf.css",
+    "bundle:css:min": "cleancss -o dist/olturf.min.css -O2 src/css/*.css",
     "bundle:js": "rollup --silent -c",
     "docs": "run-s docs:clean docs:build docs:mkdir docs:copy",
     "docs:build": "jsdoc -t ./node_modules/ink-docstrap/template -c conf.json",
@@ -90,7 +90,7 @@
   },
   "nyc": {
     "include": [
-      "**/ol3-turf.js"
+      "**/olturf.js"
     ]
   }
 }

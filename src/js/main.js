@@ -3,38 +3,38 @@ import Handler from './handler';
 import toolbars from './toolbars';
 
 /**
- * @namespace ol3turf
+ * @namespace olturf
  */
-const ol3turf = {
+const olturf = {
   controls,
   Handler,
   toolbars,
 };
 
 /**
- * ol3 main namespace
+ * ol main namespace
  * @external ol
  * @see {@link http://openlayers.org/en/latest/apidoc/ol.html}
  */
 
 /**
- * ol3 control namespace
+ * ol control namespace
  * @memberof external:ol
  * @namespace control
  * @see {@link http://openlayers.org/en/latest/apidoc/ol.control.html}
  */
 
 /**
- * ol3 control base class
+ * ol control base class
  * @class Control
  * @memberof external:ol.control
  * @see {@link http://openlayers.org/en/latest/apidoc/ol.control.Control.html}
  */
 
 /**
- * Function that handles processing the output of the ol3-turf controls.
+ * Function that handles processing the output of the olturf controls.
  * @callback Callback
- * @memberOf ol3turf
+ * @memberOf olturf
  * @param {string} name Name of control to process
  * @param {object} inputs Inputs passed to the control's corresponding turf
  *                        function
@@ -42,63 +42,63 @@ const ol3turf = {
  */
 
 /**
- * @description ol3-turf custom callback handler.
+ * @description olturf custom callback handler.
  * @typedef {object} Handler
- * @memberOf ol3turf
- * @property {ol3turf.Callback} callback Function to handle processing
+ * @memberOf olturf
+ * @property {olturf.Callback} callback Function to handle processing
  *                                       turf commands.
  */
 
 /**
- * @description ol3-turf constructor options.
+ * @description olturf constructor options.
  * @typedef {object} Options
- * @memberOf ol3turf
- * @property {string[]} [controls={@link ol3turf.toolbars.all}] Controls
+ * @memberOf olturf
+ * @property {string[]} [controls={@link olturf.toolbars.all}] Controls
  *           to enable
- * @property {ol3turf.Handler} [handler='undefined'] Optional function that
- *           handles processing the output of the ol3-turf controls. This is
+ * @property {olturf.Handler} [handler='undefined'] Optional function that
+ *           handles processing the output of the olturf controls. This is
  *           useful to bypass the default handler and provide custom processing
  *           of the results. The default handler adds features to the map or
  *           displays a message with any values returned by the turf function.
- * @property {string} [prefix='ol3-turf'] Prefix to apply to control element
+ * @property {string} [prefix='olturf'] Prefix to apply to control element
  *           IDs. Only needed to make IDs unique if multiple instances of an
- *           ol3-turf toolbar are used on the same page.
- * @property {string} [style='ol3-turf-toolbar'] The name of the class to apply
+ *           olturf toolbar are used on the same page.
+ * @property {string} [style='olturf-toolbar'] The name of the class to apply
  *           to the toolbar.
  */
 
 /**
- * OpenLayers 3 Turf Control
+ * OpenLayers Turf Control
  * @constructor
  * @extends {external:ol.control.Control}
  * @param {object} [options] Control options extends ol.control.Control options
- * @param {ol3turf.Options} [options.ol3turf] ol3-turf specific options
- * @memberof ol3turf
+ * @param {olturf.Options} [options.olturf] olturf specific options
+ * @memberof olturf
  */
 const Toolbar = function(options) {
   const self = this;
 
   // Process options
   const opts = options || {};
-  opts.ol3turf = opts.ol3turf || {};
-  if (opts.ol3turf.controls === undefined) {
+  opts.olturf = opts.olturf || {};
+  if (opts.olturf.controls === undefined) {
     // Default is to enable all controls and display them in this order.
-    opts.ol3turf.controls = ol3turf.toolbars.all();
+    opts.olturf.controls = olturf.toolbars.all();
   }
 
   // Set control handler
-  if (opts.ol3turf.handler === undefined) {
-    opts.ol3turf.handler = new ol3turf.Handler(self);
+  if (opts.olturf.handler === undefined) {
+    opts.olturf.handler = new olturf.Handler(self);
   }
 
   // Define default style
-  if (opts.ol3turf.style === undefined) {
-    opts.ol3turf.style = 'ol3-turf-toolbar';
+  if (opts.olturf.style === undefined) {
+    opts.olturf.style = 'olturf-toolbar';
   }
 
   // Define default prefix
-  if (opts.ol3turf.prefix === undefined) {
-    opts.ol3turf.prefix = 'ol3-turf';
+  if (opts.olturf.prefix === undefined) {
+    opts.olturf.prefix = 'olturf';
   }
 
   // Create turf toolbar DOM if not provided by user
@@ -106,25 +106,25 @@ const Toolbar = function(options) {
     opts.element = document.createElement('div');
   }
   if (opts.element.className === '') {
-    opts.element.className = opts.ol3turf.style + ' ol-unselectable ol-control';
+    opts.element.className = opts.olturf.style + ' ol-unselectable ol-control';
   }
 
   // Add controls to toolbar
-  const ol3turfcontrols = {};
-  opts.ol3turf.controls.forEach(function(name) {
-    if (ol3turf.controls[name] !== undefined) {
-      // Store control in ol3turf member and add button to div
-      const control = ol3turf.controls[name].create(self, opts.ol3turf.prefix);
-      ol3turfcontrols[name] = control;
+  const olturfcontrols = {};
+  opts.olturf.controls.forEach(function(name) {
+    if (olturf.controls[name] !== undefined) {
+      // Store control in olturf member and add button to div
+      const control = olturf.controls[name].create(self, opts.olturf.prefix);
+      olturfcontrols[name] = control;
       opts.element.appendChild(control.element);
     }
   });
 
-  // Object to internally store ol3-turf specific attributes
-  this.ol3turf = {
-    controls: ol3turfcontrols,
+  // Object to internally store olturf specific attributes
+  this.olturf = {
+    controls: olturfcontrols,
     element: opts.element,
-    handler: opts.ol3turf.handler,
+    handler: opts.olturf.handler,
   };
 
   ol.control.Control.call(this, opts);

@@ -16,7 +16,7 @@ const action = function(control) {
     from: from,
     to: to,
   };
-  control.toolbar.ol3turf.handler.callback(name, output, inputs);
+  control.toolbar.olturf.handler.callback(name, output, inputs);
 };
 
 export default {

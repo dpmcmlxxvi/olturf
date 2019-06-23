@@ -7,7 +7,7 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>ol3-turf | Getting Started</title>
+    <title>OpenLayers Turf | Getting Started</title>
 
     <link
       href="https://unpkg.com/bootstrap@3.3.6/dist/css/bootstrap.min.css"
@@ -19,8 +19,8 @@
       rel="stylesheet"
       type="text/css"
     />
-    <link href="../../dist/ol3-turf.min.css" rel="stylesheet" type="text/css" />
-    <link href="css/ol3turf.css" rel="stylesheet" />
+    <link href="../../dist/olturf.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/olturf.css" rel="stylesheet" />
     <link href="css/github.css" rel="stylesheet" />
 
     <script src="js/highlight.pack.js" type="text/javascript"></script>
@@ -54,9 +54,9 @@
             <li><a href="demos.html">Demos</a></li>
             <li><a href="../api/">Docs</a></li>
           </ul>
-          <ul class="nav navbar-nav navbar-right ol3turf-github-logo">
+          <ul class="nav navbar-nav navbar-right olturf-github-logo">
             <li>
-              <a href="https://github.com/dpmcmlxxvi/ol3-turf">
+              <a href="https://github.com/dpmcmlxxvi/olturf">
                 <img src="./img/GitHub-Mark-Light-32px.png" />
               </a>
             </li>
@@ -71,18 +71,18 @@
         <div class="col-md-12">
           <h2>Setup</h2>
           <div>
-            The <code>ol3-turf</code> library has two dependencies that must be
-            included, OpenLayers 3 and turf. Therefore, the following is the
-            minimum needed to set up an <code>ol3-turf</code> web application.
+            The <code>olturf</code> library has two dependencies that must be
+            included, OpenLayers and Turf. Therefore, the following is the
+            minimum needed to set up an <code>olturf</code> web application.
             <br />
             <br />
             <pre><code class="html">  &lt;link href="path/to/ol.css" rel="stylesheet" type="text/css"/&gt;
   &lt;link href="path/to/turf.min.css" rel="stylesheet" type="text/css" /&gt;
-  &lt;link href="path/to/ol3-turf.min.css" rel="stylesheet" type="text/css" /&gt;
+  &lt;link href="path/to/olturf.min.css" rel="stylesheet" type="text/css" /&gt;
 
   &lt;script src="path/to/ol.js"&gt;&lt;/script&gt;
   &lt;script src="path/to/turf.min.js"&gt;&lt;/script&gt;
-  &lt;script src="path/to/ol3-turf.min.js"&gt;&lt;/script&gt;</code></pre>
+  &lt;script src="path/to/olturf.min.js"&gt;&lt;/script&gt;</code></pre>
           </div>
         </div>
       </div>
@@ -90,14 +90,14 @@
         <div class="col-md-12">
           <h2>Usage</h2>
           <p>
-            Using the <code>ol3-turf</code> library is as simple as creating a
-            new instance of a <code>ol3turf.Toolbar</code> control and then
-            adding it to an existing <code>ol.Map</code>. The default toolbar
-            provides reasonable defaults for it's layout and commands. By
-            default the toolbar is displayed across the top with all available
-            turf commands enabled. For commands requiring inputs a popup form is
-            displayed. If the turf command returns a feature it is added to the
-            map. If a value is returned it is displayed in a popup message.
+            Using the <code>olturf</code> library is as simple as creating a new
+            instance of a <code>olturf.Toolbar</code> control and then adding it
+            to an existing <code>ol.Map</code>. The default toolbar provides
+            reasonable defaults for it's layout and commands. By default the
+            toolbar is displayed across the top with all available turf commands
+            enabled. For commands requiring inputs a popup form is displayed. If
+            the turf command returns a feature it is added to the map. If a
+            value is returned it is displayed in a popup message.
           </p>
         </div>
       </div>
@@ -108,7 +108,7 @@
             Below is the standard toolbar that is displayed when no options are
             provided.
           </p>
-          <pre><code class="javascript">  const toolbar = new ol3turf.Toolbar();
+          <pre><code class="javascript">  const toolbar = new olturf.Toolbar();
   const map = new ol.Map({...});
   map.addControl(toolbar);</code></pre>
           <div id="map" style="height: 350px; width: 100%;"></div>
@@ -118,24 +118,24 @@
         <div class="col-md-12">
           <h2>Options</h2>
           <div>
-            The <code>ol3turf.Toolbar(options)</code> constructor takes an
+            The <code>olturf.Toolbar(options)</code> constructor takes an
             optional argument that allows the user to override the default
             settings like the styling of the toolbar and providing custom
             processing of turf command outputs. For a complete description see
             the
-            <a href="../api/ol.control.Turf.html">
-              ol3turf.Toolbar
+            <a href="../api/olturf.Toolbar.html">
+              olturf.Toolbar
             </a>
             documentation.
             <br />
             <br />
-            <pre><code class="javascript">  options = {ol3turf: {
+            <pre><code class="javascript">  options = {olturf: {
     controls : ['area', ...],   // list of controls to add to toolbar
     handler  : {                // callback to handle turf commands output
       callback : function(name, inputs, output) {...}
     },
-    prefix   : 'ol3-turf-foo',  // prefix to apply to toolbar annd control IDs.
-    style    : 'ol3-turf-bar'   // style to apply to toolbar
+    prefix   : 'olturf-foo',  // prefix to apply to toolbar annd control IDs.
+    style    : 'olturf-bar'   // style to apply to toolbar
   }};</code></pre>
           </div>
         </div>
@@ -170,10 +170,10 @@
     <script src="https://unpkg.com/bootstrap@3.3.6/dist/js/bootstrap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/ol3/3.14.2/ol.js"></script>
     <script src="js/turf.min.js"></script>
-    <script src="../../dist/ol3-turf.js"></script>
+    <script src="../../dist/olturf.js"></script>
     <script src="js/example.js"></script>
     <script>
-      const toolbar = new ol3turf.Toolbar();
+      const toolbar = new olturf.Toolbar();
       const map = createMap("map");
       map.addControl(toolbar);
     </script>
