@@ -139,7 +139,14 @@ function transformation() {
 };
 
 /**
- * Toolbar with all controls
+ * Toolbar with all controls: 'distance', 'line-distance', 'area', 'bearing',
+ * 'center-of-mass', 'center', 'centroid', 'midpoint', 'point-on-surface',
+ * 'envelope', 'square', 'circle', 'along', 'destination', 'bezier', 'buffer',
+ * 'concave', 'convex', 'difference', 'intersect', 'simplify', 'union',
+ * 'combine', 'explode', 'flip', 'kinks', 'line-slice-along', 'point-on-line',
+ * 'inside', 'tag', 'within', 'nearest', 'collect', 'random', 'sample',
+ * 'isolines', 'planepoint', 'tin', 'hex-grid', 'point-grid', 'square-grid',
+ * 'triangle-grid', 'tesselate'
  * @memberof olturf.toolbars
  * @return {string[]} Control names for all the controls
  */

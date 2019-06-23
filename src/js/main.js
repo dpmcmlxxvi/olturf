@@ -53,8 +53,8 @@ const olturf = {
  * @description olturf constructor options.
  * @typedef {object} Options
  * @memberOf olturf
- * @property {string[]} [controls={@link olturf.toolbars.all}] Controls
- *           to enable
+ * @property {string[]} [controls={@link olturf.toolbars.all}] List of names of
+ *           control to enable.
  * @property {olturf.Handler} [handler='undefined'] Optional function that
  *           handles processing the output of the olturf controls. This is
  *           useful to bypass the default handler and provide custom processing
