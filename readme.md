@@ -20,8 +20,9 @@ Instead of displaying all the Turf commands available, individual commands can
 be selected or a subset of pre-defined groups can be displayed. The following
 groups are available `aggregation`, `classification`, `data`, `grids`,
 `interpolation`, `measurement`, `misc`, `joins`, `transformation`. A toolbar can
-be added to an OpenLayers map easily by creating an instance and adding it to
-the map:
+be added to an OpenLayers map easily by adding its dependency scripts and style
+sheets (see [documentation](http://dpmcmlxxvi.github.io/ol3-turf/web/start.html)
+), creating an instance, and adding it to the map:
 
 ```javascript
 const toolbar = new olturf.Toolbar();
@@ -37,6 +38,7 @@ The following help is available at the olturf
 [website](http://dpmcmlxxvi.github.io/ol3-turf):
 
 - [Inroduction](http://dpmcmlxxvi.github.io/ol3-turf/web/)
+- [Getting Started](http://dpmcmlxxvi.github.io/ol3-turf/web/start.html)
 - [Examples](http://dpmcmlxxvi.github.io/ol3-turf/web/demos.html)
 - [API](http://dpmcmlxxvi.github.io/ol3-turf/api/)
 
