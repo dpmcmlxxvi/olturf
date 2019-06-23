@@ -110,38 +110,40 @@
             <a href="multiple.html">here</a>.
           </p>
           <pre><code class="html">  &lt;style&gt;
-    .olturf-toolbar-measurement
-    {
+    .olturf-toolbar-measurement {
       background-color: initial;
       left: 4.5em;
       padding: initial;
       top: 0.5em;
     }
-    .olturf-toolbar-grids
-    {
+    .olturf-toolbar-grids {
       background-color: initial;
       left: 0.5em;
       padding: initial;
       top: 6.5em;
     }
-    .olturf-toolbar-grids .olturf-control
-    {
+    .olturf-toolbar-grids .olturf-control {
       float: none;
     }
   &lt;/style&gt;
   ...
   &lt;script&gt;
     const map = new ol.Map({...});
-    const toolbar = new olturf.Toolbar({olturf: {
-      controls: olturf.toolbars.measurement(),
-      style: "olturf-toolbar-measurement"
-    }});
+    const toolbar = new olturf.Toolbar({
+      olturf: {
+        controls: olturf.toolbars.measurement(),
+        style: "olturf-toolbar-measurement"
+      }
+    });
     map.addControl(toolbar);
 
-    const toolfoo = new olturf.Toolbar({olturf: {
-      controls: olturf.toolbars.grids(),
-      prefix: "olturf-grids",
-      style: "olturf-toolbar-grids"}});
+    const toolfoo = new olturf.Toolbar({
+      olturf: {
+        controls: olturf.toolbars.grids(),
+        prefix: "olturf-grids",
+        style: "olturf-toolbar-grids"
+      }
+    });
     map.addControl(toolfoo);
   &lt;/script&gt;</code></pre>
           <div id="toolbar-multiple" style="height: 350px; width: 100%;"></div>
