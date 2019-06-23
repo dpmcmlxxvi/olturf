@@ -94,9 +94,9 @@
             instance of a <code>olturf.Toolbar</code> control and then adding it
             to an existing <code>ol.Map</code>. The default toolbar provides
             reasonable defaults for it's layout and commands. By default the
-            toolbar is displayed across the top with all available turf commands
+            toolbar is displayed across the top with all available Turf commands
             enabled. For commands requiring inputs a popup form is displayed. If
-            the turf command returns a feature it is added to the map. If a
+            the Turf command returns a feature it is added to the map. If a
             value is returned it is displayed in a popup message.
           </p>
         </div>
@@ -134,7 +134,7 @@
             <pre><code class="javascript">  options = {
     olturf: {
       controls : ['area', ...],   // list of controls to add to toolbar
-      handler  : {                // callback to handle turf commands output
+      handler  : {                // callback to handle Turf commands output
         callback : function(name, inputs, output) {...}
       },
       prefix   : 'olturf-foo',  // prefix to apply to toolbar annd control IDs.
