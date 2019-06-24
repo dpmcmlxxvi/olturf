@@ -28,7 +28,7 @@
     "lint:html": "run-s lint:html:pretty lint:html:hint",
     "lint:html:hint": "htmlhint 'docs/*.html' 'docs/web/*.html'",
     "lint:html:pretty": "prettier --check 'docs/*.html' 'docs/web/*.html'",
-    "lint:js": "eslint '*.js' 'docs/web/js/example.js' 'src/js/*.js'",
+    "lint:js": "eslint '*.js' 'docs/web/js/*.js' 'src/js/*.js'",
     "lint:md": "remark -q .",
     "prepare": "npm run build",
     "test": "run-s test:clean test:lint test:run test:coverage",
