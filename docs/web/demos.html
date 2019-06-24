@@ -139,7 +139,7 @@
     const toolbar = new olturf.Toolbar({
       olturf: {
         controls: olturf.toolbars.measurement(),
-        style: "olturf-toolbar-measurement"
+        style: 'olturf-toolbar-measurement'
       }
     });
     map.addControl(toolbar);
@@ -147,8 +147,8 @@
     const toolfoo = new olturf.Toolbar({
       olturf: {
         controls: olturf.toolbars.grids(),
-        prefix: "olturf-grids",
-        style: "olturf-toolbar-grids"
+        prefix: 'olturf-grids',
+        style: 'olturf-toolbar-grids'
       }
     });
     map.addControl(toolfoo);
@@ -171,7 +171,7 @@
       olturf: {
         handler: {
           callback: function(name, inputs, output) {
-            alert("Custom handler for command '" + name + "'");
+            alert('Custom handler for command "' + name + '"');
           }
         }
       }
@@ -214,16 +214,16 @@
     <script src="../../dist/olturf.js"></script>
     <script src="js/example.js"></script>
     <script>
-      const mapStandard = createMap("toolbar-standard");
+      const mapStandard = createMap('toolbar-standard');
       const toolbarStandard = new olturf.Toolbar();
       mapStandard.addControl(toolbarStandard);
     </script>
-    <script type="text/javascript">
-      const mapMultiple = createMap("toolbar-multiple");
+    <script>
+      const mapMultiple = createMap('toolbar-multiple');
       const toolbarMultiple = new olturf.Toolbar({
         olturf: {
           controls: olturf.toolbars.measurement(),
-          style: "olturf-toolbar-measurement"
+          style: 'olturf-toolbar-measurement'
         }
       });
       mapMultiple.addControl(toolbarMultiple);
@@ -231,19 +231,19 @@
       const toolfoo = new olturf.Toolbar({
         olturf: {
           controls: olturf.toolbars.grids(),
-          prefix: "olturf-grids",
-          style: "olturf-toolbar-grids"
+          prefix: 'olturf-grids',
+          style: 'olturf-toolbar-grids'
         }
       });
       mapMultiple.addControl(toolfoo);
     </script>
     <script>
-      const mapOptions = createMap("toolbar-options");
+      const mapOptions = createMap('toolbar-options');
       const toolbarOptions = new olturf.Toolbar({
         olturf: {
           handler: {
             callback: function(name, inputs, output) {
-              alert("Custom handler for command '" + name + "'");
+              alert('Custom handler for command "' + name + '"');
             }
           }
         }

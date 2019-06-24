@@ -36,7 +36,7 @@
       let toolbar2 = null;
 
       window.onload = function() {
-        map = createMap("map");
+        map = createMap('map');
         toolbar = new olturf.Toolbar({
           olturf: {
             controls: olturf.toolbars.measurement()
@@ -47,8 +47,8 @@
         toolbar2 = new olturf.Toolbar({
           olturf: {
             controls: olturf.toolbars.grids(),
-            prefix: "olturf-grids",
-            style: "olturf-toolbar-grids"
+            prefix: 'olturf-grids',
+            style: 'olturf-toolbar-grids'
           }
         });
         map.addControl(toolbar2);
