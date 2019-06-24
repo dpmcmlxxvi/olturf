@@ -15,7 +15,7 @@
     <div id="map" style="height: 750px; width: 100%;"></div>
 
     <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
-    <script src="https://unpkg.com/@turf/turf@4.3.1/turf.min.js"></script>
+    <script src="https://unpkg.com/@turf/turf@5.1.6/turf.min.js"></script>
     <script src="../../dist/olturf.js"></script>
     <script src="js/example.js"></script>
     <script>
@@ -24,7 +24,7 @@
 
       window.onload = function() {
         toolbar = new olturf.Toolbar();
-        map = createMap('map');
+        map = createMap("map");
         map.addControl(toolbar);
       };
     </script>

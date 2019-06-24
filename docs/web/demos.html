@@ -214,16 +214,16 @@
     <script src="../../dist/olturf.js"></script>
     <script src="js/example.js"></script>
     <script>
-      const mapStandard = createMap('toolbar-standard');
+      const mapStandard = createMap("toolbar-standard");
       const toolbarStandard = new olturf.Toolbar();
       mapStandard.addControl(toolbarStandard);
     </script>
     <script>
-      const mapMultiple = createMap('toolbar-multiple');
+      const mapMultiple = createMap("toolbar-multiple");
       const toolbarMultiple = new olturf.Toolbar({
         olturf: {
           controls: olturf.toolbars.measurement(),
-          style: 'olturf-toolbar-measurement'
+          style: "olturf-toolbar-measurement"
         }
       });
       mapMultiple.addControl(toolbarMultiple);
@@ -231,14 +231,14 @@
       const toolfoo = new olturf.Toolbar({
         olturf: {
           controls: olturf.toolbars.grids(),
-          prefix: 'olturf-grids',
-          style: 'olturf-toolbar-grids'
+          prefix: "olturf-grids",
+          style: "olturf-toolbar-grids"
         }
       });
       mapMultiple.addControl(toolfoo);
     </script>
     <script>
-      const mapOptions = createMap('toolbar-options');
+      const mapOptions = createMap("toolbar-options");
       const toolbarOptions = new olturf.Toolbar({
         olturf: {
           handler: {

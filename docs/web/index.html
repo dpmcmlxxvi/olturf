@@ -167,18 +167,18 @@
       $(document).ready(function() {
         (function() {
           const api =
-            'https://api.github.com/repos/dpmcmlxxvi/ol3-turf/releases/latest';
+            "https://api.github.com/repos/dpmcmlxxvi/ol3-turf/releases/latest";
           $.getJSON(api).done(function(json) {
-            const anchor = $('#olturf-download');
-            anchor.attr('href', json.zipball_url);
-            anchor.html('Download ' + json.tag_name + ' &raquo;');
+            const anchor = $("#olturf-download");
+            anchor.attr("href", json.zipball_url);
+            anchor.html("Download " + json.tag_name + " &raquo;");
           });
         })();
       });
 
       window.onload = function() {
         window.toolbar = new olturf.Toolbar();
-        window.map = createMap('map');
+        window.map = createMap("map");
         window.map.addControl(toolbar);
       };
     </script>
