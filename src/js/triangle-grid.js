@@ -25,7 +25,7 @@ const action = function(control) {
 
       // Collect polygons
       const bbox = turf.bbox(collection);
-      const output = turf.triangleGrid(bbox, cellSize, units);
+      const output = turf.triangleGrid(bbox, cellSize, {units});
 
       // Remove form and display results
       control.showForm();

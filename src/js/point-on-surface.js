@@ -9,7 +9,7 @@ const name = 'point-on-surface';
 const action = function(control) {
   const collection = utils.getCollection(control, 1, Infinity);
 
-  const output = turf.pointOnSurface(collection);
+  const output = turf.pointOnFeature(collection);
   const inputs = {
     fc: collection,
   };

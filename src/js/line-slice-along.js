@@ -33,7 +33,7 @@ const action = function(control) {
 
       // Truncate at line length otherwise lineSliceAlong fails
       const units = utils.getFormString(idUnits, 'units');
-      const length = turf.lineDistance(line, units);
+      const length = turf.lineDistance(line, {units});
       if (start > length) {
         throw new Error('Start must be less than line length');
       }
@@ -42,7 +42,7 @@ const action = function(control) {
       }
 
       // Collect polygons
-      const output = turf.lineSliceAlong(line, start, stop, units);
+      const output = turf.lineSliceAlong(line, start, stop, {units});
 
       // Remove form and display results
       control.showForm();

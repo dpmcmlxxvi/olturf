@@ -25,7 +25,7 @@ const action = function(control) {
       const highQuality = (quality === 'high');
 
       // Collect polygons
-      const output = turf.simplify(collection, tolerance, highQuality);
+      const output = turf.simplify(collection, {tolerance, highQuality});
 
       // Remove form and display results
       control.showForm();

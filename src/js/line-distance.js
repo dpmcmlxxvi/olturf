@@ -22,7 +22,7 @@ const action = function(control) {
       const units = utils.getFormString(idUnits, 'units');
 
       // Compute length
-      const output = turf.lineDistance(collection, units);
+      const output = turf.lineDistance(collection, {units});
 
       // Remove form and display results
       control.showForm();

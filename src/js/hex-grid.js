@@ -24,11 +24,11 @@ const action = function(control) {
       const cellSize = utils.getFormNumber(idCellSize, 'cell size');
       const type = utils.getFormString(idType, 'grid type');
       const units = utils.getFormString(idUnits, 'units');
-      const isTriangles = (type === 'triangles');
+      const triangles = (type === 'triangles');
 
       // Collect polygons
       const bbox = turf.bbox(collection);
-      const output = turf.hexGrid(bbox, cellSize, units, isTriangles);
+      const output = turf.hexGrid(bbox, cellSize, {units, triangles});
 
       // Remove form and display results
       control.showForm();
@@ -36,7 +36,7 @@ const action = function(control) {
         bbox: bbox,
         cellSize: cellSize,
         units: units,
-        triangles: isTriangles,
+        triangles: triangles,
       };
       control.toolbar.olturf.handler.callback(name, output, inputs);
     } catch (e) {

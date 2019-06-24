@@ -26,7 +26,7 @@ const action = function(control) {
       const units = utils.getFormString(idUnits, 'units');
 
       // Collect polygons
-      const output = turf.along(line, distance, units);
+      const output = turf.along(line, distance, {units});
 
       // Remove form and display results
       control.showForm();

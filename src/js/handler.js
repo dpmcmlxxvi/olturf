@@ -20,7 +20,9 @@ Handler.prototype.callback = function(name, output, inputs) {
 
   // First handle controls with custom messages
   // then handle controls that add output features to map
-  if (name === 'area') {
+  if (output === null) {
+    control.showMessage(name + ' returned null');
+  } else if (name === 'area') {
     control.showMessage('area = ' + output + ' msq');
   } else if (name === 'bearing') {
     control.showMessage('bearing = ' + output + ' degrees');

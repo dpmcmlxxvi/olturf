@@ -31,7 +31,7 @@ const action = function(control) {
       const output = turf.destination(point,
           distance,
           bearing,
-          units);
+          {units});
 
       // Remove form and display results
       control.showForm();

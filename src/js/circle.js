@@ -28,7 +28,7 @@ const action = function(control) {
       const units = utils.getFormString(idUnits, 'units');
 
       // Collect polygons
-      const output = turf.circle(center, radius, steps, units);
+      const output = turf.circle(center, radius, {steps, units});
 
       // Remove form and display results
       control.showForm();

@@ -42,7 +42,12 @@ const action = function(control) {
       if (bbox !== null) {
         options.bbox = bbox;
       }
-      const output = turf.random(type, count, options);
+      let output = null;
+      if (type === 'points') {
+        output = turf.randomPoint(count, options);
+      } else if (type === 'polygons') {
+        output = turf.randomPolygon(count, options);
+      }
 
       // Remove form and display results
       control.showForm();

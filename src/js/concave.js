@@ -27,7 +27,7 @@ const action = function(control) {
 
       // Collect polygons
       const points = turf.featureCollection(pts);
-      const output = turf.concave(points, maxEdge, units);
+      const output = turf.concave(points, {maxEdge, units});
 
       // Remove form and display results
       control.showForm();

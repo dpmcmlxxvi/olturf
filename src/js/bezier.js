@@ -29,7 +29,7 @@ const action = function(control) {
       const sharpness = utils.getFormNumber(idSharpness, 'sharpness');
 
       // Create bezier curve
-      const output = turf.bezier(line, resolution, sharpness);
+      const output = turf.bezierSpline(line, {resolution, sharpness});
 
       // Remove form and display results
       control.showForm();

@@ -14,7 +14,7 @@ const action = function(control) {
   const point = points[0];
   const polygon = polygons[0];
 
-  const output = turf.inside(point, polygon);
+  const output = turf.booleanPointInPolygon(point, polygon);
   const inputs = {
     point: point,
     polygon: polygon,

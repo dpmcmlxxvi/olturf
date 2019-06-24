@@ -15,7 +15,7 @@ const action = function(control) {
   const points = turf.featureCollection(pts);
   const polygons = turf.featureCollection(polys);
 
-  const output = turf.within(points, polygons);
+  const output = turf.pointsWithinPolygon(points, polygons);
   if (output.features.length === 0) {
     throw new Error('No points found within.');
   }
