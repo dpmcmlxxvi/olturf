@@ -19,18 +19,32 @@ The toolbar provides the following features:
 Instead of displaying all the Turf commands available, individual commands can
 be selected or a subset of pre-defined groups can be displayed. The following
 groups are available `aggregation`, `classification`, `data`, `grids`,
-`interpolation`, `measurement`, `misc`, `joins`, `transformation`. A toolbar can
-be added to an OpenLayers map easily by adding its dependency scripts and style
-sheets (see [documentation](http://dpmcmlxxvi.github.io/ol3-turf/web/start.html)
-), creating an instance, and adding it to the map:
+`interpolation`, `measurement`, `misc`, `joins`, `transformation`.
+
+  ![](docs/web/img/olturf-example-screenshot.png)
+
+## GETTING STARTED
+
+A toolbar can be added to an OpenLayers map by adding its dependencies
+(see [documentation](http://dpmcmlxxvi.github.io/ol3-turf/web/start.html))
+
+```html
+<link href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
+  rel="stylesheet" type="text/css" />
+<link href="https://unpkg.com/olturf/dist/olturf.min.css" rel="stylesheet" type="text/css" />
+
+<script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+<script src="https://unpkg.com/@turf/turf@5.1.6/turf.min.js"></script>
+<script src="https://unpkg.com/olturf/dist/olturf.min.js"></script>
+```
+
+then creating an instance and adding it to the map:
 
 ```javascript
 const toolbar = new olturf.Toolbar();
 const map = new ol.Map({...});
 map.addControl(toolbar);
 ```
-
-  ![](docs/web/img/olturf-example-screenshot.png)
 
 ## DOCUMENTATION
 

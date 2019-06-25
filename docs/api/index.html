@@ -119,15 +119,24 @@ The toolbar provides the following features:</p>
 <p>Instead of displaying all the Turf commands available, individual commands can
 be selected or a subset of pre-defined groups can be displayed. The following
 groups are available <code>aggregation</code>, <code>classification</code>, <code>data</code>, <code>grids</code>,
-<code>interpolation</code>, <code>measurement</code>, <code>misc</code>, <code>joins</code>, <code>transformation</code>. A toolbar can
-be added to an OpenLayers map easily by adding its dependency scripts and style
-sheets (see <a href="http://dpmcmlxxvi.github.io/ol3-turf/web/start.html">documentation</a>
-), creating an instance, and adding it to the map:</p>
+<code>interpolation</code>, <code>measurement</code>, <code>misc</code>, <code>joins</code>, <code>transformation</code>.</p>
+<p><img src="docs/web/img/olturf-example-screenshot.png" alt=""></p>
+<h2>GETTING STARTED</h2>
+<p>A toolbar can be added to an OpenLayers map by adding its dependencies
+(see <a href="http://dpmcmlxxvi.github.io/ol3-turf/web/start.html">documentation</a>)</p>
+<pre class="prettyprint source lang-html"><code>&lt;link href=&quot;https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css&quot;
+  rel=&quot;stylesheet&quot; type=&quot;text/css&quot; />
+&lt;link href=&quot;https://unpkg.com/olturf/dist/olturf.min.css&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot; />
+
+&lt;script src=&quot;https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js&quot;>&lt;/script>
+&lt;script src=&quot;https://unpkg.com/@turf/turf@5.1.6/turf.min.js&quot;>&lt;/script>
+&lt;script src=&quot;https://unpkg.com/olturf/dist/olturf.min.js&quot;>&lt;/script>
+</code></pre>
+<p>then creating an instance and adding it to the map:</p>
 <pre class="prettyprint source lang-javascript"><code>const toolbar = new olturf.Toolbar();
 const map = new ol.Map({...});
 map.addControl(toolbar);
 </code></pre>
-<p><img src="docs/web/img/olturf-example-screenshot.png" alt=""></p>
 <h2>DOCUMENTATION</h2>
 <p>The following help is available at the olturf
 <a href="http://dpmcmlxxvi.github.io/ol3-turf">website</a>:</p>
