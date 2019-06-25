@@ -42,13 +42,13 @@
     "test:lint:js": "eslint 'test/*.js'",
     "test:run": "jest"
   },
-  "homepage": "https://github.com/dpmcmlxxvi/ol3-turf",
+  "homepage": "https://github.com/dpmcmlxxvi/olturf",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dpmcmlxxvi/ol3-turf.git"
+    "url": "git+https://github.com/dpmcmlxxvi/olturf.git"
   },
   "bugs": {
-    "url": "https://github.com/dpmcmlxxvi/ol3-turf/issues"
+    "url": "https://github.com/dpmcmlxxvi/olturf/issues"
   },
   "keywords": [
     "turf",

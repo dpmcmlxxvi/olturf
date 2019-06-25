@@ -1,12 +1,12 @@
 # OpenLayers Turf
 
-[![build](https://travis-ci.org/dpmcmlxxvi/ol3-turf.svg?branch=master)](https://travis-ci.org/dpmcmlxxvi/ol3-turf)
-[![coverage](https://img.shields.io/coveralls/dpmcmlxxvi/ol3-turf.svg)](https://coveralls.io/r/dpmcmlxxvi/ol3-turf?branch=master)
-[![codacy](https://img.shields.io/codacy/grade/44810a70e6a34122818dfa31e4304c50.svg)](https://www.codacy.com/app/dpmcmlxxvi/ol3-turf?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dpmcmlxxvi/ol3-turf&amp;utm_campaign=Badge_Grade)
-[![npm](https://badge.fury.io/js/ol3-turf.svg)](https://badge.fury.io/js/ol3-turf)
-[![Greenkeeper](https://badges.greenkeeper.io/dpmcmlxxvi/ol3-turf.svg)](https://greenkeeper.io/)
+[![build](https://travis-ci.org/dpmcmlxxvi/olturf.svg?branch=master)](https://travis-ci.org/dpmcmlxxvi/olturf)
+[![coverage](https://img.shields.io/coveralls/dpmcmlxxvi/olturf.svg)](https://coveralls.io/r/dpmcmlxxvi/olturf?branch=master)
+[![codacy](https://img.shields.io/codacy/grade/44810a70e6a34122818dfa31e4304c50.svg)](https://www.codacy.com/app/dpmcmlxxvi/olturf?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dpmcmlxxvi/olturf&amp;utm_campaign=Badge_Grade)
+[![npm](https://badge.fury.io/js/olturf.svg)](https://badge.fury.io/js/olturf)
+[![greenkeeper](https://badges.greenkeeper.io/dpmcmlxxvi/olturf.svg)](https://greenkeeper.io/)
 
-[OpenLayers Turf](https://github.com/dpmcmlxxvi/ol3-turf) (olturf) is a
+[OpenLayers Turf](https://github.com/dpmcmlxxvi/olturf) (olturf) is a
 [Turf](http://turfjs.org/) toolbar for [OpenLayers](http://openlayers.org/).
 The toolbar provides the following features:
 
@@ -26,7 +26,7 @@ groups are available `aggregation`, `classification`, `data`, `grids`,
 ## GETTING STARTED
 
 A toolbar can be added to an OpenLayers map by adding its dependencies
-(see [documentation](http://dpmcmlxxvi.github.io/ol3-turf/web/start.html))
+(see [documentation](http://dpmcmlxxvi.github.io/olturf/web/start.html))
 
 ```html
 <link href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
@@ -49,12 +49,12 @@ map.addControl(toolbar);
 ## DOCUMENTATION
 
 The following help is available at the olturf
-[website](http://dpmcmlxxvi.github.io/ol3-turf):
+[website](http://dpmcmlxxvi.github.io/olturf):
 
-- [Inroduction](http://dpmcmlxxvi.github.io/ol3-turf/web/)
-- [Getting Started](http://dpmcmlxxvi.github.io/ol3-turf/web/start.html)
-- [Examples](http://dpmcmlxxvi.github.io/ol3-turf/web/demos.html)
-- [API](http://dpmcmlxxvi.github.io/ol3-turf/api/)
+- [Inroduction](http://dpmcmlxxvi.github.io/olturf/web/)
+- [Getting Started](http://dpmcmlxxvi.github.io/olturf/web/start.html)
+- [Examples](http://dpmcmlxxvi.github.io/olturf/web/demos.html)
+- [API](http://dpmcmlxxvi.github.io/olturf/api/)
 
 ## BUILD
 
