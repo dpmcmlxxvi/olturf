@@ -1,6 +1,6 @@
 {
   "name": "olturf",
-  "version": "0.7.0",
+  "version": "0.7.1",
   "description": "A Turf toolbar for OpenLayers.",
   "author": {
     "name": "Daniel Pulido",
