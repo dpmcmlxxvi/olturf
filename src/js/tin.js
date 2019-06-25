@@ -1,78 +1,57 @@
+import Control from './control';
+import utils from './utils';
 
-/*globals document, ol3turf, turf */
+const name = 'tin';
 
-//==================================================
-// tin control
-//--------------------------------------------------
-(function (ol3turf) {
+/*
+ * Compute tin mesh
+ */
+const action = function(control) {
+  // Define control ids
+  const idCancel = utils.getName([name, 'cancel'], control.prefix);
+  const idForm = utils.getName([name, 'form'], control.prefix);
+  const idOk = utils.getName([name, 'ok'], control.prefix);
+  const idZ = utils.getName([name, 'z'], control.prefix);
 
-    "use strict";
+  const onOK = function() {
+    try {
+      let collection = utils.getCollection(control, 3, Infinity);
+      const numPoints = collection.features.length;
+      const points = utils.getPoints(collection, numPoints, numPoints);
+      collection = turf.featureCollection(points);
 
-    // Control name
-    var name = "tin";
+      // Get form inputs
+      const z = utils.getFormString(idZ, 'z');
 
-    /**
-     * Compute tin mesh
-     * @private
-     */
-    var action = function (control) {
+      const output = turf.tin(collection, z);
+      const inputs = {
+        points: collection,
+        z: z,
+      };
+      control.toolbar.olturf.handler.callback(name, output, inputs);
+    } catch (e) {
+      control.showMessage(e);
+    }
+  };
 
-        // Define control ids
-        var idCancel = ol3turf.utils.getName([name, "cancel"], control.prefix);
-        var idForm = ol3turf.utils.getName([name, "form"], control.prefix);
-        var idOk = ol3turf.utils.getName([name, "ok"], control.prefix);
-        var idZ = ol3turf.utils.getName([name, "z"], control.prefix);
+  const onCancel = function() {
+    control.showForm();
+  };
 
-        function onOK() {
-            try {
+  const controls = [
+    utils.getControlText(idZ, 'Z',
+        '(Optional) Property from which to pull z values'),
+    utils.getControlInput(idOk, onOK, '', 'OK'),
+    utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+  ];
 
-                var collection = ol3turf.utils.getCollection(control, 3, Infinity);
-                var numPoints = collection.features.length;
-                var points = ol3turf.utils.getPoints(collection, numPoints, numPoints);
-                collection = turf.featureCollection(points);
+  control.showForm(controls, idForm);
+};
 
-                // Get form inputs
-                var z = ol3turf.utils.getFormString(idZ, "z");
+export default {
+  create: function(toolbar, prefix) {
+    const title = 'Create TIN';
+    return Control.create(toolbar, prefix, name, title, action);
+  },
+};
 
-                var output = turf.tin(collection, z);
-                var inputs = {
-                    points: collection,
-                    z: z
-                };
-                control.toolbar.ol3turf.handler.callback(name, output, inputs);
-
-            } catch (e) {
-                control.showMessage(e);
-            }
-        }
-
-        function onCancel() {
-            control.showForm();
-        }
-
-        var controls = [
-            ol3turf.utils.getControlText(idZ, "Z", "(Optional) Property from which to pull z values"),
-            ol3turf.utils.getControlInput(idOk, onOK, "", "OK"),
-            ol3turf.utils.getControlInput(idCancel, onCancel, "", "Cancel")
-        ];
-
-        control.showForm(controls, idForm);
-
-    };
-
-    ol3turf.controls[name] = {
-        /*
-         * Create control then attach custom action and it's parent toolbar
-         * @param toolbar Parent toolbar
-         * @param prefix Selector prefix.
-         */
-        create: function (toolbar, prefix) {
-            var title = "Create TIN";
-            var control = ol3turf.Control.create(toolbar, prefix, name, title, action);
-            return control;
-        }
-    };
-
-    return ol3turf;
-
-}(ol3turf || {}));

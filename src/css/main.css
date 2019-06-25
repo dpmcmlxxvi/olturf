@@ -1,14 +1,12 @@
-/*csslint known-properties:false */
+/* csslint known-properties:false */
 
-.ol3-turf-toolbar
-{
-    background-color: initial;
-    left: 2.5em;
-    padding: initial;
-    top: 0.5em;
+.olturf-toolbar {
+  background-color: initial;
+  left: 2.5em;
+  padding: initial;
+  top: 0.5em;
 }
 
-.ol3-turf-toolbar:hover
-{
-    background-color: initial;
+.olturf-toolbar:hover {
+  background-color: initial;
 }

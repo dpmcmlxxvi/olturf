@@ -1,53 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
-        <title>ol3-turf example with two toolbars</title>
-        <link rel="stylesheet" href="./css/ol.css" type="text/css" />
-        <link rel="stylesheet" href="./css/ol3-turf.css" type="text/css" />
-        <script src="./js/ol.js"></script>
-        <script src="./js/turf.min.js"></script>
-        <script src="./js/ol3-turf.js"></script>
-        <style>
-            .ol3-turf-toolbar-grids
-            {
-                background-color: initial;
-                left: 0.5em;
-                padding: initial;
-                top: 6.5em;
-            }
-            .ol3-turf-toolbar-grids .ol3-turf-control
-            {
-                float: none;
-            }
-        </style>
-    </head>
-    <body>
-        <div id="map" style="height: 750px; width: 100%;"></div>
-        <script src="./js/example.js" type="text/javascript"></script>
-        <script type="text/javascript">
+  <head>
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type" />
 
-            var map = null;
-            var toolbar = null;
-            var toolbar2 = null;
+    <title>OpenLayers Turf example with two toolbars</title>
 
-            window.onload = function() {
+    <link
+      href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="../../dist/olturf.min.css" rel="stylesheet" type="text/css" />
+    <style>
+      .olturf-toolbar-grids {
+        background-color: initial;
+        left: 0.5em;
+        padding: initial;
+        top: 6.5em;
+      }
+      .olturf-toolbar-grids .olturf-control {
+        float: none;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="map" style="height: 750px; width: 100%;"></div>
 
-                map = createMap('map');
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <script src="https://unpkg.com/@turf/turf@5.1.6/turf.min.js"></script>
+    <script src="../../dist/olturf.js"></script>
+    <script src="js/example.js"></script>
+    <script>
+      let map = null;
+      let toolbar = null;
+      let toolbar2 = null;
 
-                toolbar = new ol.control.Turf({ol3turf: {
-                    controls: ol3turf.toolbars.measurement()
-                }});
-                map.addControl(toolbar);
+      window.onload = function() {
+        map = createMap("map");
+        toolbar = new olturf.Toolbar({
+          olturf: {
+            controls: olturf.toolbars.measurement()
+          }
+        });
+        map.addControl(toolbar);
 
-                toolbar2 = new ol.control.Turf({ol3turf: {
-                    controls: ol3turf.toolbars.grids(),
-                    prefix: "ol3-turf-grids",
-                    style: "ol3-turf-toolbar-grids"}});
-                map.addControl(toolbar2);
-
-            };
-
-        </script>
-    </body>
+        toolbar2 = new olturf.Toolbar({
+          olturf: {
+            controls: olturf.toolbars.grids(),
+            prefix: "olturf-grids",
+            style: "olturf-toolbar-grids"
+          }
+        });
+        map.addControl(toolbar2);
+      };
+    </script>
+  </body>
 </html>

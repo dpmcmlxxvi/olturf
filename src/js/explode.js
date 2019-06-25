@@ -1,45 +1,25 @@
+import Control from './control';
+import utils from './utils';
 
-/*globals ol3turf, turf */
+const name = 'explode';
 
-//==================================================
-// explode control
-//--------------------------------------------------
-(function (ol3turf) {
+/*
+ * Compute explode of feature collection
+ */
+const action = function(control) {
+  const collection = utils.getCollection(control, 1, Infinity);
 
-    "use strict";
+  const output = turf.explode(collection);
+  const inputs = {
+    geojson: collection,
+  };
+  control.toolbar.olturf.handler.callback(name, output, inputs);
+};
 
-    // Control name
-    var name = "explode";
+export default {
+  create: function(toolbar, prefix) {
+    const title = 'Explode feature collection';
+    return Control.create(toolbar, prefix, name, title, action);
+  },
+};
 
-    /**
-     * Compute explode of feature collection
-     * @private
-     */
-    var action = function (control) {
-
-        var collection = ol3turf.utils.getCollection(control, 1, Infinity);
-
-        var output = turf.explode(collection);
-        var inputs = {
-            geojson: collection
-        };
-        control.toolbar.ol3turf.handler.callback(name, output, inputs);
-
-    };
-
-    ol3turf.controls[name] = {
-        /*
-         * Create control then attach custom action and it's parent toolbar
-         * @param toolbar Parent toolbar
-         * @param prefix Selector prefix.
-         */
-        create: function (toolbar, prefix) {
-            var title = "Explode feature collection";
-            var control = ol3turf.Control.create(toolbar, prefix, name, title, action);
-            return control;
-        }
-    };
-
-    return ol3turf;
-
-}(ol3turf || {}));

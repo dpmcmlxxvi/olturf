@@ -1,90 +1,72 @@
+import Control from './control';
+import utils from './utils';
 
-/*globals document, ol3turf, turf */
+const name = 'tag';
 
-//==================================================
-// tag control
-//--------------------------------------------------
-(function (ol3turf) {
+/*
+ * Collect point attributes within polygon
+ */
+const action = function(control) {
+  // Define control ids
+  const idCancel = utils.getName([name, 'cancel'], control.prefix);
+  const idField = utils.getName([name, 'field-property'], control.prefix);
+  const idForm = utils.getName([name, 'form'], control.prefix);
+  const idOk = utils.getName([name, 'ok'], control.prefix);
+  const idOutField = utils.getName([name, 'out-field-property'],
+      control.prefix);
 
-    "use strict";
+  const onOK = function() {
+    try {
+      // Gather selected features
+      const collection = utils.getCollection(control, 2, Infinity);
+      const points = utils.getPoints(collection, 1,
+          collection.features.length - 1);
+      const numPolygons = collection.features.length - points.length;
+      const polygons = utils.getPolygons(collection, numPolygons, numPolygons);
 
-    // Control name
-    var name = "tag";
+      // Get form inputs
+      const field = utils.getFormString(idField, 'field');
+      const outField = utils.getFormString(idOutField, 'out field');
 
-    /**
-     * Collect point attributes within polygon
-     * @private
-     */
-    var action = function (control) {
+      // Collect polygons
+      const inPolygons = turf.featureCollection(polygons);
+      const inPoints = turf.featureCollection(points);
+      const output = turf.tag(inPoints, inPolygons, field, outField);
 
-        // Define control ids
-        var idCancel = ol3turf.utils.getName([name, "cancel"], control.prefix);
-        var idField = ol3turf.utils.getName([name, "field-property"], control.prefix);
-        var idForm = ol3turf.utils.getName([name, "form"], control.prefix);
-        var idOk = ol3turf.utils.getName([name, "ok"], control.prefix);
-        var idOutField = ol3turf.utils.getName([name, "out-field-property"], control.prefix);
+      // Remove form and display results
+      control.showForm();
+      const inputs = {
+        points: inPoints,
+        polygons: inPolygons,
+        field: field,
+        outField: outField,
+      };
+      control.toolbar.olturf.handler.callback(name, output, inputs);
+    } catch (e) {
+      control.showMessage(e);
+    }
+  };
 
-        function onOK() {
-            try {
+  const onCancel = function() {
+    control.showForm();
+  };
 
-                // Gather selected features
-                var collection = ol3turf.utils.getCollection(control, 2, Infinity);
-                var points = ol3turf.utils.getPoints(collection, 1, collection.features.length - 1);
-                var numPolygons = collection.features.length - points.length;
-                var polygons = ol3turf.utils.getPolygons(collection, numPolygons, numPolygons);
+  const controls = [
+    utils.getControlText(idField, 'Field',
+        'Property in polygons to add to joined point features'),
+    utils.getControlText(idOutField, 'Out Field',
+        'Property in points in which to store joined property from polygons'),
+    utils.getControlInput(idOk, onOK, '', 'OK'),
+    utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+  ];
 
-                // Get form inputs
-                var field = ol3turf.utils.getFormString(idField, "field");
-                var outField = ol3turf.utils.getFormString(idOutField, "out field");
+  control.showForm(controls, idForm);
+};
 
-                // Collect polygons
-                var inPolygons = turf.featureCollection(polygons);
-                var inPoints = turf.featureCollection(points);
-                var output = turf.tag(inPoints, inPolygons, field, outField);
+export default {
+  create: function(toolbar, prefix) {
+    const title = 'Perform spatial join of points and polygons';
+    return Control.create(toolbar, prefix, name, title, action);
+  },
+};
 
-                // Remove form and display results
-                control.showForm();
-                var inputs = {
-                    points: inPoints,
-                    polygons: inPolygons,
-                    field: field,
-                    outField: outField
-                };
-                control.toolbar.ol3turf.handler.callback(name, output, inputs);
-
-            } catch (e) {
-                control.showMessage(e);
-            }
-        }
-
-        function onCancel() {
-            control.showForm();
-        }
-
-        var controls = [
-            ol3turf.utils.getControlText(idField, "Field", "Property in polygons to add to joined point features"),
-            ol3turf.utils.getControlText(idOutField, "Out Field", "Property in points in which to store joined property from polygons"),
-            ol3turf.utils.getControlInput(idOk, onOK, "", "OK"),
-            ol3turf.utils.getControlInput(idCancel, onCancel, "", "Cancel")
-        ];
-
-        control.showForm(controls, idForm);
-
-    };
-
-    ol3turf.controls[name] = {
-        /*
-         * Create control then attach custom action and it's parent toolbar
-         * @param toolbar Parent toolbar
-         * @param prefix Selector prefix.
-         */
-        create: function (toolbar, prefix) {
-            var title = "Perform spatial join of points and polygons";
-            var control = ol3turf.Control.create(toolbar, prefix, name, title, action);
-            return control;
-        }
-    };
-
-    return ol3turf;
-
-}(ol3turf || {}));

@@ -1,45 +1,25 @@
+import Control from './control';
+import utils from './utils';
 
-/*globals ol3turf, turf */
+const name = 'envelope';
 
-//==================================================
-// envelope control
-//--------------------------------------------------
-(function (ol3turf) {
+/*
+ * Compute envelope
+ */
+const action = function(control) {
+  const collection = utils.getCollection(control, 1, Infinity);
 
-    "use strict";
+  const output = turf.envelope(collection);
+  const inputs = {
+    fc: collection,
+  };
+  control.toolbar.olturf.handler.callback(name, output, inputs);
+};
 
-    // Control name
-    var name = "envelope";
+export default {
+  create: function(toolbar, prefix) {
+    const title = 'Measure Envelope';
+    return Control.create(toolbar, prefix, name, title, action);
+  },
+};
 
-    /**
-     * Compute envelope
-     * @private
-     */
-    var action = function (control) {
-
-        var collection = ol3turf.utils.getCollection(control, 1, Infinity);
-
-        var output = turf.envelope(collection);
-        var inputs = {
-            fc: collection
-        };
-        control.toolbar.ol3turf.handler.callback(name, output, inputs);
-
-    };
-
-    ol3turf.controls[name] = {
-        /*
-         * Create control then attach custom action and it's parent toolbar
-         * @param toolbar Parent toolbar
-         * @param prefix Selector prefix.
-         */
-        create: function (toolbar, prefix) {
-            var title = "Measure Envelope";
-            var control = ol3turf.Control.create(toolbar, prefix, name, title, action);
-            return control;
-        }
-    };
-
-    return ol3turf;
-
-}(ol3turf || {}));

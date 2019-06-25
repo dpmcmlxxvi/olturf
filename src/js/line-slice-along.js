@@ -1,104 +1,84 @@
+import Control from './control';
+import utils from './utils';
 
-/*globals document, ol3turf, turf */
+const name = 'line-slice-along';
 
-//==================================================
-// lineSlice control
-//--------------------------------------------------
-(function (ol3turf) {
+/*
+ * Compute line slice
+ */
+const action = function(control) {
+  // Define control ids
+  const idCancel = utils.getName([name, 'cancel'], control.prefix);
+  const idForm = utils.getName([name, 'form'], control.prefix);
+  const idOk = utils.getName([name, 'ok'], control.prefix);
+  const idStart = utils.getName([name, 'start'], control.prefix);
+  const idStop = utils.getName([name, 'stop'], control.prefix);
+  const idUnits = utils.getName([name, 'units'], control.prefix);
 
-    "use strict";
+  const onOK = function() {
+    try {
+      // Gather line seleted
+      const collection = utils.getCollection(control, 1, 1);
+      const lines = utils.getLines(collection, 1, 1);
+      const line = lines[0];
 
-    // Control name
-    var name = "line-slice-along";
+      // Gather form inputs
+      const start = utils.getFormNumber(idStart, 'start');
+      const stop = utils.getFormNumber(idStop, 'stop');
 
-    /**
-     * Compute line slice
-     * @private
-     */
-    var action = function (control) {
+      const isOrdered = (start < stop);
+      if (isOrdered !== true) {
+        throw new Error('Start must be less than stop');
+      }
 
-        // Define control ids
-        var idCancel = ol3turf.utils.getName([name, "cancel"], control.prefix);
-        var idForm = ol3turf.utils.getName([name, "form"], control.prefix);
-        var idOk = ol3turf.utils.getName([name, "ok"], control.prefix);
-        var idStart = ol3turf.utils.getName([name, "start"], control.prefix);
-        var idStop = ol3turf.utils.getName([name, "stop"], control.prefix);
-        var idUnits = ol3turf.utils.getName([name, "units"], control.prefix);
+      // Truncate at line length otherwise lineSliceAlong fails
+      const units = utils.getFormString(idUnits, 'units');
+      const length = turf.lineDistance(line, {units});
+      if (start > length) {
+        throw new Error('Start must be less than line length');
+      }
+      if (stop > length) {
+        throw new Error('Stop must be less than line length');
+      }
 
-        function onOK() {
-            try {
+      // Collect polygons
+      const output = turf.lineSliceAlong(line, start, stop, {units});
 
-                // Gather line seleted
-                var collection = ol3turf.utils.getCollection(control, 1, 1);
-                var lines = ol3turf.utils.getLines(collection, 1, 1);
-                var line = lines[0];
+      // Remove form and display results
+      control.showForm();
+      const inputs = {
+        line: line,
+        start: start,
+        stop: stop,
+        units: units,
+      };
+      control.toolbar.olturf.handler.callback(name, output, inputs);
+    } catch (e) {
+      control.showMessage(e);
+    }
+  };
 
-                // Gather form inputs
-                var start = ol3turf.utils.getFormNumber(idStart, "start");
-                var stop = ol3turf.utils.getFormNumber(idStop, "stop");
+  const onCancel = function() {
+    control.showForm();
+  };
 
-                var isOrdered = (start < stop);
-                if (isOrdered !== true) {
-                    throw new Error("Start must be less than stop");
-                }
+  const controls = [
+    utils.getControlNumber(idStart, 'Start',
+        'Starting distance along the line', '0', 'any', '0'),
+    utils.getControlNumber(idStop, 'Stop', 'Stoping distance along the line',
+        '0', 'any', '0'),
+    utils.getControlSelect(idUnits, 'Units', utils.getOptionsUnits()),
+    utils.getControlInput(idOk, onOK, '', 'OK'),
+    utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+  ];
 
-                // Truncate at line length otherwise lineSliceAlong fails
-                var units = ol3turf.utils.getFormString(idUnits, "units");
-                var length = turf.lineDistance(line, units);
-                if (start > length) {
-                    throw new Error("Start must be less than line length");
-                }
-                if (stop > length) {
-                    throw new Error("Stop must be less than line length");
-                }
+  control.showForm(controls, idForm);
+};
 
-                // Collect polygons
-                var output = turf.lineSliceAlong(line, start, stop, units);
+export default {
+  create: function(toolbar, prefix) {
+    const title = 'Create line slice';
+    return Control.create(toolbar, prefix, name, title, action);
+  },
+};
 
-                // Remove form and display results
-                control.showForm();
-                var inputs = {
-                    line: line,
-                    start: start,
-                    stop: stop,
-                    units: units
-                };
-                control.toolbar.ol3turf.handler.callback(name, output, inputs);
-
-            } catch (e) {
-                control.showMessage(e);
-            }
-        }
-
-        function onCancel() {
-            control.showForm();
-        }
-
-        var controls = [
-            ol3turf.utils.getControlNumber(idStart, "Start", "Starting distance along the line", "0", "any", "0"),
-            ol3turf.utils.getControlNumber(idStop, "Stop", "Stoping distance along the line", "0", "any", "0"),
-            ol3turf.utils.getControlSelect(idUnits, "Units", ol3turf.utils.getOptionsUnits()),
-            ol3turf.utils.getControlInput(idOk, onOK, "", "OK"),
-            ol3turf.utils.getControlInput(idCancel, onCancel, "", "Cancel")
-        ];
-
-        control.showForm(controls, idForm);
-
-    };
-
-    ol3turf.controls[name] = {
-        /*
-         * Create control then attach custom action and it's parent toolbar
-         * @param toolbar Parent toolbar
-         * @param prefix Selector prefix.
-         */
-        create: function (toolbar, prefix) {
-            var title = "Create line slice";
-            var control = ol3turf.Control.create(toolbar, prefix, name, title, action);
-            return control;
-        }
-    };
-
-    return ol3turf;
-
-}(ol3turf || {}));

@@ -1,35 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <title>ol3-turf test</title>
-    <meta charset="utf-8">
-    <link rel="stylesheet" type="text/css" href="../node_modules/mocha/mocha.css">
-    <link rel="stylesheet" type="text/css" href="../node_modules/openlayers/dist/ol.css" />
-    <link rel="stylesheet" type="text/css" href="../dist/ol3-turf.css" />
-    <link rel="stylesheet" type="text/css" href="./index.css" />
-</head>
-<body>
-<div id="mocha"></div>
-<div id="ol3-turf-test-div" class="ol3-turf-test-div"></div>
-<script type="text/javascript" src="../node_modules/jquery/dist/jquery.js"></script>
-<script type="text/javascript" src="../node_modules/expect.js/index.js"></script>
-<script type="text/javascript" src="../node_modules/mocha/mocha.js"></script>
-<script type="text/javascript" src="../node_modules/openlayers/dist/ol.js"></script>
-<script type="text/javascript" src="../node_modules/@turf/turf/turf.min.js"></script>
-<script type="text/javascript" src="../instrumented-code/ol3-turf.js"></script>
-<script>
-    mocha.setup({
-        ui   : 'bdd',
-        bail : false
-    });
-</script>
-<script type="text/javascript" src="polyfill.js"></script>
-<script type="text/javascript" src="test.js"></script>
-<script>
-    mocha.globals(['jQuery', '$', 'ol3turf', 'ol', 'turf']);
-    if (navigator.userAgent.indexOf('PhantomJS') < 0) {
-        mocha.run();
-    }
-</script>
-</body>
+  <head>
+    <title>OpenLayers Turf test</title>
+    <meta charset="utf-8" />
+    <link
+      href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link rel="stylesheet" type="text/css" href="../dist/olturf.css" />
+    <link rel="stylesheet" type="text/css" href="index.css" />
+  </head>
+  <body>
+    <div id="map"></div>
+    <script src="https://unpkg.com/jquery@2.1.3/dist/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <script src="https://unpkg.com/@turf/turf@5.1.6/turf.min.js"></script>
+    <script src="../dist/olturf.js"></script>
+    <script>
+      window.olturfex = {};
+      window.onload = function() {
+        olturfex.toolbar = new olturf.Toolbar();
+        const layers = [
+          new ol.layer.Tile({
+            source: new ol.source.Stamen({ layer: "watercolor" })
+          })
+        ];
+        const target = "map";
+        const view = new ol.View({ center: [-8161939, 6095025], zoom: 8 });
+        olturfex.map = new ol.Map({ layers, target, view });
+        olturfex.map.addControl(olturfex.toolbar);
+      };
+    </script>
+  </body>
 </html>

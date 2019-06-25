@@ -1,51 +1,31 @@
+import Control from './control';
+import utils from './utils';
 
-/*globals ol3turf, turf */
+const name = 'inside';
 
-//==================================================
-// inside control
-//--------------------------------------------------
-(function (ol3turf) {
+/*
+ * Compute if point is inside polygon
+ */
+const action = function(control) {
+  // Gather point and polygon selected
+  const collection = utils.getCollection(control, 2, 2);
+  const points = utils.getPoints(collection, 1, 1);
+  const polygons = utils.getPolygonsAll(collection, 1, 1);
+  const point = points[0];
+  const polygon = polygons[0];
 
-    "use strict";
+  const output = turf.booleanPointInPolygon(point, polygon);
+  const inputs = {
+    point: point,
+    polygon: polygon,
+  };
+  control.toolbar.olturf.handler.callback(name, output, inputs);
+};
 
-    // Control name
-    var name = "inside";
+export default {
+  create: function(toolbar, prefix) {
+    const title = 'Point inside polygon?';
+    return Control.create(toolbar, prefix, name, title, action);
+  },
+};
 
-    /**
-     * Compute if point is inside polygon
-     * @private
-     */
-    var action = function (control) {
-
-        // Gather point and polygon selected
-        var collection = ol3turf.utils.getCollection(control, 2, 2);
-        var points = ol3turf.utils.getPoints(collection, 1, 1);
-        var polygons = ol3turf.utils.getPolygonsAll(collection, 1, 1);
-        var point = points[0];
-        var polygon = polygons[0];
-
-        var output = turf.inside(point, polygon);
-        var inputs = {
-            point: point,
-            polygon: polygon
-        };
-        control.toolbar.ol3turf.handler.callback(name, output, inputs);
-
-    };
-
-    ol3turf.controls[name] = {
-        /*
-         * Create control then attach custom action and it's parent toolbar
-         * @param toolbar Parent toolbar
-         * @param prefix Selector prefix.
-         */
-        create: function (toolbar, prefix) {
-            var title = "Point inside polygon?";
-            var control = ol3turf.Control.create(toolbar, prefix, name, title, action);
-            return control;
-        }
-    };
-
-    return ol3turf;
-
-}(ol3turf || {}));

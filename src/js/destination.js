@@ -1,94 +1,73 @@
+import Control from './control';
+import utils from './utils';
 
-/*globals document, ol3turf, turf */
+const name = 'destination';
 
-//==================================================
-// destination control
-//--------------------------------------------------
-(function (ol3turf) {
+/*
+ * Find destination point from given point
+ */
+const action = function(control) {
+  // Define control ids
+  const idBearing = utils.getName([name, 'bearing'], control.prefix);
+  const idCancel = utils.getName([name, 'cancel'], control.prefix);
+  const idDistance = utils.getName([name, 'distance'], control.prefix);
+  const idForm = utils.getName([name, 'form'], control.prefix);
+  const idOk = utils.getName([name, 'ok'], control.prefix);
+  const idUnits = utils.getName([name, 'units'], control.prefix);
 
-    "use strict";
+  const onOK = function() {
+    try {
+      // Gather point seleted
+      const collection = utils.getCollection(control, 1, 1);
+      const points = utils.getPoints(collection, 1, 1);
+      const point = points[0];
 
-    // Control name
-    var name = "destination";
+      // Gather form inputs
+      const distance = utils.getFormNumber(idDistance, 'distance');
+      const bearing = utils.getFormNumber(idBearing, 'bearing');
+      const units = utils.getFormString(idUnits, 'units');
 
-    /**
-     * Find destination point from given point
-     * @private
-     */
-    var action = function (control) {
+      // Collect polygons
+      const output = turf.destination(point,
+          distance,
+          bearing,
+          {units});
 
-        // Define control ids
-        var idBearing = ol3turf.utils.getName([name, "bearing"], control.prefix);
-        var idCancel = ol3turf.utils.getName([name, "cancel"], control.prefix);
-        var idDistance = ol3turf.utils.getName([name, "distance"], control.prefix);
-        var idForm = ol3turf.utils.getName([name, "form"], control.prefix);
-        var idOk = ol3turf.utils.getName([name, "ok"], control.prefix);
-        var idUnits = ol3turf.utils.getName([name, "units"], control.prefix);
+      // Remove form and display results
+      control.showForm();
+      const inputs = {
+        from: point,
+        distance: distance,
+        bearing: bearing,
+        units: units,
+      };
+      control.toolbar.olturf.handler.callback(name, output, inputs);
+    } catch (e) {
+      control.showMessage(e);
+    }
+  };
 
-        function onOK() {
-            try {
+  const onCancel = function() {
+    control.showForm();
+  };
 
-                // Gather point seleted
-                var collection = ol3turf.utils.getCollection(control, 1, 1);
-                var points = ol3turf.utils.getPoints(collection, 1, 1);
-                var point = points[0];
+  const controls = [
+    utils.getControlNumber(idBearing, 'Bearing', 'Bearing angle (degrees)',
+        '0', 'any', '-180', '180'),
+    utils.getControlNumber(idDistance, 'Distance',
+        'Distance from the starting point', '0', 'any', '0'),
+    utils.getControlSelect(idUnits, 'Units', utils.getOptionsUnits()),
+    utils.getControlInput(idOk, onOK, '', 'OK'),
+    utils.getControlInput(idCancel, onCancel, '', 'Cancel'),
+  ];
 
-                // Gather form inputs
-                var distance = ol3turf.utils.getFormNumber(idDistance, "distance");
-                var bearing = ol3turf.utils.getFormNumber(idBearing, "bearing");
-                var units = ol3turf.utils.getFormString(idUnits, "units");
+  control.showForm(controls, idForm);
+};
 
-                // Collect polygons
-                var output = turf.destination(point,
-                        distance,
-                        bearing,
-                        units);
+export default {
+  create: function(toolbar, prefix) {
+    const title = 'Find destination point from given point';
+    return Control.create(toolbar, prefix, name, title, action);
+  },
+};
 
-                // Remove form and display results
-                control.showForm();
-                var inputs = {
-                    from: point,
-                    distance: distance,
-                    bearing: bearing,
-                    units: units
-                };
-                control.toolbar.ol3turf.handler.callback(name, output, inputs);
-
-
-            } catch (e) {
-                control.showMessage(e);
-            }
-        }
-
-        function onCancel() {
-            control.showForm();
-        }
-
-        var controls = [
-            ol3turf.utils.getControlNumber(idBearing, "Bearing", "Bearing angle (degrees)", "0", "any", "-180", "180"),
-            ol3turf.utils.getControlNumber(idDistance, "Distance", "Distance from the starting point", "0", "any", "0"),
-            ol3turf.utils.getControlSelect(idUnits, "Units", ol3turf.utils.getOptionsUnits()),
-            ol3turf.utils.getControlInput(idOk, onOK, "", "OK"),
-            ol3turf.utils.getControlInput(idCancel, onCancel, "", "Cancel")
-        ];
-
-        control.showForm(controls, idForm);
-
-    };
-
-    ol3turf.controls[name] = {
-        /*
-         * Create control then attach custom action and it's parent toolbar
-         * @param toolbar Parent toolbar
-         * @param prefix Selector prefix.
-         */
-        create: function (toolbar, prefix) {
-            var title = "Find destination point from given point";
-            var control = ol3turf.Control.create(toolbar, prefix, name, title, action);
-            return control;
-        }
-    };
-
-    return ol3turf;
-
-}(ol3turf || {}));

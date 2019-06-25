@@ -1,49 +1,44 @@
-.ol3-turf-form
-{
-    background-color: #ffffff;
-    background-color: rgba(255, 255, 255,0.4);
-    border-radius: 4px;
-    display: inline-block;
-    left: 2.5em;
-    padding: 2px;
-    top: 2.5em;
+.olturf-form {
+  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.4);
+  border-radius: 4px;
+  display: inline-block;
+  left: 2.5em;
+  padding: 2px;
+  top: 2.5em;
 }
 
-.ol3-turf-form-table
-{
-    background-color: #00a088;
-    background-color: rgba(0, 60, 136, 0.5);
-    border-radius: 2px;
+.olturf-form-table {
+  background-color: #00a088;
+  background-color: rgba(0, 60, 136, 0.5);
+  border-radius: 2px;
 }
 
-.ol3-turf-form-header
-{
-    color: #d3d3d3;
-    padding: 2px;
-    text-align: right;
-    white-space: nowrap;
+.olturf-form-header {
+  color: #d3d3d3;
+  padding: 2px;
+  text-align: right;
+  white-space: nowrap;
 }
 
-.ol3-turf-form-data
-{
-    padding: 2px;
-    text-align: left;
+.olturf-form-data {
+  padding: 2px;
+  text-align: left;
 }
 
-.ol3-turf-form-input, .ol3-turf-form-select
-{
-    background-color: #fff;
-    border: 1px solid #bbb;
-    border-radius: 3px;
-    box-sizing: border-box;
-    color: #000;
-    line-height: normal;
-    padding: 4px;
-    text-align: center;
-    width: 100px;
+.olturf-form-input,
+.olturf-form-select {
+  background-color: #fff;
+  border: 1px solid #bbb;
+  border-radius: 3px;
+  box-sizing: border-box;
+  color: #000;
+  line-height: normal;
+  padding: 4px;
+  text-align: center;
+  width: 100px;
 }
 
-.ol3-turf-form-select
-{
-    text-align-last: center;
+.olturf-form-select {
+  text-align-last: center;
 }

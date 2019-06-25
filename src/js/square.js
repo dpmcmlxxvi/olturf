@@ -1,48 +1,28 @@
+import Control from './control';
+import utils from './utils';
 
-/*globals ol3turf, turf */
+const name = 'square';
 
-//==================================================
-// square control
-//--------------------------------------------------
-(function (ol3turf) {
+/*
+ * Compute square
+ */
+const action = function(control) {
+  // Gather selected features
+  const collection = utils.getCollection(control, 1, Infinity);
+  const bbox = turf.bbox(collection);
+  const square = turf.square(bbox);
 
-    "use strict";
+  const output = turf.bboxPolygon(square);
+  const inputs = {
+    bbox: bbox,
+  };
+  control.toolbar.olturf.handler.callback(name, output, inputs);
+};
 
-    // Control name
-    var name = "square";
+export default {
+  create: function(toolbar, prefix) {
+    const title = 'Create Square';
+    return Control.create(toolbar, prefix, name, title, action);
+  },
+};
 
-    /**
-     * Compute square
-     * @private
-     */
-    var action = function (control) {
-
-        // Gather selected features
-        var collection = ol3turf.utils.getCollection(control, 1, Infinity);
-        var bbox = turf.bbox(collection);
-        var square = turf.square(bbox);
-
-        var output = turf.bboxPolygon(square);
-        var inputs = {
-            bbox: bbox
-        };
-        control.toolbar.ol3turf.handler.callback(name, output, inputs);
-
-    };
-
-    ol3turf.controls[name] = {
-        /*
-         * Create control then attach custom action and it's parent toolbar
-         * @param toolbar Parent toolbar
-         * @param prefix Selector prefix.
-         */
-        create: function (toolbar, prefix) {
-            var title = "Create Square";
-            var control = ol3turf.Control.create(toolbar, prefix, name, title, action);
-            return control;
-        }
-    };
-
-    return ol3turf;
-
-}(ol3turf || {}));

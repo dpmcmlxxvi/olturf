@@ -1,50 +1,30 @@
+import Control from './control';
+import utils from './utils';
 
-/*globals ol3turf, turf */
+const name = 'point-on-line';
 
-//==================================================
-// pointOnLine control
-//--------------------------------------------------
-(function (ol3turf) {
+/*
+ * Compute point on line
+ */
+const action = function(control) {
+  const collection = utils.getCollection(control, 2, 2);
+  const points = utils.getPoints(collection, 1, 1);
+  const lines = utils.getLines(collection, 1, 1);
+  const line = lines[0];
+  const point = points[0];
 
-    "use strict";
+  const output = turf.pointOnLine(line, point);
+  const inputs = {
+    line: line,
+    point: point,
+  };
+  control.toolbar.olturf.handler.callback(name, output, inputs);
+};
 
-    // Control name
-    var name = "point-on-line";
+export default {
+  create: function(toolbar, prefix) {
+    const title = 'Project point on line';
+    return Control.create(toolbar, prefix, name, title, action);
+  },
+};
 
-    /**
-     * Compute point on line
-     * @private
-     */
-    var action = function (control) {
-
-        var collection = ol3turf.utils.getCollection(control, 2, 2);
-        var points = ol3turf.utils.getPoints(collection, 1, 1);
-        var lines = ol3turf.utils.getLines(collection, 1, 1);
-        var line = lines[0];
-        var point = points[0];
-
-        var output = turf.pointOnLine(line, point);
-        var inputs = {
-            line: line,
-            point: point
-        };
-        control.toolbar.ol3turf.handler.callback(name, output, inputs);
-
-    };
-
-    ol3turf.controls[name] = {
-        /*
-         * Create control then attach custom action and it's parent toolbar
-         * @param toolbar Parent toolbar
-         * @param prefix Selector prefix.
-         */
-        create: function (toolbar, prefix) {
-            var title = "Project point on line";
-            var control = ol3turf.Control.create(toolbar, prefix, name, title, action);
-            return control;
-        }
-    };
-
-    return ol3turf;
-
-}(ol3turf || {}));

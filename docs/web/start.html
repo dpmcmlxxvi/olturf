@@ -1,193 +1,193 @@
-
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <!-- The above 3 meta tags *must* come first in the head;
-             any other head content must come *after* these tags -->
-        <meta name="description" content="">
-        <meta name="author" content="">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
 
-        <title>ol3-turf | Getting Started</title>
+    <title>OpenLayers Turf | Getting Started</title>
 
-        <!-- Bootstrap core CSS -->
-        <link href="./css/bootstrap.min.css" rel="stylesheet">
+    <link
+      href="https://unpkg.com/bootstrap@3.3.6/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link
+      href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <link href="../../dist/olturf.min.css" rel="stylesheet" type="text/css" />
+    <link href="css/olturf.css" rel="stylesheet" />
+    <link href="css/github.css" rel="stylesheet" />
 
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <link href="./css/ie10-viewport-bug-workaround.css" rel="stylesheet">
+    <script
+      charset="UTF-8"
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"
+    ></script>
+    <script
+      charset="UTF-8"
+      src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/go.min.js"
+    ></script>
+    <script>
+      hljs.initHighlightingOnLoad();
+    </script>
+  </head>
 
-        <!-- Custom styles for this template -->
-        <link href="./css/github.css" rel="stylesheet">
-        <script src="./js/highlight.pack.js" type="text/javascript"></script>
-        <script>hljs.initHighlightingOnLoad();</script>
-
-        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-        <!--[if lt IE 9]>
-          <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-          <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-        <![endif]-->
-
-        <link href="./css/ol.css" rel="stylesheet" type="text/css">
-        <link href="./css/ol3turf.css" rel="stylesheet">
-        <link href="./css/ol3-turf.min.css" rel="stylesheet" type="text/css" />
-
-        <script src="./js/jquery.min.js" type="text/javascript"></script>
-        <script src="./js/ol.js" type="text/javascript"></script>
-        <script src="./js/turf.min.js" type="text/javascript"></script>
-        <script src="./js/ol3-turf.min.js" type="text/javascript"></script>
-        <script src="./js/example.js" type="text/javascript"></script>
-    </head>
-
-    <body>
-
-        <nav class="navbar navbar-inverse navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button"
-                            class="navbar-toggle collapsed"
-                            data-toggle="collapse"
-                            data-target="#navbar"
-                            aria-expanded="false"
-                            aria-controls="navbar">
-                        <span class="sr-only">Toggle navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
-                </div>
-                <div id="navbar" class="collapse navbar-collapse">
-                    <ul class="nav navbar-nav">
-                        <li class="active"><a href=".">Home</a></li>
-                        <li><a href="start.html">Getting Started</a></li>
-                        <li><a href="demos.html">Demos</a></li>
-                        <li><a href="../api/">Docs</a></li>
-                    </ul>
-                    <ul class="nav navbar-nav navbar-right ol3turf-github-logo">
-                        <li>
-                            <a href="https://github.com/dpmcmlxxvi/ol3-turf">
-                                <img src="./img/GitHub-Mark-Light-32px.png">
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
-
-        <div class="container" style="min-width: 750px;">
-            <h1>Getting Started</h1>
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>Setup</h2>
-                    <p>
-                        The <code>ol3-turf</code> library has two dependencies
-                        that must be included, OpenLayers 3 and turf.
-                        Therefore, the following is the minimum needed to set
-                        up an <code>ol3-turf</code> web application.
-<pre><code class="html">    &lt;link href="path/to/ol3/ol.css" rel="stylesheet" type="text/css"/&gt;
-    &lt;link href="path/to/turf/turf.min.css" rel="stylesheet" type="text/css" /&gt;
-    &lt;link href="path/to/ol3-turf/ol3-turf.min.css" rel="stylesheet" type="text/css" /&gt;
-
-    &lt;script src="path/to/ol3/ol.js" type="text/javascript"&gt;&lt;/script&gt;
-    &lt;script src="path/to/turf/turf.min.js" type="text/javascript"&gt;&lt;/script&gt;
-    &lt;script src="path/to/ol3-turf/ol3-turf.min.js" type="text/javascript"&gt;&lt;/script&gt;</code></pre>
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>Usage</h2>
-                    <p>
-                        Using the <code>ol3-turf</code> library is as simple as
-                        creating a new instance of a 
-                        <code>ol.control.Turf</code> control and then adding it
-                        to an existing <code>ol.Map</code>. The default toolbar
-                        provides reasonable defaults for it's layout and
-                        commands. By default the toolbar is displayed across
-                        the top with all available turf commands enabled. For
-                        commands requiring inputs a popup form is displayed. If
-                        the turf command returns a feature it is added to the
-                        map. If a value is returned it is displayed in a popup
-                        message.
-                    </p>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>Example</h2>
-                    <p>
-                        Below is the standard toolbar that is displayed when no
-                        options are provided.
-                    </p>
-<pre><code class="javascript">    var toolbar = new ol.control.Turf();
-    var map = new ol.Map({...});
-    map.addControl(toolbar);</code></pre>
-                    <div id="map" style="height: 350px; width: 100%;"></div>
-                    <script type="text/javascript">
-                        var toolbar = new ol.control.Turf();
-                        var map = createMap('map');
-                        map.addControl(toolbar);
-                    </script>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <h2>Options</h2>
-                    <p>
-                        The <code>ol.control.Turf(options)</code> constructor
-                        takes an optional argument that allows the user to
-                        override the default settings like the styling of the
-                        toolbar and providing custom processing of turf command
-                        outputs. For a complete description see the
-                        <a href="../api/ol.control.Turf.html">
-                            ol.control.Turf
-                        </a>
-                        documentation.
-<pre><code class="javascript">    options = {ol3turf: {
-        controls : ["area", ...],   // list of controls to add to toolbar
-        handler  : {                // callback to handle turf commands output
-            callback : function(name, inputs, output) {...}
-        },
-        prefix   : "ol3-turf-foo",  // prefix to apply to toolbar annd control IDs.
-        style    : "ol3-turf-bar"   // style to apply to toolbar
-    }};</code></pre>
-                    </p>
-                </div>
-            </div>
+  <body>
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button
+            type="button"
+            class="navbar-toggle collapsed"
+            data-toggle="collapse"
+            data-target="#navbar"
+            aria-expanded="false"
+            aria-controls="navbar"
+          >
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
         </div>
-
-        <div class="container">
-            <hr>
-            <footer>
-                <p>&copy; 2016 Daniel Pulido &lt;dpmcmlxxvi@gmail.com&gt;</p>
-                <p>
-                    Source code is released under the
-                    <a href="http://opensource.org/licenses/MIT">MIT</a>
-                    license. Documentation is released under the
-                    <a href="http://creativecommons.org/licenses/by-sa/4.0/">
-                        CC BY 4.0
-                    </a>
-                    license. Icons are from
-                    <a href="http://trac.osgeo.org/osgeo/wiki">
-                        OSGeo
-                    </a>
-                    and released under the
-                    <a href="http://creativecommons.org/licenses/by-sa/3.0/">
-                        CC BY 3.0
-                    </a>
-                    license.
-                </p>
-            </footer>
+        <div id="navbar" class="collapse navbar-collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href=".">Home</a></li>
+            <li><a href="start.html">Getting Started</a></li>
+            <li><a href="demos.html">Demos</a></li>
+            <li><a href="../api/">Docs</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right olturf-github-logo">
+            <li>
+              <a href="https://github.com/dpmcmlxxvi/olturf">
+                <img src="./img/GitHub-Mark-Light-32px.png" />
+              </a>
+            </li>
+          </ul>
         </div>
+      </div>
+    </nav>
 
-        <!-- Bootstrap core JavaScript
-        ================================================== -->
-        <!-- Placed at the end of the document so the pages load faster -->
-        <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
-        <!-- <script>window.jQuery || document.write('<script src="./js/jquery.min.js"><\/script>')</script> -->
-        <script src="./js/bootstrap.min.js"></script>
-        <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
-        <script src="./js/ie10-viewport-bug-workaround.js"></script>
-    </body>
+    <div class="container" style="min-width: 750px;">
+      <h1>Getting Started</h1>
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Setup</h2>
+          <div>
+            The <code>olturf</code> library has two dependencies that must be
+            included, OpenLayers and Turf. Therefore, the following is the
+            minimum needed to set up an <code>olturf</code> web application.
+            <br />
+            <br />
+            <pre><code class="html">  &lt;link href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css" rel="stylesheet" type="text/css" /&gt;
+  &lt;link href="https://unpkg.com/olturf/dist/olturf.min.css" rel="stylesheet" type="text/css" /&gt;
+
+  &lt;script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"&gt;&lt;/script&gt;
+  &lt;script src="https://unpkg.com/@turf/turf@5.1.6/turf.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://unpkg.com/olturf/dist/olturf.min.js"&gt;&lt;/script&gt;</code></pre>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Usage</h2>
+          <p>
+            Using the <code>olturf</code> library is as simple as creating a new
+            instance of a <code>olturf.Toolbar</code> control and then adding it
+            to an existing <code>ol.Map</code>. The default toolbar provides
+            reasonable defaults for it's layout and commands. By default the
+            toolbar is displayed across the top with all available Turf commands
+            enabled. For commands requiring inputs a popup form is displayed. If
+            the Turf command returns a feature it is added to the map. If a
+            value is returned it is displayed in a popup message.
+          </p>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Example</h2>
+          <p>
+            Below is the standard toolbar that is displayed when no options are
+            provided.
+          </p>
+          <pre><code class="html">  &lt;script&gt;
+    const toolbar = new olturf.Toolbar();
+    const map = new ol.Map({...});
+    map.addControl(toolbar);
+  &lt;/script&gt;</code></pre>
+          <div id="map" style="height: 350px; width: 100%;"></div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <h2>Options</h2>
+          <div>
+            The <code>olturf.Toolbar(options)</code> constructor takes an
+            optional argument that allows the user to override the default
+            settings like the styling of the toolbar and providing custom
+            processing of Turf command outputs. The
+            <code>options</code> argument is a
+            <code>ol.control.Control</code> options object with an additional
+            <code>olturf</code> property. For a complete description see the
+            <a href="../api/olturf.Toolbar.html">
+              olturf.Toolbar
+            </a>
+            documentation.
+            <br />
+            <br />
+            <pre><code class="javascript">  options = {
+    olturf: {
+      controls : ['area', ...],   // list of controls to add to toolbar
+      handler  : {                // callback to handle Turf commands output
+        callback : function(name, inputs, output) {...}
+      },
+      prefix   : 'olturf-foo',  // prefix to apply to toolbar annd control IDs.
+      style    : 'olturf-bar'   // style to apply to toolbar
+    }
+  };</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="container">
+      <hr />
+      <footer>
+        <p>&copy; 2016 Daniel Pulido &lt;dpmcmlxxvi@gmail.com&gt;</p>
+        <p>
+          Source code is released under the
+          <a href="http://opensource.org/licenses/MIT">MIT</a>
+          license. Documentation is released under the
+          <a href="http://creativecommons.org/licenses/by-sa/4.0/">
+            CC BY 4.0
+          </a>
+          license. Icons are from
+          <a href="http://trac.osgeo.org/osgeo/wiki">
+            OSGeo
+          </a>
+          and released under the
+          <a href="http://creativecommons.org/licenses/by-sa/3.0/">
+            CC BY 3.0
+          </a>
+          license.
+        </p>
+      </footer>
+    </div>
+
+    <script src="https://unpkg.com/jquery@2.1.3/dist/jquery.min.js"></script>
+    <script src="https://unpkg.com/bootstrap@3.3.6/dist/js/bootstrap.min.js"></script>
+    <script src="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/build/ol.js"></script>
+    <script src="https://unpkg.com/@turf/turf@5.1.6/turf.min.js"></script>
+    <script src="../../dist/olturf.js"></script>
+    <script src="js/example.js"></script>
+    <script>
+      const toolbar = new olturf.Toolbar();
+      const map = createMap("map");
+      map.addControl(toolbar);
+    </script>
+  </body>
 </html>
