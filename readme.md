@@ -26,7 +26,6 @@ groups are available `aggregation`, `classification`, `data`, `grids`,
 ## GETTING STARTED
 
 A toolbar can be added to an OpenLayers map by adding its dependencies
-(see [documentation](http://dpmcmlxxvi.github.io/olturf/web/start.html))
 
 ```html
 <link href="https://cdn.rawgit.com/openlayers/openlayers.github.io/master/en/v5.3.0/css/ol.css"
@@ -38,7 +37,7 @@ A toolbar can be added to an OpenLayers map by adding its dependencies
 <script src="https://unpkg.com/olturf/dist/olturf.min.js"></script>
 ```
 
-then creating an instance and adding it to the map:
+then creating an instance and adding it to the map
 
 ```javascript
 const toolbar = new olturf.Toolbar();
@@ -51,7 +50,7 @@ map.addControl(toolbar);
 The following help is available at the olturf
 [website](http://dpmcmlxxvi.github.io/olturf):
 
-- [Inroduction](http://dpmcmlxxvi.github.io/olturf/web/)
+- [Introduction](http://dpmcmlxxvi.github.io/olturf/web/)
 - [Getting Started](http://dpmcmlxxvi.github.io/olturf/web/start.html)
 - [Examples](http://dpmcmlxxvi.github.io/olturf/web/demos.html)
 - [API](http://dpmcmlxxvi.github.io/olturf/api/)
