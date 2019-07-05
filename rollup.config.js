@@ -8,7 +8,7 @@ const banner = `\
  * ${pkg.name} v${pkg.version}
  * ${pkg.description}
  *
- * @author ${pkg.author}
+ * @author ${pkg.author.name} <${pkg.author.email}>
  * @license ${pkg.license}
  * @preserve
  */
