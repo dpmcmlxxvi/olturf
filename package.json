@@ -42,6 +42,10 @@
     "test:lint:js": "eslint 'test/*.js'",
     "test:run": "jest"
   },
+  "files": [
+    "src/**/*.*",
+    "dist/*.*"
+  ],
   "homepage": "https://github.com/dpmcmlxxvi/olturf",
   "repository": {
     "type": "git",
