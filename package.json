@@ -61,7 +61,7 @@
   ],
   "devDependencies": {
     "clean-css-cli": "^4.3.0",
-    "coveralls": "^3.0.4",
+    "coveralls": "^3.0.6",
     "eslint": "^6.0.1",
     "eslint-config-google": "^0.13.0",
     "htmlhint": "^0.11.0",
