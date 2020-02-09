@@ -83,7 +83,7 @@
     "rollup-plugin-terser": "^5.0.0",
     "shx": "^0.3.2",
     "stylelint": "^13.1.0",
-    "stylelint-config-standard": "^19.0.0"
+    "stylelint-config-standard": "^20.0.0"
   },
   "remarkConfig": {
     "plugins": [
