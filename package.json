@@ -75,7 +75,7 @@
     "prettier": "^2.0.0",
     "puppeteer": "^2.0.0",
     "puppeteer-to-istanbul": "^1.2.2",
-    "remark-cli": "^7.0.0",
+    "remark-cli": "^8.0.0",
     "remark-preset-lint-markdown-style-guide": "^3.0.0",
     "rollup": "^2.0.0",
     "rollup-plugin-commonjs": "^10.0.0",
