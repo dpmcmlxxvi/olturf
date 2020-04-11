@@ -227,8 +227,8 @@
       const toolbarMultiple = new olturf.Toolbar({
         olturf: {
           controls: olturf.toolbars.measurement(),
-          style: "olturf-toolbar-measurement"
-        }
+          style: "olturf-toolbar-measurement",
+        },
       });
       mapMultiple.addControl(toolbarMultiple);
 
@@ -236,8 +236,8 @@
         olturf: {
           controls: olturf.toolbars.grids(),
           prefix: "olturf-grids",
-          style: "olturf-toolbar-grids"
-        }
+          style: "olturf-toolbar-grids",
+        },
       });
       mapMultiple.addControl(toolfoo);
     </script>
@@ -246,11 +246,11 @@
       const toolbarOptions = new olturf.Toolbar({
         olturf: {
           handler: {
-            callback: function(name, inputs, output) {
+            callback: function (name, inputs, output) {
               alert('Custom handler for command "' + name + '"');
-            }
-          }
-        }
+            },
+          },
+        },
       });
       mapOptions.addControl(toolbarOptions);
     </script>

@@ -168,11 +168,11 @@
     <script src="https://unpkg.com/olturf/dist/olturf.min.js"></script>
     <script src="js/example.js"></script>
     <script>
-      $(document).ready(function() {
-        (function() {
+      $(document).ready(function () {
+        (function () {
           const api =
             "https://api.github.com/repos/dpmcmlxxvi/olturf/releases/latest";
-          $.getJSON(api).done(function(json) {
+          $.getJSON(api).done(function (json) {
             const anchor = $("#olturf-download");
             anchor.attr("href", json.zipball_url);
             anchor.html("Download " + json.tag_name + " &raquo;");
@@ -180,7 +180,7 @@
         })();
       });
 
-      window.onload = function() {
+      window.onload = function () {
         window.toolbar = new olturf.Toolbar();
         window.map = createMap("map");
         window.map.addControl(toolbar);

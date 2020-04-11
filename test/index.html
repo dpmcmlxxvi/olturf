@@ -19,12 +19,12 @@
     <script src="../dist/olturf.js"></script>
     <script>
       window.olturfex = {};
-      window.onload = function() {
+      window.onload = function () {
         olturfex.toolbar = new olturf.Toolbar();
         const layers = [
           new ol.layer.Tile({
-            source: new ol.source.Stamen({ layer: "watercolor" })
-          })
+            source: new ol.source.Stamen({ layer: "watercolor" }),
+          }),
         ];
         const target = "map";
         const view = new ol.View({ center: [-8161939, 6095025], zoom: 8 });

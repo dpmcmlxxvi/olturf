@@ -39,12 +39,12 @@
       let toolbar = null;
       let toolbar2 = null;
 
-      window.onload = function() {
+      window.onload = function () {
         map = createMap("map");
         toolbar = new olturf.Toolbar({
           olturf: {
-            controls: olturf.toolbars.measurement()
-          }
+            controls: olturf.toolbars.measurement(),
+          },
         });
         map.addControl(toolbar);
 
@@ -52,8 +52,8 @@
           olturf: {
             controls: olturf.toolbars.grids(),
             prefix: "olturf-grids",
-            style: "olturf-toolbar-grids"
-          }
+            style: "olturf-toolbar-grids",
+          },
         });
         map.addControl(toolbar2);
       };
