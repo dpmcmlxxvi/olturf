@@ -4,7 +4,6 @@
 [![coverage](https://img.shields.io/coveralls/dpmcmlxxvi/olturf.svg)](https://coveralls.io/r/dpmcmlxxvi/olturf?branch=master)
 [![codacy](https://img.shields.io/codacy/grade/44810a70e6a34122818dfa31e4304c50.svg)](https://www.codacy.com/app/dpmcmlxxvi/olturf?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dpmcmlxxvi/olturf&amp;utm_campaign=Badge_Grade)
 [![npm](https://badge.fury.io/js/olturf.svg)](https://badge.fury.io/js/olturf)
-[![greenkeeper](https://badges.greenkeeper.io/dpmcmlxxvi/olturf.svg)](https://greenkeeper.io/)
 
 [OpenLayers Turf](https://github.com/dpmcmlxxvi/olturf) (olturf) is a
 [Turf](http://turfjs.org/) toolbar for [OpenLayers](http://openlayers.org/).
