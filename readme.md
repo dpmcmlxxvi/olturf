@@ -9,11 +9,11 @@
 [Turf](http://turfjs.org/) toolbar for [OpenLayers](http://openlayers.org/).
 The toolbar provides the following features:
 
-- **Customizable** commands to display
-- **Forms** to collect command inputs
-- **Popups** to display numerical outputs
-- **Input** features are selected in the map
-- **Output** features are displayed in the map
+-   **Customizable** commands to display
+-   **Forms** to collect command inputs
+-   **Popups** to display numerical outputs
+-   **Input** features are selected in the map
+-   **Output** features are displayed in the map
 
 Instead of displaying all the Turf commands available, individual commands can
 be selected or a subset of pre-defined groups can be displayed. The following
@@ -49,10 +49,10 @@ map.addControl(toolbar);
 The following help is available at the olturf
 [website](http://dpmcmlxxvi.github.io/olturf):
 
-- [Introduction](http://dpmcmlxxvi.github.io/olturf/web/)
-- [Getting Started](http://dpmcmlxxvi.github.io/olturf/web/start.html)
-- [Examples](http://dpmcmlxxvi.github.io/olturf/web/demos.html)
-- [API](http://dpmcmlxxvi.github.io/olturf/api/)
+-   [Introduction](http://dpmcmlxxvi.github.io/olturf/web/)
+-   [Getting Started](http://dpmcmlxxvi.github.io/olturf/web/start.html)
+-   [Examples](http://dpmcmlxxvi.github.io/olturf/web/demos.html)
+-   [API](http://dpmcmlxxvi.github.io/olturf/api/)
 
 ## BUILD
 
