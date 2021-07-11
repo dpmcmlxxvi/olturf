@@ -2,7 +2,7 @@
 
 [![build](https://travis-ci.org/dpmcmlxxvi/olturf.svg?branch=master)](https://travis-ci.org/dpmcmlxxvi/olturf)
 [![coverage](https://img.shields.io/coveralls/dpmcmlxxvi/olturf.svg)](https://coveralls.io/r/dpmcmlxxvi/olturf?branch=master)
-[![codacy](https://img.shields.io/codacy/grade/44810a70e6a34122818dfa31e4304c50.svg)](https://www.codacy.com/app/dpmcmlxxvi/olturf?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dpmcmlxxvi/olturf&amp;utm_campaign=Badge_Grade)
+[![codacy](https://app.codacy.com/project/badge/Grade/c8c1b0c8b3c842df96a08276fe3cb69a)](https://www.codacy.com/gh/dpmcmlxxvi/olturf/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dpmcmlxxvi/olturf&amp;utm_campaign=Badge_Grade)
 [![npm](https://badge.fury.io/js/olturf.svg)](https://badge.fury.io/js/olturf)
 
 [OpenLayers Turf](https://github.com/dpmcmlxxvi/olturf) (olturf) is a
