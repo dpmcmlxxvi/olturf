@@ -1,6 +1,6 @@
 # OpenLayers Turf
 
-[![build](https://travis-ci.org/dpmcmlxxvi/olturf.svg?branch=master)](https://travis-ci.org/dpmcmlxxvi/olturf)
+[![build](https://github.com/dpmcmlxxvi/olturf/actions/workflows/build.yml/badge.svg)](https://github.com/dpmcmlxxvi/olturf/actions)
 [![coverage](https://img.shields.io/coveralls/dpmcmlxxvi/olturf.svg)](https://coveralls.io/r/dpmcmlxxvi/olturf?branch=master)
 [![codacy](https://app.codacy.com/project/badge/Grade/c8c1b0c8b3c842df96a08276fe3cb69a)](https://www.codacy.com/gh/dpmcmlxxvi/olturf/dashboard?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=dpmcmlxxvi/olturf&amp;utm_campaign=Badge_Grade)
 [![npm](https://badge.fury.io/js/olturf.svg)](https://badge.fury.io/js/olturf)
