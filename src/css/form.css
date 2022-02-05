@@ -1,6 +1,6 @@
 .olturf-form {
   background-color: #fff;
-  background-color: rgba(255, 255, 255, 0.4);
+  background-color: rgba(255 255 255 / 40%);
   border-radius: 4px;
   display: inline-block;
   left: 2.5em;
@@ -10,7 +10,7 @@
 
 .olturf-form-table {
   background-color: #00a088;
-  background-color: rgba(0, 60, 136, 0.5);
+  background-color: rgba(0 60 136 / 50%);
   border-radius: 2px;
 }
 

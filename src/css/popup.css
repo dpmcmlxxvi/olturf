@@ -1,6 +1,6 @@
 .olturf-popup {
   background-color: #fff;
-  background-color: rgba(255, 255, 255, 1);
+  background-color: rgba(255 255 255 / 100%);
   border-radius: 4px;
   display: inline-block;
   left: 2.5em;
@@ -13,7 +13,7 @@
 
 .olturf-popup-message {
   background-color: #00a088;
-  background-color: rgba(0, 60, 136, 0.5);
+  background-color: rgba(0 60 136 / 50%);
   border-radius: 2px;
   padding: 10px;
 }
